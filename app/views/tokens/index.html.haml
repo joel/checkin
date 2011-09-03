@@ -3,14 +3,10 @@
 %table
   %tr
     %th Token type
-    %th Person
     %th Cost
     %th Start at
     %th Stop at
     %th Used
-    %th Motivation
-    %th Checkin owner
-    %th Token owner
     %th
     %th
     %th
@@ -18,14 +14,10 @@
   - @tokens.each do |token|
     %tr
       %td= token.token_type_id
-      %td= token.person_id
       %td= token.cost
       %td= token.start_at
       %td= token.stop_at
       %td= token.used
-      %td= token.motivation_id
-      %td= token.checkin_owner_id
-      %td= token.token_owner_id
       %td= link_to 'Show', token
       %td= link_to 'Edit', edit_token_path(token)
       %td= link_to 'Destroy', token, :confirm => 'Are you sure?', :method => :delete

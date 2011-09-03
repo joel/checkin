@@ -1,0 +1,8 @@
+= form_for @person, :html => { :multipart => true } do |f|
+  -if @person.errors.any?
+    = render :partial => 'errors'
+  .field
+    = f.label :avatar
+    = f.file_field :avatar
+  .actions
+    = f.submit 'Upload my avatar!'

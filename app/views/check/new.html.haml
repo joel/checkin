@@ -1,2 +1,17 @@
-%h1 Check#new
-%p Find me in app/views/check/new.html.haml
+%div#checkin
+	= link_to 'Back to people list', people_path
+	- if @person.tokens.available.all.size > 0
+		%ul
+			- TokenType.all.each do |token_type|
+				= form_tag "/people/#{@person.id}/check", :method => :post do
+					= hidden_field_tag :token_type_id, token_type.id
+					%li
+						= select_tag "motivation_id", options_from_collection_for_select(Motivation.all, "id", "title")
+						- if @person.tokens_avalaible?(token_type.id)
+							%button
+								= content_tag :span, "Use #{token_type.title} credit (#{@person.remain_tokens(token_type.id)})", :class => 'submit'
+						- else
+							= content_tag :span, "Use #{token_type.title} credit (#{@person.remain_tokens(token_type.id)})", :class => 'empty'
+	- else
+		%div#warning.notice
+			Ooooh no ^^ You have no enough credits... please, buy some credits !

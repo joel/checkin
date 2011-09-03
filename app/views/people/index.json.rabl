@@ -1,0 +1,1 @@
+attributes :id, :firstname, :lastname, :gender

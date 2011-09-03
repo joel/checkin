@@ -1,9 +1,33 @@
-!!!
+!!! 5
 %html
-  %head
-    %title CheckinReloaded
-    = stylesheet_link_tag    "application"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
-  %body
-    = yield
+	%head
+		%title 
+			= title
+		= stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
+		= stylesheet_link_tag 'compiled/application.css', :media => 'screen, projection'
+		= stylesheet_link_tag 'compiled/grid.css', :media => 'screen, projection'
+		= stylesheet_link_tag 'compiled/text.css', :media => 'screen, projection'
+		= stylesheet_link_tag 'compiled/formtastic.css', :media => 'screen, projection'
+		= stylesheet_link_tag 'compiled/formtastic_changes.css', :media => 'screen, projection'
+		= stylesheet_link_tag 'compiled/print.css', :media => 'print'
+		/[if IE]
+			= stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
+		= javascript_include_tag :defaults, "rails.validations"
+		= javascript_include_rpx(user_session_url)
+		= csrf_meta_tag
+		%body
+			.container_24
+				#header
+					= link_to "releases notes", "/releasesnotes_fr.html" 
+					%ul.hmenu
+						= render 'devise/menu/login_items'
+						= render 'devise/menu/registration_items'
+						- if can? :manage, :all
+							%li
+								= link_to 'Send notifications', notifications_path
+				#flash
+					= render :partial => 'shared/flashes'
+				#main-content
+					= yield
+				#footer
+					= yield :footer

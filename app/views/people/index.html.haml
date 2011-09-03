@@ -1,0 +1,18 @@
+%h1 Listing people
+
+%p
+  - if controller.action_name == 'index'
+    = form_tag(current_checkin_people_path, :method => :get) do
+      %button
+        = submit_tag 'Show checkin people only', :class => 'submit'
+  - else
+    = link_to 'Show me all', people_path
+
+%span.pagination
+  = paginate @people
+
+%div#people  
+  = render @people
+  
+%span.pagination
+  = paginate @people

@@ -1,0 +1,15 @@
+%div.token
+  %h1
+    = @person.user.email
+  = form_tag create_tokens_person_tokens_path(@person) do
+    .field
+      = label_tag :number
+      = select nil, :number, 1..10
+    .field
+      = label_tag :price
+      = text_field_tag :price, 0
+    .field
+      = label_tag :token_type
+      = collection_select :token_type, :token_type_id, TokenType.all, :id, :title
+    .actions
+      = submit_tag 'Add'

@@ -1,18 +1,15 @@
 %p#notice= notice
 
 %p
-  %b Person:
-  = @notification.person_id
+  %b By:
+  = @notification.person.name
 %p
   %b Sent at:
-  = @notification.sent_at
-%p
-  %b At who:
-  = @notification.at_who
+  = t(@notification.sent_at,:format=>:default)
 %p
   %b Content:
   = @notification.content
 
-= link_to 'Edit', edit_notification_path(@notification)
-\|
 = link_to 'Back', notifications_path
+\| 
+= link_to 'Home', root_path
