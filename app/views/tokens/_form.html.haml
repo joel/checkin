@@ -1,0 +1,37 @@
+= form_for @token do |f|
+  -if @token.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@token.errors.count, "error")} prohibited this token from being saved:"
+      %ul
+        - @token.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :token_type_id
+    = f.number_field :token_type_id
+  .field
+    = f.label :person_id
+    = f.number_field :person_id
+  .field
+    = f.label :cost
+    = f.text_field :cost
+  .field
+    = f.label :start_at
+    = f.datetime_select :start_at
+  .field
+    = f.label :stop_at
+    = f.datetime_select :stop_at
+  .field
+    = f.label :used
+    = f.check_box :used
+  .field
+    = f.label :motivation_id
+    = f.number_field :motivation_id
+  .field
+    = f.label :checkin_owner_id
+    = f.number_field :checkin_owner_id
+  .field
+    = f.label :token_owner_id
+    = f.number_field :token_owner_id
+  .actions
+    = f.submit 'Save'

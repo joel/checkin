@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Token type:
+  = @token.token_type_id
+%p
+  %b Person:
+  = @token.person_id
+%p
+  %b Cost:
+  = @token.cost
+%p
+  %b Start at:
+  = @token.start_at
+%p
+  %b Stop at:
+  = @token.stop_at
+%p
+  %b Used:
+  = @token.used
+%p
+  %b Motivation:
+  = @token.motivation_id
+%p
+  %b Checkin owner:
+  = @token.checkin_owner_id
+%p
+  %b Token owner:
+  = @token.token_owner_id
+
+= link_to 'Edit', edit_token_path(@token)
+\|
+= link_to 'Back', tokens_path
