@@ -1,5 +1,5 @@
-= semantic_form_for @person, :validate => true  do |f|
-  - if @person.errors.any?
+= semantic_form_for @user, :validate => true  do |f|
+  - if @user.errors.any?
     = render :partial => 'errors'
   = f.hidden_field :user_id
   = f.inputs do

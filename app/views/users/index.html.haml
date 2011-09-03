@@ -2,17 +2,17 @@
 
 %p
   - if controller.action_name == 'index'
-    = form_tag(current_checkin_people_path, :method => :get) do
+    = form_tag(current_checkin_users_path, :method => :get) do
       %button
         = submit_tag 'Show checkin people only', :class => 'submit'
   - else
-    = link_to 'Show me all', people_path
+    = link_to 'Show me all', users_path
 
 %span.pagination
-  = paginate @people
+  = paginate @users
 
 %div#people  
-  = render @people
+  = render @users
   
 %span.pagination
-  = paginate @people
+  = paginate @users

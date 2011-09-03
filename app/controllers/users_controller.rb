@@ -5,7 +5,6 @@ class UsersController < Devise::RegistrationsController
   respond_to :xml, :json, :only => [:index,:current_checkin]
   
   before_filter :authenticate_user!
-  before_filter :account_exist?, :only => [:index]
   before_filter :safe_person, :only => [:edit,:update,:destroy]
   before_filter :secure_invitation, :only => [:accept_invitation,:denied_invitation]
   

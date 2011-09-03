@@ -1,42 +1,42 @@
 %div#person
   %div#img
-    = avatar(@person)
-  - if can? :manage, @person
+    = avatar(@user)
+  - if can? :manage, @user
     = render :partial => 'avatar'
   %p
-    = @person.firstname
-    = @person.lastname
+    = @user.firstname
+    = @user.lastname
     %br 
-    = @person.nb_of_checkin_label
+    = @user.nb_of_checkin_label
     %br
-    - if can? :read, @person
-      = @person.user.email
-    - if @person.checkin?
+    - if can? :read, @user
+      = @user.user.email
+    - if @user.checkin?
       %br 
-      = @person.checkin_label
+      = @user.checkin_label
       - if can? :manage, :all
         %br
-        = @person.checkin_owners_label
-  - if can? :read, @person
+        = @user.checkin_owners_label
+  - if can? :read, @user
     %p
       %b Company:
-      = @person.company
+      = @user.company
     %p
       %b Phone:
-      = @person.phone
+      = @user.phone
       %p
         %b API Key:
-        = @person.user.authentication_token
-  - if can? :update, @person
-    = form_for(@person, :url => new_person_check_path(@person), :html => { :method => :get })  do |f|
+        = @user.user.authentication_token
+  - if can? :update, @user
+    = form_for(@user, :url => new_person_check_path(@user), :html => { :method => :get })  do |f|
       %button
         = f.submit 'Checkin', :class => 'submit'
-    = link_to 'Edit Profile', edit_person_path(@person)
+    = link_to 'Edit Profile', edit_user_path(@user)
   - if can? :manage, :all
     %br
-      = link_to 'Add Credits', add_tokens_person_tokens_path(@person)
-  - if @person.me?(current_user) and @person.invitations.size > 0
+      = link_to 'Add Credits', add_tokens_person_tokens_path(@user)
+  - if @user.me?(current_user) and @user.invitations.size > 0
     %div#invitations
-      = render :partial => 'invitation', :collection => @person.invitations
-  = link_to 'Back to people list', people_path
+      = render :partial => 'invitation', :collection => @user.invitations
+  = link_to 'Back to people list', users_path
   

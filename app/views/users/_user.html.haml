@@ -1,0 +1,25 @@
+= div_for user, :class => user_class(user) do
+  = user.nb_of_checkin_label
+  %div#img
+    = avatar(user)
+  %p
+    = link_to user.name, user
+    %b
+      = user.company
+    - if user.checkin?
+      %br (I'm here)
+  - if user.not_me?(current_user)
+    - if current_user.show_button_folow?(user)
+      = form_for(user, :url => request_an_invitation_user_path(user), :html => { :method => :post })  do |f|
+        = f.hidden_field :user_id
+        %button
+          = f.submit 'Follow', :class => 'submit', :id => "request_an_invitation_for_#{user.id}"
+  - if can? :update, user
+    = form_for(user, :url => new_user_check_path(user), :html => { :method => :get })  do |f|
+      %button
+        = f.submit 'Checkin', :class => 'submit', :id => "checkin_for_#{user.id}"
+  - if can? :manage, :all
+    %br
+    = link_to 'Add Credits', add_tokens_user_tokens_path(user)
+  - if can? :update, user
+    = link_to 'Edit', edit_user_path(user)

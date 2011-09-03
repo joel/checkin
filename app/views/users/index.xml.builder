@@ -1,6 +1,6 @@
 xml.instruct!
 xml.people("type"=>"array") do
-  @people.each do |p|
+  @users.each do |p|
     xml.person do 
       xml.id("type"=>"integer") do
         p.id

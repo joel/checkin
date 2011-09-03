@@ -1,5 +1,5 @@
 = div_for invitation do
-  = form_for(invitation, :url =>accept_invitation_person_path(invitation), :html => { :method => :post })  do |f|
+  = form_for(invitation, :url =>accept_invitation_user_path(invitation), :html => { :method => :post })  do |f|
     = invitation.follower.name
     %button
       = f.submit 'Accept', :class => 'submit'

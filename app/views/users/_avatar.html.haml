@@ -1,5 +1,5 @@
-= form_for @person, :html => { :multipart => true } do |f|
-  -if @person.errors.any?
+= form_for @user, :html => { :multipart => true } do |f|
+  -if @user.errors.any?
     = render :partial => 'errors'
   .field
     = f.label :avatar

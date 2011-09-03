@@ -1,5 +1,5 @@
 #error_explanation
-  %h2= "#{pluralize(@person.errors.count, "error")} prohibited this person from being saved:"
+  %h2= "#{pluralize(@user.errors.count, "error")} prohibited this person from being saved:"
   %ul
-    - @person.errors.full_messages.each do |msg|
+    - @user.errors.full_messages.each do |msg|
       %li= msg

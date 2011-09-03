@@ -1,7 +1,7 @@
 %div.token
   %h1
-    = @person.user.email
-  = form_tag create_tokens_person_tokens_path(@person) do
+    = @user.user.email
+  = form_tag create_tokens_person_tokens_path(@user) do
     .field
       = label_tag :number
       = select nil, :number, 1..10
