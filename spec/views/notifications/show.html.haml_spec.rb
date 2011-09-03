@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "notifications/show.html.haml" do
   before(:each) do
     @notification = assign(:notification, stub_model(Notification,
-      :person_id => 1,
+      :user_id => 1,
       :at_who => "MyText",
       :content => "MyText"
     ))

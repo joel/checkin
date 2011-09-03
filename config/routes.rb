@@ -6,7 +6,11 @@ CheckinReloaded::Application.routes.draw do
 
   resources :tokens
 
-  devise_for :users, :controllers => { :sessions => "sessions" }
+  devise_for :users,
+             :controllers  => {
+               :registrations => 'users',
+               :sessions => "sessions"
+             }
   
   resources :users do
     get 'current_checkin', :on => :collection

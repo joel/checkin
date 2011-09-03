@@ -4,7 +4,7 @@ describe "tokens/new.html.haml" do
   before(:each) do
     assign(:token, stub_model(Token,
       :token_type_id => 1,
-      :person_id => 1,
+      :user_id => 1,
       :cost => "9.99",
       :used => false,
       :motivation_id => 1,
@@ -18,7 +18,7 @@ describe "tokens/new.html.haml" do
 
     rendered.should have_selector("form", :action => tokens_path, :method => "post") do |form|
       form.should have_selector("input#token_token_type_id", :name => "token[token_type_id]")
-      form.should have_selector("input#token_person_id", :name => "token[person_id]")
+      form.should have_selector("input#token_user_id", :name => "token[user_id]")
       form.should have_selector("input#token_cost", :name => "token[cost]")
       form.should have_selector("input#token_used", :name => "token[used]")
       form.should have_selector("input#token_motivation_id", :name => "token[motivation_id]")

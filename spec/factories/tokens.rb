@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :token do
       token_type_id 1
-      person_id 1
+      user_id 1
       cost "9.99"
       start_at "2011-09-03 15:22:55"
       stop_at "2011-09-03 15:22:55"

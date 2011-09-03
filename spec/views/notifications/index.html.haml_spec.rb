@@ -4,12 +4,12 @@ describe "notifications/index.html.haml" do
   before(:each) do
     assign(:notifications, [
       stub_model(Notification,
-        :person_id => 1,
+        :user_id => 1,
         :at_who => "MyText",
         :content => "MyText"
       ),
       stub_model(Notification,
-        :person_id => 1,
+        :user_id => 1,
         :at_who => "MyText",
         :content => "MyText"
       )

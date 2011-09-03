@@ -4,7 +4,7 @@ describe "tokens/show.html.haml" do
   before(:each) do
     @token = assign(:token, stub_model(Token,
       :token_type_id => 1,
-      :person_id => 1,
+      :user_id => 1,
       :cost => "9.99",
       :used => false,
       :motivation_id => 1,

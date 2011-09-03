@@ -5,7 +5,7 @@ describe "tokens/index.html.haml" do
     assign(:tokens, [
       stub_model(Token,
         :token_type_id => 1,
-        :person_id => 1,
+        :user_id => 1,
         :cost => "9.99",
         :used => false,
         :motivation_id => 1,
@@ -14,7 +14,7 @@ describe "tokens/index.html.haml" do
       ),
       stub_model(Token,
         :token_type_id => 1,
-        :person_id => 1,
+        :user_id => 1,
         :cost => "9.99",
         :used => false,
         :motivation_id => 1,
