@@ -1,4 +1,4 @@
-bundle exec rails g model TokenType title:string -r factory_girl
+bundle exec rails g model TokenType title:string
 
 bundle exec rails g scaffold Token token_type_id:integer person_id:integer cost:decimal start_at:datetime stop_at:datetime used:boolean motivation_id:integer checkin_owner_id:integer token_owner_id:integer -r factory_girl
 
