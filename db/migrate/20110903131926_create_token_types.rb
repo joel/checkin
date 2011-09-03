@@ -5,5 +5,6 @@ class CreateTokenTypes < ActiveRecord::Migration
 
       t.timestamps
     end
+    ['full day','half day', 'free'].each { |title| TokenType.create(:title=>title) }
   end
 end

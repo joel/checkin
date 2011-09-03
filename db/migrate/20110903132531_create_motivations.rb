@@ -5,5 +5,8 @@ class CreateMotivations < ActiveRecord::Migration
 
       t.timestamps
     end
+    ['co-working','meeting', 'guest', 'other'].each do |title|
+      Motivation.create(:title=>title)
+    end
   end
 end
