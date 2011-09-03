@@ -1,0 +1,16 @@
+devise:
+  mailer:
+    sender: "..."
+  rpx: 
+    application_name: "..."
+    api_key: "..."
+app:
+  host: "..."
+  mail:
+    address: "..."
+    port: 587
+    domain: "..."
+    user_name: "..."
+    password: "..."
+    authentication: "plain"
+    enable_starttls_auto: true

@@ -1,0 +1,2 @@
+app:
+  host: "http://application.localhost.com:3000"

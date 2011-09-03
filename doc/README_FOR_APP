@@ -16,9 +16,9 @@ bundle exec rails g mailer notifier_mailer
 
 rails g devise:views -e haml
 
-# / rails g devise:views -e erb && \
-# / rake erb:to:haml && \
-# / rake erb:remove
+rails g devise:views -e erb && \
+rake erb:to:haml && \
+rake erb:remove
 
 bundle exec rails g cucumber:feature user firstname:string lastname:string gender:string user_id:integer company:string phone:string bio:text admin:boolean avatar:string email:string password:string password_confirmation:string remember_me:boolean
 

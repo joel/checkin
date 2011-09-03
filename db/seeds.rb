@@ -16,7 +16,7 @@ people = [{:gender=>'Mr',:firstname=>'Zaphod',:lastname=>'Beeblebrox',:company=>
 index = 0
 people.each do |h|
   puts "Create #{h[:firstname]} #{h[:lastname]} person"
-  h.merge!(,:password=>'123456', :password_confirmation=>'123456')
+  h.merge!(:password=>'123456', :password_confirmation=>'123456')
   User.create(h)
   index = index+1
 end

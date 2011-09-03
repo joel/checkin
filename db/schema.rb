@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20110903133939) do
 
   create_table "tokens", :force => true do |t|
     t.integer  "token_type_id"
-    t.integer  "person_id"
+    t.integer  "user_id"
     t.decimal  "cost"
     t.datetime "start_at"
     t.datetime "stop_at"
