@@ -1,0 +1,6 @@
+%p
+  = @follower.firstname
+  ,
+%p
+  You follow #{@person.firstname}.
+%p= link_to "Edit profile", edit_person_url(@follower)
