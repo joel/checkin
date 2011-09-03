@@ -1,6 +1,6 @@
 CheckinReloaded::Application.routes.draw do
 
-  root :to => "people#index"
+  root :to => "users#index"
     
   resources :notifications
 
