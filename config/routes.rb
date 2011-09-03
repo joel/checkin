@@ -1,4 +1,6 @@
 CheckinReloaded::Application.routes.draw do
+  resources :notifications
+
   resources :tokens
 
   get "check/new"

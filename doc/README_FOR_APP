@@ -1,16 +1,18 @@
 bundle exec rails g model TokenType title:string
 
-bundle exec rails g scaffold Token token_type_id:integer person_id:integer cost:decimal start_at:datetime stop_at:datetime used:boolean motivation_id:integer checkin_owner_id:integer token_owner_id:integer -r factory_girl
+bundle exec rails g scaffold Token token_type_id:integer person_id:integer cost:decimal start_at:datetime stop_at:datetime used:boolean motivation_id:integer checkin_owner_id:integer token_owner_id:integer
 
 bundle exec rails g controller Check new create
 
-bundle exec rails g model Relationship follower_id:integer followed_id:integer -r factory_girl
+bundle exec rails g model Relationship follower_id:integer followed_id:integer
 
-bundle exec rails g model Invitation follower_id:integer followed_id:integer -r factory_girl
+bundle exec rails g model Invitation follower_id:integer followed_id:integer
 
-bundle exec rails g model Motivation title:string -r factory_girl
+bundle exec rails g model Motivation title:string
 
 bundle exec rails g scaffold Notifications person_id:integer sent_at:datetime at_who:text content:text
+
+bundle exec rails g mailer notifier_mailer
 
 rails g devise:views -e haml
 
@@ -19,8 +21,6 @@ rails g devise:views -e haml
 # / rake erb:remove
 
 bundle exec rails g cucumber:feature user firstname:string lastname:string gender:string user_id:integer company:string phone:string bio:text admin:boolean avatar:string email:string password:string password_confirmation:string remember_me:boolean
-
-bundle exec rails g mailer notifier_mailer
 
 bundle exec rails g client_side_validations:install
 
