@@ -5,13 +5,20 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.recoverable
       t.rememberable
       t.trackable
-
       # t.encryptable
       # t.confirmable
       # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
-      # t.token_authenticatable
-
-
+      t.token_authenticatable
+      t.string :firstname
+      t.string :lastname
+      t.string :gender
+      t.string :company
+      t.string :phone
+      t.string :twitter
+      t.text :bio
+      t.boolean :admin, :default => false
+      t.string :avatar
+      t.string :rpx_identifier
       t.timestamps
     end
 
