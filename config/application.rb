@@ -41,5 +41,12 @@ module CheckinReloaded
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+		config.app_generators do |g|		
+  g.stylesheets false		
+  g.template_engine :haml		
+  g.test_framework :rspec, :fixture => true, :views => false, :webrat => true		
+  g.fixture_replacement :factory_girl, :dir => "spec/factories"		
+end
   end
 end
