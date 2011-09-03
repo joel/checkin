@@ -1,4 +1,8 @@
 CheckinReloaded::Application.routes.draw do
+  get "check/new"
+
+  get "check/create"
+
   devise_for :users
 
   # The priority is based upon order of creation:
