@@ -4,6 +4,5 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require_tree .
- *= require bootstrap-1.0.0
- *= require formtastic 
+ *= require bootstrap-1.2.0
 */

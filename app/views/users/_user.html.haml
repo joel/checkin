@@ -11,7 +11,6 @@
   - if user.not_me?(current_user)
     - if current_user.show_button_folow?(user)
       = form_for(user, :url => request_an_invitation_user_path(user), :html => { :method => :post })  do |f|
-        = f.hidden_field :user_id
         %button
           = f.submit 'Follow', :class => 'submit', :id => "request_an_invitation_for_#{user.id}"
   - if can? :update, user

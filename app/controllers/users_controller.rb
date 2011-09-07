@@ -1,11 +1,11 @@
-class UsersController < Devise::RegistrationsController
+class UsersController < ApplicationController
   # load_and_authorize_resource
   
   respond_to :html
   respond_to :xml, :json, :only => [:index,:current_checkin]
   
   before_filter :authenticate_user!
-  before_filter :safe_person, :only => [:edit,:update,:destroy]
+  before_filter :safe_user, :only => [:edit,:update,:destroy]
   before_filter :secure_invitation, :only => [:accept_invitation,:denied_invitation]
   
   # GET /users
@@ -52,39 +52,59 @@ class UsersController < Devise::RegistrationsController
     @user = User.find(params[:id])
     respond_with(@user)
   end
-
+  
   # GET /users/new
   # GET /users/new.xml
   def new
-    super
+    @user = (current_user) ? User.new(:user_id=>current_user.id) : User.new
+    respond_with(@user)
   end
 
   # GET /users/1/edit
   def edit
-    super
+    authorize! :edit, @user
+    respond_with(@user)
   end
-
+  
   # POST /users
   # POST /users.xml
   def create
-    super
+    @user = User.new(params[:user])
+
+    respond_with(@user) do |format|
+      if @user.save
+        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+      else
+        format.html { render :action => "new" }
+      end
+    end
   end
 
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    super
+    authorize! :edit, @user
+    respond_with(@user) do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+      else
+        format.html { render :action => "edit" }
+      end
+    end
   end
 
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
-    super
+    @user.destroy
+    respond_with do |format|
+      format.html { redirect_to(users_url) }
+    end
   end
   
   private 
 
-  def safe_person
+  def safe_user
     @user = (current_user.is_admin?) ? User.find(params[:id]) : current_user
   end
 

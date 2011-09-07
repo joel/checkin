@@ -10,7 +10,7 @@
     = @user.nb_of_checkin_label
     %br
     - if can? :read, @user
-      = @user.user.email
+      = @user.email
     - if @user.checkin?
       %br 
       = @user.checkin_label
@@ -26,15 +26,15 @@
       = @user.phone
       %p
         %b API Key:
-        = @user.user.authentication_token
+        = @user.authentication_token
   - if can? :update, @user
-    = form_for(@user, :url => new_person_check_path(@user), :html => { :method => :get })  do |f|
+    = form_for(@user, :url => new_user_check_path(@user), :html => { :method => :get })  do |f|
       %button
         = f.submit 'Checkin', :class => 'submit'
     = link_to 'Edit Profile', edit_user_path(@user)
   - if can? :manage, :all
     %br
-      = link_to 'Add Credits', add_tokens_person_tokens_path(@user)
+      = link_to 'Add Credits', add_tokens_user_tokens_path(@user)
   - if @user.me?(current_user) and @user.invitations.size > 0
     %div#invitations
       = render :partial => 'invitation', :collection => @user.invitations

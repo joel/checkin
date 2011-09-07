@@ -1,7 +1,6 @@
 = semantic_form_for @user, :validate => true  do |f|
   - if @user.errors.any?
     = render :partial => 'errors'
-  = f.hidden_field :user_id
   = f.inputs do
     = f.input :gender, :as => :select, :collection => %w( Mr Mlle Mme )
     = f.input :firstname

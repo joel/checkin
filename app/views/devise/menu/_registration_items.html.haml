@@ -1,7 +1,6 @@
 - if user_signed_in?
-  - if Person.account_already_exist?(current_user) and current_user.rpx_identifier.blank?
-    %li
-      = link_to('Edit registration', edit_user_registration_path)
+  %li
+    = link_to('Edit registration', edit_user_registration_path)
 - else
   %li
     = link_to('Or use regular Sign up', new_user_registration_path)
