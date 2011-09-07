@@ -49,8 +49,9 @@ group :test do
   gem "ruby-prof"
   gem "ruby-debug19"
   gem "timecop"
-  gem "cover_me"
-  gem "spork"
+  # gem "cover_me"
+  gem 'simplecov'
+  gem "spork", "~> 0.9.0.rc9"
   gem "guard"
   gem "guard-rspec"
   gem "guard-spork"
