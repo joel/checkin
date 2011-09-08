@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :motivation do
-      title "MyString"
-    end
+    title "MyString"
+  end
 end
