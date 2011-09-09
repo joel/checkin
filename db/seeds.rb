@@ -32,11 +32,11 @@ tokens.each do |firstname|
   puts "Give some credit to #{firstname}"
   
   puts "Add five Full Day pass"
-  h = { :cost => '4.8', :token_type_id => TokenType.find_by_title('full day').id }
+  h = { :cost => '4.8', :token_type_id => TokenType.find_by_title('full day').id, :used => false }
   5.times { User.find_by_firstname(firstname).tokens.create(h) }
   
   puts "Add five Half Day pass"
-  h.merge!( :token_type_id => TokenType.find_by_title('half day').id )
+  h.merge!( :token_type_id => TokenType.find_by_title('half day').id, :used => false )
   5.times { User.find_by_firstname(firstname).tokens.create(h) }
 end
 

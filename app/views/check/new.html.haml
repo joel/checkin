@@ -1,9 +1,9 @@
 %div#checkin
 	= link_to 'Back to people list', users_path
-	- if @user.tokens.available.all.size > 0
+	- if @user.tokens.available.count > 0
 		%ul
 			- TokenType.all.each do |token_type|
-				= form_tag "/people/#{@user.id}/check", :method => :post do
+				= form_tag "/users/#{@user.id}/check", :method => :post do
 					= hidden_field_tag :token_type_id, token_type.id
 					%li
 						= select_tag "motivation_id", options_from_collection_for_select(Motivation.all, "id", "title")

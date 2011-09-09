@@ -1,5 +1,58 @@
 # Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  views:
+    pagination:
+      previous: "&laquo; Prev"
+      next: "Next &raquo;"
+      truncate: "..."
+  date:
+    formats:
+      default: "%d/%m/%Y"
+  time:
+    formats:
+      default: "%d %B %Y %H:%M:%S"
+  devise:
+    sessions:
+      signed_in: 'Signed in successfully.'
+    user:
+      signed_in: 'Welcome user, you are signed in.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Hello everybody!'
+        user_subject: 'Hello User! Please confirm your email'
+      reset_password_instructions:
+        subject: 'Reset instructions'
+  errors:
+    messages:
+      carrierwave_processing_error: failed to be processed
+      carrierwave_integrity_error: is not an allowed file type
   hello: "Hello world"
+  formtastic:
+    titles:
+      post_details: "Post details"
+    labels:
+      post:
+        title: "Your Title"
+        body: "Write something..."
+        edit:
+          title: "Edit title"
+    hints:
+      post:
+        title: "Choose a good title for you post."
+        body: "Write something inspiring here."
+    placeholders:
+      post:
+        title: "Title your post"
+        slug: "Leave blank for an automatically generated slug"
+      user:
+        email: "you@yours.com"
+    actions:
+      create: "Create my %{model}"
+      update: "Save changes"
+      dummie: "Launch!"
+      reset_password: "Send me reset password instructions"
+      sign_up: "Sign Up"
+      edit_account: "Valid Account"
+      change_password: "Change my password"

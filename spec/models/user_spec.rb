@@ -28,6 +28,17 @@ describe User do
     end
   end
 
+  describe "test token availability" do
+    before do 
+      @user = Factory(:user)
+      5.times { Factory(:token, :user => @user) }
+    end
+    it "all must be available!" do
+      @user.tokens.count.should eql(5)
+      @user.tokens.available.count.should eql(5)
+    end
+  end
+  
   describe "test number of checkin" do
     before(:each) do
       @first_major, @second_major = Factory(:user), Factory(:user)

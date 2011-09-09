@@ -2,6 +2,17 @@ require 'spec_helper'
 
 describe Token do
   
+  describe "database constraintes" do
+    before { @token = Factory(:token) }
+    it "should be match" do
+      @token.used.should_not be_nil
+      @token.used.should be_false
+      [:start_at, :stop_at].each do |field|
+        @token.send(field).should be_nil
+      end
+    end
+  end
+  
   describe "checkin with token full day and motivation co-working" do
     before do
       @user = Factory(:user)

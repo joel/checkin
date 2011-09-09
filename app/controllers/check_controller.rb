@@ -19,7 +19,7 @@ class CheckController < ApplicationController
     rescue Exception => e
       flash[:notice] = e.message
     end
-    respond_with @user
+    respond_with @user 
   end
 
 end

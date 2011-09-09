@@ -8,8 +8,8 @@ FactoryGirl.define do
     f.association :token_owner, :factory => :user
     f.association :user
     f.cost "9.99"
-    f.start_at Timecop.freeze(2.hours.ago)
-    f.stop_at Timecop.freeze(2.hours.since)
+    f.start_at nil # Timecop.freeze(2.hours.ago)
+    f.stop_at nil # Timecop.freeze(2.hours.since)
     f.used false
   end
 end
