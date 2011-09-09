@@ -1,0 +1,3 @@
+development: application.localhost.com:6379
+test: localhost:6379
+production: localhost:6379
