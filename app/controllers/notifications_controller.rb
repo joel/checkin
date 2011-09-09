@@ -14,7 +14,7 @@ class NotificationsController < ApplicationController
   end
 
   def new
-    @notification = Notification.new(:user_id=>current_user.person.id)
+    @notification = Notification.new(:user_id=>current_user.id)
     respond_with(@notification)
   end
 
