@@ -17,9 +17,6 @@ Spork.prefork do
   require 'factory_girl'
   require 'spork/ext/ruby-debug'
   # require 'cover_me' # Ruby 1.9
-
-  require File.dirname(__FILE__) + "/custom_matchers"
-  require File.dirname(__FILE__) + "/controller_macros"
   
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
   Dir[Rails.root.join("lib/**/*.rb")].each {|f| require f}
@@ -31,6 +28,9 @@ Spork.prefork do
     # config.include UrlHelper
     config.use_transactional_fixtures = true
 
+    config.include Devise::TestHelpers, :type => :controller
+    config.include ControllerMacros, :type => :controller
+    
     # config.before(:suite) do
     #   DatabaseCleaner.strategy = :truncation
     # end

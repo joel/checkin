@@ -26,23 +26,20 @@ module ControllerMacros
   end
   
   def login_as_admin
-    @user = Factory(:user)
-    @person = Factory(:person,:user=>@user,:admin=>true)
+    @user = Factory(:user, :admin => true)
     sign_in :user, @user
   end
   
   def login_as_person
-    @user = Factory(:user)
-    @person = Factory(:person,:user=>@user)
+    @user = Factory(:user, :admin => false)
     sign_in :user, @user
   end
   
   def login_as_person_with_credits
     @user = Factory(:user)
-    @person = Factory(:person,:user=>@user)
     ['full day','half day', 'free'].each do |title|
-      token_type = Factory(:token_type,:title=>title)
-      5.times { Factory(:token,:token_type=>token_type,:person=>@person,:start_at=>nil,:stop_at=>nil) }
+      token_type = Factory(:token_type, :title => title)
+      5.times { Factory(:token, :token_type => token_type, :user => @user, :start_at => nil, :stop_at => nil) }
     end
     sign_in :user, @user
   end
