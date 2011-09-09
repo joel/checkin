@@ -14,7 +14,7 @@ Given /^This following person records$/ do |table|
 end
 
 When /^I invit "([^"]*)" person$/ do |email|
-  visit people_url
+  visit users_url
   click_button "request_an_invitation_for_#{User.find_by_email(email).id}"
 end
 

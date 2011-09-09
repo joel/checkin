@@ -41,6 +41,7 @@ end
 group :test do
   gem "rspec"
   gem "cucumber"
+  gem 'launchy'
   gem "capybara"
   gem "webrat"
   gem "database_cleaner"

@@ -12,7 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.token_authenticatable
       t.string :firstname
       t.string :lastname
-      t.string :gender
+      t.string :gender, :default => 'Mr'
       t.string :company
       t.string :phone
       t.string :twitter

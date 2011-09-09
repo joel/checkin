@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe User do
+
+  describe "database constraintes" do
+    before { @user = Factory(:user) }
+    it "should be match" do
+      @user.gender.should eql('Mr')
+    end
+  end
   
   describe "test show_button_folow?(other) method" do
     before(:each) do

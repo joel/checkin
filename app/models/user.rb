@@ -20,8 +20,9 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship", :dependent => :destroy
   has_many :followers, :through => :reverse_relationships, :source => :follower
     
-  validates_presence_of :firstname, :lastname, :gender, :company, :phone
-  validates_inclusion_of :gender, :in => %w{ Mr Mlle Mme }, :message => "La civilité n'est pas reconnue"
+  validates_presence_of :firstname, :lastname, :company, :phone
+  # validates_presence_of :gender
+  # validates_inclusion_of :gender, :in => %w{ Mr Mlle Mme }, :message => "La civilité n'est pas reconnue"
 
   after_create :set_authentication_token
   
