@@ -7,6 +7,10 @@
     = f.input :lastname
     = f.input :company
     = f.input :phone
+    = f.input :phone
+    = f.input :twitter
     - if can? :manage, :all
       = f.input :admin
-  = f.buttons
+    = f.input :bio
+    %button{:class => "btn primary",:id => "edit_account_information_submit"}
+      Update Person

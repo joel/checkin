@@ -3,8 +3,8 @@
 %p
   - if controller.action_name == 'index'
     = form_tag(current_checkin_users_path, :method => :get) do
-      %button
-        = submit_tag 'Show checkin people only', :class => 'submit'
+      %button{:class => "btn primary",:id => "edit_account_submit"}
+        Show checkin people only
   - else
     = link_to 'Show me all', users_path
 

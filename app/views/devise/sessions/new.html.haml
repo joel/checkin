@@ -1,16 +1,33 @@
-%h2 Sign in
-= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email
-  %div
-    = f.label :password
-    %br/
-    = f.password_field :password
-  - if devise_mapping.rememberable?
-    %div
-      = f.check_box :remember_me
-      = f.label :remember_me
-  %div= f.submit("Sign in", :id => 'new_sessions_submit')
-= render :partial => "devise/shared/links"
+%section#forms
+  %div.page-header
+    %h1
+      Sign in form
+  %div.row
+    %div{:class => "span4 columns"}
+      %h2 Default styles
+      %p All forms are given default styles to present them in a readable and scalable way. Styles are provided for text inputs, select lists, textareas, radio buttons and checkboxes, and buttons.
+    %div{:class => "span12 columns"}
+      = form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => "form-stacked") do |f|
+        %fieldset
+          %legend
+            Email
+          %div{:class => "clearfix"}
+            = f.label :email
+            %div{:class => "input"}
+              = f.email_field :email, :class => "xlarge"
+          %div{:class => "clearfix"}
+            = f.label :password
+            %div{:class => "input"}
+              = f.password_field :password, :class => "xlarge"
+          %div{:class => "clearfix"}
+            = f.label :remember_me
+            %div{:class => "input"}
+              %ul{:class => "inputs-list"}
+                %li
+                  = f.check_box :remember_me
+                  %span
+                    (Only on your computer)
+        %div{:class => "actions"}
+          %button{:class => "btn primary"}
+            Sign in
+    = render :partial => "devise/shared/links"
