@@ -122,10 +122,8 @@ GEM
       factory_girl (~> 2.1.0)
       railties (>= 3.0.0)
     ffi (1.0.9)
-    formtastic (1.2.4)
-      actionpack (>= 2.3.7)
-      activesupport (>= 2.3.7)
-      i18n (~> 0.4)
+    formtastic (2.0.0.rc5)
+      rails (~> 3.0)
     gherkin (2.4.16)
       json (>= 1.4.6)
     growl (1.0.3)
@@ -303,7 +301,7 @@ DEPENDENCIES
   devise_rpx_connectable
   dynamic_form
   factory_girl_rails
-  formtastic
+  formtastic (~> 2.0.0.rc5)
   growl
   guard
   guard-bundler

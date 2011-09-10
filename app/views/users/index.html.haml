@@ -11,7 +11,7 @@
 %span.pagination
   = paginate @users
 
-%div#people  
+%div{:class => "row", :id => "people"}
   = render @users
   
 %span.pagination
