@@ -1,15 +1,29 @@
-%div.token
-  %h1
-    = @user.email
-  = form_tag create_tokens_user_tokens_path(@user) do
-    .field
-      = label_tag :number
-      = select nil, :number, 1..10
-    .field
-      = label_tag :price
-      = text_field_tag :price, 0
-    .field
-      = label_tag :token_type
-      = collection_select :token_type, :token_type_id, TokenType.all, :id, :title
-    .actions
-      = submit_tag 'Add'
+%section#forms
+  %div.page-header
+    %h1
+      = "Credits for #{@user.email}"
+  %div{:class => "row" }
+    %div{:class => "span4 columns" }
+      %h2 Lorem ipsum
+      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pellentesque sapien in eros sollicitudin sed varius risus convallis. Mauris lobortis, nibh et laoreet commodo
+    %div{:class => "span11 columns" }
+      = form_tag(create_tokens_user_tokens_path(@user),:class=>"form-stacked") do |f|
+        %fieldset
+          %legend
+            Credits
+          %div{:class => "clearfix"}
+            = label_tag :number
+            %div{:class => "input"}
+              = select nil, :number, 1..100
+          %div{:class => "clearfix"}
+            = label_tag :price
+            %div{:class => "input"}
+              = text_field_tag :price, 0
+          %div{:class => "clearfix"}
+            = label_tag :token_type
+            %div{:class => "input"}
+              = collection_select :token_type, :token_type_id, TokenType.all, :id, :title
+        %div{:class => "actions"}
+          %button{:class => "btn primary"}
+            Add
+    %div{:class => "clearfix span15 columns"}
