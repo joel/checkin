@@ -37,3 +37,15 @@
 		border: solid 1px $person-current-border-color;
 	}
 }
+#person { 
+/*	border:solid black 1px;*/
+	margin-left:0;
+	#img { 
+		margin:5px;
+		border: solid 1px gray;
+		height: 100px;
+		width: 100px;
+		float:left;
+	}
+	.avatar { width: 400px; }
+}

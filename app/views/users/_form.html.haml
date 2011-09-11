@@ -1,16 +1,42 @@
-= semantic_form_for @user, :validate => true  do |f|
-  - if @user.errors.any?
-    = render :partial => 'errors'
-  = f.inputs do
-    = f.input :gender, :as => :select, :collection => %w( Mr Mlle Mme )
-    = f.input :firstname
-    = f.input :lastname
-    = f.input :company
-    = f.input :phone
-    = f.input :phone
-    = f.input :twitter
-    - if can? :manage, :all
-      = f.input :admin
-    = f.input :bio
-    %button{:class => "btn primary",:id => "edit_account_information_submit"}
-      Update Person
+%fieldset
+  %legend
+    Editing account
+  %div{:class => "clearfix"}
+    = f.label :gender
+    %div{:class => "input"}
+      = f.select(:gender, %w( Mr Mlle Mme ), { :include_blank => false })
+  %div{:class => "clearfix"}
+    = f.label :firstname
+    %div{:class => "input"}
+      = f.text_field :firstname, :class => "xlarge"
+  %div{:class => "clearfix"}
+    = f.label :lastname
+    %div{:class => "input"}
+      = f.text_field :lastname, :class => "xlarge"
+  %div{:class => "clearfix"}
+    = f.label :company
+    %div{:class => "input"}
+      = f.text_field :company, :class => "xlarge"
+  %div{:class => "clearfix"}
+    = f.label :phone
+    %div{:class => "input"}
+      = f.text_field :phone, :class => "xlarge"
+  %div{:class => "clearfix"}
+    = f.label :twitter
+    %div{:class => "input"}
+      = f.text_field :twitter, :class => "xlarge"
+  - if can? :manage, :all
+    %div{:class => "clearfix"}
+      = f.label :admin
+      %div{:class => "input"}
+        %ul{:class => "inputs-list"}
+          %li
+            = f.check_box :admin
+            %span
+              (Make me admin!)
+  %div{:class => "clearfix"}
+    = f.label :bio
+    %div{:class => "input"}
+      = f.text_area :bio, :class => "xlarge"
+      %span.help-block
+        Block of help text to describe the field above if need be.

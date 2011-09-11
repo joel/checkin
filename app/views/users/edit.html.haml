@@ -1,7 +1,17 @@
-#person
-  %h1 Editing person
-  = render 'form'
-  %div.command
-    = link_to 'Show', @user
-    \|
-    = link_to 'Back', users_path
+%section#forms
+  %div.page-header
+    %h1
+      Editing account
+  %div{:class => "row" }
+    %div{:class => "span4 columns" }
+      %h2 Lorem ipsum
+      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pellentesque sapien in eros sollicitudin sed varius risus convallis. Mauris lobortis, nibh et laoreet commodo
+    %div{:class => "span11 columns" }
+      = form_for @user do |f|
+        - if @user.errors.any?
+          = render :partial => 'errors'           
+        = render :partial => 'form', :locals => { :f => f }
+        %div{:class => "actions"}
+          %button{:class => "btn primary"}
+            Update User
+      = link_to "Home", root_path

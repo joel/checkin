@@ -53,12 +53,12 @@ class UsersController < ApplicationController
     respond_with(@user)
   end
   
-  # GET /users/new
-  # GET /users/new.xml
-  def new
-    @user = (current_user) ? User.new(:user_id=>current_user.id) : User.new
-    respond_with(@user)
-  end
+  # # GET /users/new
+  # # GET /users/new.xml
+  # def new
+  #   @user = (current_user) ? User.new(:user_id=>current_user.id) : User.new
+  #   respond_with(@user)
+  # end
 
   # GET /users/1/edit
   def edit
@@ -66,19 +66,19 @@ class UsersController < ApplicationController
     respond_with(@user)
   end
   
-  # POST /users
-  # POST /users.xml
-  def create
-    @user = User.new(params[:user])
-
-    respond_with(@user) do |format|
-      if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-      else
-        format.html { render :action => "new" }
-      end
-    end
-  end
+  # # POST /users
+  # # POST /users.xml
+  # def create
+  #   @user = User.new(params[:user])
+  # 
+  #   respond_with(@user) do |format|
+  #     if @user.save
+  #       format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+  #     else
+  #       format.html { render :action => "new" }
+  #     end
+  #   end
+  # end
 
   # PUT /users/1
   # PUT /users/1.xml

@@ -24,17 +24,16 @@
     %p
       %b Phone:
       = @user.phone
-      %p
-        %b API Key:
-        = @user.authentication_token
+    %p
+      %b API Key:
+      = @user.authentication_token
   - if can? :update, @user
     = form_for(@user, :url => new_user_check_path(@user), :html => { :method => :get })  do |f|
-      %button
-        = f.submit 'Checkin', :class => 'submit'
+      %button{:class => "btn primary"}
+        Checkin
     = link_to 'Edit Profile', edit_user_path(@user)
   - if can? :manage, :all
-    %br
-      = link_to 'Add Credits', add_tokens_user_tokens_path(@user)
+    %br= link_to 'Add Credits', add_tokens_user_tokens_path(@user)
   - if @user.me?(current_user) and @user.invitations.size > 0
     %div#invitations
       = render :partial => 'invitation', :collection => @user.invitations
