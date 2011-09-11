@@ -1,19 +1,17 @@
-#cartridge
-  %h2 Sign up!
-  = semantic_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true) do |f|
-    = devise_error_messages!
-    = f.inputs do
-      = f.input :gender, :as => :select, :collection => %w( Mr Mlle Mme )
-      = f.input :firstname
-      = f.input :lastname
-      = f.input :company
-      = f.input :phone
-      = f.input :twitter
-      = f.input :email      
-      = f.input :password
-      = f.input :password_confirmation
-      - if can? :manage, :all
-        = f.input :admin
-      = f.input :bio
-      = f.submit(:sign_up, :id => :new_registration_submit)
-  = render :partial => "devise/shared/links"
+%section#forms
+  %div.page-header
+    %h1
+      Sign up form
+  %div{:class => "row" }
+    %div{:class => "span4 columns" }
+      %h2 Lorem ipsum
+      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pellentesque sapien in eros sollicitudin sed varius risus convallis. Mauris lobortis, nibh et laoreet commodo
+    %div{:class => "span11 columns" }
+      = form_for(resource,:as=>resource_name,:url=>registration_path(resource_name),:validate=>true,:class=>"form-stacked") do |f|
+        = devise_error_messages!
+        = render :partial => 'form', :locals => { :f => f }
+        %div{:class => "actions"}
+          %button{:class => "btn primary"}
+            Sign Up
+    %div{:class => "clearfix span15 columns"}
+      = render :partial => "devise/shared/links"

@@ -1,0 +1,54 @@
+%fieldset
+  %legend
+    Sign Up
+  %div{:class => "clearfix"}
+    = f.label :gender
+    %div{:class => "input"}
+      = f.select(:gender, %w( Mr Mlle Mme ), { :include_blank => false })
+  %div{:class => "clearfix"}
+    = f.label :firstname
+    %div{:class => "input"}
+      = f.text_field :firstname, :class => "xlarge"
+  %div{:class => "clearfix"}
+    = f.label :lastname
+    %div{:class => "input"}
+      = f.text_field :lastname, :class => "xlarge"
+  %div{:class => "clearfix"}
+    = f.label :company
+    %div{:class => "input"}
+      = f.text_field :company, :class => "xlarge"
+  %div{:class => "clearfix"}
+    = f.label :phone
+    %div{:class => "input"}
+      = f.text_field :phone, :class => "xlarge"
+  %div{:class => "clearfix"}
+    = f.label :twitter
+    %div{:class => "input"}
+      = f.text_field :twitter, :class => "xlarge"
+  %div{:class => "clearfix"}
+    = f.label :email
+    %div{:class => "input"}
+      = f.email_field :email, :class => "xlarge"
+  %div{:class => "clearfix"}
+    = f.label :password
+    %div{:class => "input"}
+      = f.password_field :password, :class => "xlarge"
+  %div{:class => "clearfix"}
+    = f.label :password_confirmation
+    %div{:class => "input"}
+      = f.password_field :password_confirmation, :class => "xlarge"
+  - if can? :manage, :all
+    %div{:class => "clearfix"}
+      = f.label :admin
+      %div{:class => "input"}
+        %ul{:class => "inputs-list"}
+          %li
+            = f.check_box :admin
+            %span
+              (Make me admin!)
+  %div{:class => "clearfix"}
+    = f.label :bio
+    %div{:class => "input"}
+      = f.text_area :bio, :class => "xlarge"
+      %span.help-block
+        Block of help text to describe the field above if need be.

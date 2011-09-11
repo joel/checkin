@@ -1,18 +1,22 @@
-#cartridge
-  %h1 
-    Editing account
-  = semantic_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :validate => true) do |f|
-    = devise_error_messages!
-    = f.inputs :id => "basic", :class => 'basic' do
-      = f.input :email
-      = f.input :password
-      = f.input :password_confirmation
-      - if can? :manage, :all
-        = f.input :admin
-      %div{:class => 'actions'}
-        %button{:class => "btn primary",:id => "edit_account_submit"}
-          Update User
-  %h3 Cancel my account
-  %p
-    Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.
-  = link_to "Home", root_path
+%section#forms
+  %div.page-header
+    %h1
+      Editing account
+  %div{:class => "row" }
+    %div{:class => "span4 columns" }
+      %h2 Lorem ipsum
+      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pellentesque sapien in eros sollicitudin sed varius risus convallis. Mauris lobortis, nibh et laoreet commodo
+    %div{:class => "span11 columns" }
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        = devise_error_messages!
+        = render :partial => 'form', :locals => { :f => f }
+        %div{:class => "actions"}
+          %button{:class => "btn primary"}
+            Update User
+    %div{:class => "clearfix span15 columns"}
+      = render :partial => "devise/shared/links"
+    %div{:class => "clearfix span15 columns"}
+      = "Unhappy? "
+      = link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete
+      %br
+      = link_to "Home", root_path

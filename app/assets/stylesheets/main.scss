@@ -1,19 +1,23 @@
+@import 'colors';
 .container { 
-	border:solid black 1px; 
-	#main-content { border:solid black 1px; }
-	#header { border:solid black 1px; }
-	#flash { border:solid black 1px; }
-	#main-content { border:solid black 1px; }
-	#footer { border:solid black 1px; }
+	/*border:solid black 1px;*/ 
+	.row { margin-left:0; /*border:solid black 1px;*/ }
+	.column { /*border:solid black 1px;*/ }
+	.columns { /*border:solid black 1px;*/ }
+	#main-content { /*border:solid black 1px;*/ }
+	#header { /*border:solid black 1px;*/ }
+	#flash { /*border:solid black 1px;*/ }
+	#main-content { /*border:solid black 1px;*/ }
+	#footer { /*border:solid black 1px;*/ }
 }
 #people { 
-	border:solid black 1px;
+	/*border:solid black 1px;*/
 	margin-left:0;
 	.user { 
 		padding:2px;
-		margin:0 2px 0 0;
+		margin:2px;
 		float:left;
-		border:solid black 1px;
+		border: solid 1px $person-border-color;
 		#img { 
 			margin:5px 2px 5px 0;
 			border: solid 1px gray;
@@ -24,8 +28,12 @@
 			float:left;
 			width:100%;
 			height: 70px;
-			border:solid black 1px; 
+			/*border:solid black 1px;*/ 
 			button.checkin_button { margin-bottom:-10px; }
 		}
+	}
+	.current {
+		background-color: $person-current-bg-color;
+		border: solid 1px $person-current-border-color;
 	}
 }
