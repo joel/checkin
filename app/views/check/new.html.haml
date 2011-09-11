@@ -12,6 +12,3 @@
 								= content_tag :span, "Use #{token_type.title} credit (#{@user.remain_tokens(token_type.id)})", :class => 'submit'
 						- else
 							= content_tag :span, "Use #{token_type.title} credit (#{@user.remain_tokens(token_type.id)})", :class => 'empty'
-	- else
-		%div#warning.notice
-			Ooooh no ^^ You have no enough credits... please, buy some credits !

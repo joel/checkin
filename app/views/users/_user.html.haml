@@ -1,24 +1,23 @@
-= div_for user, :class => "#{user_class(user)} span4 columns clearfix" do
+= div_for user, :class => "#{user_class(user)} span4 columns" do
   = user.nb_of_checkin_label
-  %div#img
+  %div{:class => "span2 columns", :id => "img"}
     = avatar(user)
   %p
-    = link_to user.name, user
+    = link_to truncate(user.name,:length=>19), user
     %b
       = user.company
     - if user.checkin?
       %br (I'm here)
-  %div{:class => "actions"}
     - if user.not_me?(current_user)
       - if current_user.show_button_folow?(user)
         = form_for(user, :url => request_an_invitation_user_path(user), :html => { :method => :post })  do |f|
-          = f.submit 'Follow', :class => 'btn primary', :id => "request_an_invitation_for_#{user.id}"
+          = f.submit 'Follow', :class => 'btn success', :id => "request_an_invitation_for_#{user.id}"
+  %div{:class => "user_bottom column"}
     - if can? :update, user
       = form_for(user, :url => new_user_check_path(user), :html => { :method => :get })  do |f|
-        %button{:class => "btn",:id => "checkin_for_#{user.id}"}
+        %button{:class => "checkin_button btn primary",:id => "checkin_for_#{user.id}"}
           Checkin
     - if can? :manage, :all
-      %br
       = link_to 'Add Credits', add_tokens_user_tokens_path(user)
     - if can? :update, user
       = link_to 'Edit', edit_user_path(user)

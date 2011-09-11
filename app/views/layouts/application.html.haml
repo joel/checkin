@@ -12,8 +12,10 @@
     / = javascript_include_rpx(user_session_url)
     = csrf_meta_tag
     %body
-      %div{:class => "container", :id => "container"}
-        #header
+      %div{:class => "container", :id => "main-container"}
+        = "#main-container"
+        %div{:class => "columns", :id => "header"}
+          = "#header"
           = link_to "releases notes", "/releasesnotes_fr.html" 
           %ul.hmenu
             = render 'devise/menu/login_items'
@@ -21,9 +23,12 @@
             - if can? :manage, :all
               %li
                 = link_to 'Send notifications', notifications_path
-        #flash
+        %div{:class => "columns", :id => "flash"}
+          = "#flash"
           = render :partial => 'shared/flashes'
-        #main-content
+        %div{:class => "columns content", :id => "main-content"}
+          = "#main-content"
           = yield
-        #footer
+        %div{:class => "columns", :id => "footer"}
+          = "#footer"
           = yield :footer
