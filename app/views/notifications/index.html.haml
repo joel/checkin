@@ -1,19 +1,20 @@
-#cartridge.notifications
-
-  %h1 Listing notifications
+%h1 Listing notifications
   
-  %span.pagination
-    = paginate @notifications
-	
-  %ul
-    %li Sent By
-    %li Sent at
-    %li.content Content
-    %li Show  
+%span.pagination
+  = paginate @notifications
+
+%table.zebra-striped
+  %thead
+    %tr
+      %th="Sent By"
+      %th="Sent at"
+      %th.content= "Content"
+      %th="Show"
+  %tbody
     = render @notifications
     
-  %span.pagination
-    = paginate @notifications
+%span.pagination
+  = paginate @notifications
   
 = link_to 'New Notification', new_notification_path 
 \| 

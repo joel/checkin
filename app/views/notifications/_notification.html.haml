@@ -1,5 +1,5 @@
-= content_tag_for :ul, notification do
-  %li= notification.user.name
-  %li= t notification.sent_at, :format => :default
-  %li.content= truncate(notification.content,:length=>30)
-  %li= link_to 'Show', notification
+= content_tag_for :tr, notification do
+  %td= notification.user.name
+  %td= t notification.sent_at, :format => :default
+  %td.content= truncate(notification.content,:length=>30)
+  %td= link_to 'Show', notification
