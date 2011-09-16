@@ -7,28 +7,10 @@
       %h2 Lorem ipsum
       %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pellentesque sapien in eros sollicitudin sed varius risus convallis. Mauris lobortis, nibh et laoreet commodo
     %div{:class => "span11 columns"}
-      = form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => "form-stacked") do |f|
-        %fieldset
-          %legend
-            Email
-          %div{:class => "clearfix"}
-            = f.label :email
-            %div{:class => "input"}
-              = f.email_field :email, :class => "xlarge"
-          %div{:class => "clearfix"}
-            = f.label :password
-            %div{:class => "input"}
-              = f.password_field :password, :class => "xlarge"
-          %div{:class => "clearfix"}
-            = f.label :remember_me
-            %div{:class => "input"}
-              %ul{:class => "inputs-list"}
-                %li
-                  = f.check_box :remember_me
-                  %span
-                    (Only on your computer)
-        %div{:class => "actions"}
-          %button{:class => "btn primary", :id => :new_sessions_submit }
-            Sign in
+      = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => "form-stacked") do |f|
+        = f.input :email
+        = f.input :password
+        = f.input :remember_me
+        = f.button :submit, :input_html => { :id => :new_sessions_submit, :class => 'primary' }
   %div{:class => "clearfix span15 columns"}
     = render :partial => "devise/shared/links"

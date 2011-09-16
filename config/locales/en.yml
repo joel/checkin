@@ -29,30 +29,3 @@ en:
       carrierwave_processing_error: failed to be processed
       carrierwave_integrity_error: is not an allowed file type
   hello: "Hello world"
-  formtastic:
-    titles:
-      post_details: "Post details"
-    labels:
-      post:
-        title: "Your Title"
-        body: "Write something..."
-        edit:
-          title: "Edit title"
-    hints:
-      post:
-        title: "Choose a good title for you post."
-        body: "Write something inspiring here."
-    placeholders:
-      post:
-        title: "Title your post"
-        slug: "Leave blank for an automatically generated slug"
-      user:
-        email: "you@yours.com"
-    actions:
-      create: "Create my %{model}"
-      update: "Save changes"
-      dummie: "Launch!"
-      reset_password: "Send me reset password instructions"
-      sign_up: "Sign Up"
-      edit_account: "Valid Account"
-      change_password: "Change my password"
