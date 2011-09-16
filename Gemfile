@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-# gem 'rails', '3.1.0.rc8'
-gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
+gem 'rails', '3.1.1.rc1'
+# gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -13,7 +13,8 @@ gem "rails_config"
 gem "mini_magick"
 gem "carrierwave"
 gem "haml"
-gem "simple_form"
+gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
+# gem "simple_form"
 # rails plugin install git://github.com/rails/country_select.git
 gem "client_side_validations"
 gem "twitter-bootstrap-rails", :git => "http://github.com/seyhunak/twitter-bootstrap-rails.git"

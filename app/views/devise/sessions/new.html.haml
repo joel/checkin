@@ -11,6 +11,6 @@
         = f.input :email
         = f.input :password
         = f.input :remember_me
-        = f.button :submit, :input_html => { :id => :new_sessions_submit, :class => 'primary' }
+        = f.button :submit, :class => 'primary', :id => :new_sessions_submit
   %div{:class => "clearfix span15 columns"}
     = render :partial => "devise/shared/links"

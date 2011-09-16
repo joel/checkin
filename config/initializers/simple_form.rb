@@ -1,23 +1,18 @@
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
-  SimpleForm.form_class = nil
-  
-  # Components used by the form builder to generate a complete input. You can remove
-  # any of them, change the order, or even add your own components to the stack.
-  # config.components = [ :placeholder, :label_input, :hint, :error ]
-
-  # Default tag used on hints.
-  # config.hint_tag = :span
-
-  # CSS class to add to all hint tags.
-  # config.hint_class = :hint
-
-  # CSS class used on errors.
-  # config.error_class = :error
-  SimpleForm.error_class = 'help-inline'
-  
-  # Default tag used on errors.
-  # config.error_tag = :span
+  # Wrappers are used by the form builder to generate a complete input.
+  # You can remove any component from the wrapper, change the order or even
+  # add your own to the stack. The options given to the wrappers method
+  # are used to wrap the whole input (if any exists).
+  config.wrappers :class => 'clearfix', :error_class => :error do |b|
+    b.use :placeholder
+    b.use :label
+    b.use :tag => 'div', :class => 'input' do |ba|
+      ba.use :input #, :class => 'xlarge'
+      ba.use :hint,  :tag => :span, :class => :hint
+      ba.use :error, :tag => :span, :class => 'help-inline'
+    end
+  end
 
   # Method used to tidy up errors.
   # config.error_method = :first
@@ -30,17 +25,6 @@ SimpleForm.setup do |config|
 
   # ID to add for error notification helper.
   # config.error_notification_id = nil
-
-  # You can wrap all inputs in a pre-defined tag.
-  # config.wrapper_tag = :div
-
-  # CSS class to add to all wrapper tags.
-  # config.wrapper_class = :input
-  SimpleForm.wrapper_class = 'clearfix'
-
-  # CSS class to add to the wrapper if the field has errors.
-  # config.wrapper_error_class = :field_with_errors
-  SimpleForm.wrapper_error_class = 'error'
 
   # You can wrap a collection of radio/check boxes in a pre-defined tag, defaulting to none.
   # config.collection_wrapper_tag = nil
@@ -68,7 +52,7 @@ SimpleForm.setup do |config|
 
   # Tell browsers whether to use default HTML5 validations (novalidate option).
   # Default is enabled.
-  # config.browser_validations = true
+  config.browser_validations = false
 
   # Determines whether HTML5 types (:email, :url, :search, :tel) and attributes
   # (e.g. required) are used or not. True by default.
@@ -94,5 +78,8 @@ SimpleForm.setup do |config|
   # config.default_input_size = 50
 
   # When false, do not use translations for labels, hints or placeholders.
-  # config.translate = true
+  config.translate = true
+
+  # Default class for buttons
+  config.button_class = 'btn'
 end
