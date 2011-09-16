@@ -38,4 +38,5 @@
     %div#invitations
       = render :partial => 'invitation', :collection => @user.invitations
   = link_to 'Back to people list', users_path
+  %br= link_to 'Delete my account', user_path(@user), :confirm => 'Are you sure?! :-(', :method => :delete
   

@@ -4,9 +4,18 @@ class UsersController < ApplicationController
   respond_to :html
   respond_to :xml, :json, :only => [:index,:current_checkin]
   
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :excpet => [:import]
   before_filter :safe_user, :only => [:edit,:update,:destroy]
   before_filter :secure_invitation, :only => [:accept_invitation,:denied_invitation]
+  
+  # TODO Temporary method
+  def import
+    data = JSON.parse(open("http://application.localhost.com:3010/people/export.json").read)
+    User.import(data)
+    respond_with do |format|
+      format.json { render :json => data }
+    end
+  end
   
   # GET /users
   # GET /users.xml
@@ -83,7 +92,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    authorize! :edit, @user
+    authorize! :update, @user
     respond_with(@user) do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
@@ -96,6 +105,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
+    authorize! :destroy, @user
     @user.destroy
     respond_with do |format|
       format.html { redirect_to(users_url) }

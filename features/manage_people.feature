@@ -8,7 +8,7 @@ Feature: Manage people
     Given I am logged in
    
   Scenario: Register new person
-    Given I am on the new person page
+    Given I am on the new user page
     When I fill in "user_firstname" with "firstname"
     # And I select 'Mr' from 'user_gender'
     And I fill in "user_lastname" with "lastname"

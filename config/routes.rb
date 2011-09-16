@@ -12,7 +12,11 @@ CheckinReloaded::Application.routes.draw do
   end
   
   resources :users do
-    get 'current_checkin', :on => :collection
+    collection do
+      get 'current_checkin'
+      # TODO Temporary access
+      get 'import'
+    end
     member do
       put 'follow'
       post 'request_an_invitation'

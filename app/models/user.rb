@@ -3,53 +3,55 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :rpx_connectable, :token_authenticatable
+  :recoverable, :rememberable, :trackable, :validatable, :rpx_connectable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter
-  
-  paginates_per 36
-  
-  has_many :tokens
+  # TODO To restore
+  # attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter
 
-  has_many :invitations, :foreign_key => "followed_id"
-  
+  # TODO To Remove
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter,
+  :encrypted_password, :reset_password_token, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :created_at, :updated_at, :rpx_identifier, :authentication_token, :admin
+
+  paginates_per 36
+
+  has_many :tokens, :dependent => :destroy
+  has_many :invitations, :foreign_key => "followed_id", :dependent => :destroy
   has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy
   has_many :following, :through => :relationships, :source => :followed
-
   has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship", :dependent => :destroy
   has_many :followers, :through => :reverse_relationships, :source => :follower
-    
+
   validates_presence_of :firstname, :lastname, :company, :phone
   # validates_presence_of :gender
   # validates_inclusion_of :gender, :in => %w{ Mr Mlle Mme }, :message => "La civilité n'est pas reconnue"
 
   after_create :set_authentication_token
-  
+
   before_create :normalize_name
-  
+
   scope :members, where(:admin => false)
-  
+
   mount_uploader :avatar, AvatarUploader
 
   def nb_of_checkin
     self.tokens.used.count
   end
-  
+
   def nb_of_checkin_label
     msg = "You have #{self.nb_of_checkin} checkin"
     msg << ", you are Major of this place" if major?
     msg
   end
-  
+
   def major?
     self == major
   end
-  
+
   def major
     User.all.sort! { |x,y| y.nb_of_checkin <=> x.nb_of_checkin }[0]
   end
-  
+
   def checkin(token_type_id, motivation_id, checkin_owner_id = nil)
     raise "Your are already checkin" if checkin?
     token = self.tokens.available.first(:conditions => { :token_type_id => token_type_id })
@@ -61,23 +63,23 @@ class User < ActiveRecord::Base
     end
     msg
   end
-  
+
   def tokens_avalaible?(type_id)
     remain_tokens(type_id) > 0
   end
-  
+
   def remain_tokens(type_id)
     self.tokens.available.count(:conditions => { :token_type_id => type_id })
   end
-  
+
   def invitation!(follower)
     self.invitations.create(:follower_id => follower.id) unless invitation?(follower)
   end
-                
+
   def invitation?(follower)
     self.invitations.find_by_follower_id(follower.id)
   end
-  
+
   def following?(followed)
     self.relationships.find_by_followed_id(followed)
   end
@@ -85,37 +87,37 @@ class User < ActiveRecord::Base
   def follow!(followed)
     self.relationships.create!(:followed_id => followed.id) unless following?(followed)
   end
-  
+
   def unfollow!(followed)
     self.relationships.find_by_followed_id(followed).destroy if following?(followed)
   end
-    
+
   def name
     "#{self.firstname} #{self.lastname}"
   end
-  
+
   def not_me?(u)
     u != self
   end
-  
+
   def me?(u)
     !not_me?(u)
   end
-  
+
   def self.account_already_exist?(current_user)
     User.find_by_user_id(current_user.id)
   end
-  
+
   def add_tokens(h)
     raise "Cost must be set" if h[:price].blank?
     h[:number].to_i.times { self.tokens.create(:cost => h[:price].to_f/h[:number].to_f, :token_type_id => h[:token_type][:token_type_id], :token_owner_id => h[:token_owner_id]) }
     "#{h[:number].to_i} credits has been added"
   end
-  
+
   def checkin?
     !self.tokens.used.first(:conditions=>['? between start_at and stop_at',Time.now.utc]).nil?
   end
-  
+
   def checkin_label
     if self.checkin?
       current_token = self.tokens.used.first(:conditions=>['? between start_at and stop_at',Time.now.utc])
@@ -124,7 +126,7 @@ class User < ActiveRecord::Base
       "Current not checkin..."
     end
   end
-  
+
   def checkin_owners_label
     if self.checkin?
       current_token = self.tokens.used.first(:conditions=>['? between start_at and stop_at',Time.now.utc])
@@ -144,7 +146,7 @@ class User < ActiveRecord::Base
       "Current not checkin..."
     end
   end
-  
+
   def is_admin?
     self.admin
   end
@@ -152,7 +154,7 @@ class User < ActiveRecord::Base
   def is_guest?
     false
   end
-    
+
   def show_button_folow?(other)
     show = true
     # It have already received an invitation
@@ -165,17 +167,124 @@ class User < ActiveRecord::Base
     end
     return show
   end
-  
+
+  # TODO Temporary method
+  def self.import(data)
+    begin
+      data.each do |p|
+        logger.info "! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% - #{p['email']} - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+        logger.info p['email']
+        already = User.where(:email=>p['email'])
+        User.destroy(already.first.id) if already.exists?
+        user = User.new(:email => p['email'],
+          :password => 'foobarzone',
+          :password_confirmation => 'foobarzone',
+          # :encrypted_password => p['encrypted_password'],
+          :reset_password_token => p['reset_password_token'],
+          :remember_created_at => p['remember_created_at'],
+          :sign_in_count => p['sign_in_count'],
+          :current_sign_in_at => p['current_sign_in_at'],
+          :last_sign_in_at => p['last_sign_in_at'],
+          :current_sign_in_ip => p['current_sign_in_ip'],
+          :last_sign_in_ip => p['last_sign_in_ip'],
+          :created_at => p['created_at'],
+          :updated_at => p['updated_at'],
+          :rpx_identifier => p['rpx_identifier'],
+          :authentication_token => p['authentication_token'],
+          :firstname => p['firstname'],
+          :lastname => p['lastname'],
+          :gender => p['gender'],
+          :company => p['company'],
+          :phone => p['phone'],
+          :admin => p['admin'])
+        user.save!
+        user.update_attribute(:encrypted_password, p['encrypted_password']) unless p['encrypted_password'].blank?
+      end
+      # Tokens
+      data.each do |p|
+        logger.info "!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% - #{p['email']} - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+        user = User.where(:email=>p['email']).first
+        logger.info p['tokens']
+        p['tokens'].each do |token|
+          logger.info token
+          ['checkin_owner_id','token_owner_id'].each do |method|
+            if User.where(:email=>token[method]).exists?
+              token.merge!(method.to_sym => User.where(:email=>token[method]).first.id)
+            else
+              token.merge!(method.to_sym => nil)
+            end
+          end
+          user.tokens.create(token)
+        end
+      end
+      # Invitations
+      data.each do |p|
+        logger.info "!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% - #{p['email']} - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+        user = User.where(:email=>p['email']).first
+        logger.info p['invitations']
+        p['invitations'].each do |invitation|
+          logger.info invitation
+          ['follower_id','followed_id'].each do |method|
+            if User.where(:email=>invitation[method]).exists?
+              invitation.merge!(method.to_sym => User.where(:email=>invitation[method]).first.id)
+            else
+              invitation.merge!(method.to_sym => nil)
+            end
+          end
+          user.invitations.create(invitation)
+        end
+      end
+      # Following
+      data.each do |p|
+        logger.info "!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% - #{p['email']} - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+        user = User.where(:email=>p['email']).first
+        logger.info p['following']
+        p['following'].each do |relationship|
+          logger.info relationship
+          ['follower_id','followed_id'].each do |method|
+            if User.where(:email=>relationship[method]).exists?
+              relationship.merge!(method.to_sym => User.where(:email=>relationship[method]).first.id)
+            else
+              relationship.merge!(method.to_sym => nil)
+            end
+          end
+          user.following.create(relationship)
+        end
+      end
+      # Followers
+      data.each do |p|
+        logger.info "!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% - #{p['email']} - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+        user = User.where(:email=>p['email']).first
+        logger.info p['followers']
+        p['followers'].each do |relationship|
+          logger.info relationship
+          ['follower_id','followed_id'].each do |method|
+            if User.where(:email=>relationship[method]).exists?
+              relationship.merge!(method.to_sym => User.where(:email=>relationship[method]).first.id)
+            else
+              relationship.merge!(method.to_sym => nil)
+            end
+          end
+          user.followers.create(relationship)
+        end
+      end
+    rescue Exception => e
+      logger.info "************************************************************************"
+      logger.info e.message
+      logger.info "************************************************************************"
+    end
+  end
+
   private 
-  
+
   def set_authentication_token
     self.reset_authentication_token!
   end    
-  
+
   def normalize_name
     # self.firstname = self.firstname.titlecase
     self.firstname = self.firstname.split(/(\W)/).map(&:capitalize).join
     self.lastname = self.lastname.upcase
   end
-  
+
 end

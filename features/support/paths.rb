@@ -27,6 +27,8 @@ module NavigationHelpers
       users_path
     when /new person/
       new_user_path
+    when /new user/
+      new_user_registration_path
       
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

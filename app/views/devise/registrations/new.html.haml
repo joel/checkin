@@ -11,7 +11,7 @@
         = devise_error_messages!
         = render :partial => 'form', :locals => { :f => f }
         %div{:class => "actions"}
-          %button{:class => "btn primary"}
+          %button{:class => "btn primary", :id => :new_registration_submit }
             Sign Up
     %div{:class => "clearfix span15 columns"}
       = render :partial => "devise/shared/links"
