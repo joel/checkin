@@ -11,3 +11,5 @@ coverage.data
 public/uploads
 **.DS_Store
 webrat.log
+config/deploy.rb
+script/pg-*
