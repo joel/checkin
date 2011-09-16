@@ -24,5 +24,26 @@ module ApplicationHelper
     # end
   end
   
+  # def content(name)
+  #  content_for name do
+  #    capture_haml do
+  #      haml_tag "div", { :id => name.to_s } do
+  #        haml_tag "div", { :id => "#{name.to_s}_group" } do
+  #          yield
+  #        end  
+  #      end    
+  #    end      
+  #  end  
+  # end
+  
+  def tb_check_box
+    haml_tag :div, :class => "input" do
+      haml_tag :ul, :class => "inputs-list" do
+        haml_tag :li do
+          yield
+        end
+      end
+    end
+  end
   
 end

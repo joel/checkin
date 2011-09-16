@@ -1,8 +1,7 @@
 #cartridge
   %h2 Sign up!
-  = semantic_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }, :validate => true) do |f|
-    = devise_error_messages!
-    = f.inputs do
-      = f.input :email
-    = f.commit_button :reset_password
+  = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }, :validate => true) do |f|
+    = f.input :email
+    = f.input :reset_password
+    = f.button :submit, :class => 'primary', :id => :reset_password, :value => 'Reset Password!'
   = render :partial => "devise/shared/links"

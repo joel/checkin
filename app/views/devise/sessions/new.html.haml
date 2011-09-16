@@ -10,7 +10,14 @@
       = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => "form-stacked") do |f|
         = f.input :email
         = f.input :password
-        = f.input :remember_me
-        = f.button :submit, :class => 'primary', :id => :new_sessions_submit
+        %div{:class => "clearfix"}
+          = f.label :remember_me
+          %div{:class => "input"}
+            %ul{:class => "inputs-list"}
+              %li
+                = f.check_box :remember_me
+                %span
+                  (Only on your computer)
+        = f.button :submit, :class => 'primary', :id => :new_sessions_submit, :value => 'Sign in'
   %div{:class => "clearfix span15 columns"}
     = render :partial => "devise/shared/links"

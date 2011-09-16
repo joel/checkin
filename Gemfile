@@ -27,6 +27,10 @@ gem "ruby_parser"
 gem 'resque'
 gem 'resque_mailer'
 
+group :assets do
+  gem 'less'
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem "pg"
