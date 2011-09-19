@@ -1,8 +1,7 @@
 %h1 Listing notifications
   
-%span.pagination
-  = paginate @notifications
-
+= paginate @notifications
+ 
 %table.zebra-striped
   %thead
     %tr
@@ -13,8 +12,7 @@
   %tbody
     = render @notifications
     
-%span.pagination
-  = paginate @notifications
+= paginate @notifications
   
 = link_to 'New Notification', new_notification_path 
 \| 

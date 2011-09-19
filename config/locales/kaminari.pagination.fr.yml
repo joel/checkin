@@ -4,3 +4,5 @@ fr:
       previous: "&laquo; Précédent"
       next: "Suivant &raquo;"
       truncate: "..."
+      last: "Dernière"
+      first: "Première"

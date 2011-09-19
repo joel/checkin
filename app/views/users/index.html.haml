@@ -8,11 +8,9 @@
   - else
     = link_to 'Show me all', users_path
 
-%span.pagination
-  = paginate @users
+= paginate @users
 
 %div{:class => "row show-grid", :id => "people"}
   = render @users
   
-%span.pagination
-  = paginate @users
+= paginate @users
