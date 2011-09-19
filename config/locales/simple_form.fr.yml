@@ -13,13 +13,13 @@ fr:
     # Labels and hints examples
     labels:
       user:
-        email: "bar"
+        email: "Email"
     hints:
       user:
-        email: "bar"
+        email: "Email"
     placeholders:    
       user:
-        email: "zone"
+        email: "Email"
     helpers:
       submit:
         user:

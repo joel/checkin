@@ -1,0 +1,6 @@
+en:
+  users:
+    index:
+      title: "Listing people"
+      buttons:
+        checked_people: "Show checkin people only"

@@ -4,10 +4,6 @@
     %title 
       = title
     = stylesheet_link_tag "application"
-    /[if IE 7]
-      = stylesheet_link_tag 'ie7'
-    /[if IE 6]
-      = stylesheet_link_tag 'ie6'
     = csrf_meta_tags
     / = javascript_include_rpx(user_session_url)
     = csrf_meta_tag

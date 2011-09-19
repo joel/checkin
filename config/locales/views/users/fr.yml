@@ -1,0 +1,6 @@
+fr:
+  users:
+    index:
+      title: "Liste des personnes"
+      buttons:
+        checked_people: "Voir les personnes présentent"
