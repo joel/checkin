@@ -1,4 +1,4 @@
-%div#person
+%div{:id=>'person'}
   %div#img
     = avatar(@user)
   - if can? :manage, @user
@@ -30,12 +30,15 @@
   - if can? :update, @user
     = form_for(@user, :url => new_user_check_path(@user), :html => { :method => :get })  do |f|
       %button{:class => "btn primary"}= t('buttons.checkin')
+  - if @user.me?(current_user) and @user.invitations.size > 0
+    %div{:id=>'invitations'}
+      %h2= "Invitations"
+      %table.zebra-striped
+        %tbody
+        = render :partial => 'invitation', :collection => @user.invitations
     = link_to t('.edit'), edit_user_path(@user)
   - if can? :manage, :all
     %br= link_to t('links.add_credits'), add_tokens_user_tokens_path(@user)
-  - if @user.me?(current_user) and @user.invitations.size > 0
-    %div#invitations
-      = render :partial => 'invitation', :collection => @user.invitations
   = link_to t('links.show_all'), users_path
   %br= link_to t('.delete'), user_path(@user), :confirm => t('.confirm'), :method => :delete
   

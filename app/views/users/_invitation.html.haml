@@ -1,4 +1,5 @@
-= div_for invitation do
-  = form_for(invitation, :url =>accept_invitation_user_path(invitation), :html => { :method => :post })  do |f|
-    = invitation.follower.name
-    %button{:class => "btn primary"}= t('.accept')
+= content_tag_for :tr, invitation do
+  %td= invitation.follower.name
+  %td
+    = form_for(invitation, :url =>accept_invitation_user_path(invitation), :html => { :method => :post })  do |f|
+      %button{:class => "btn primary"}= t('.accept')
