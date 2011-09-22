@@ -110,7 +110,7 @@ class User < ActiveRecord::Base
 
   def add_tokens(h)
     raise "Cost must be set" if h[:price].blank?
-    h[:number].to_i.times { self.tokens.create(:cost => h[:price].to_f/h[:number].to_f, :token_type_id => h[:token_type][:token_type_id], :token_owner_id => h[:token_owner_id]) }
+    h[:number].to_i.times { self.tokens.create(:used => false, :cost => h[:price].to_f/h[:number].to_f, :token_type_id => h[:token_type][:token_type_id], :token_owner_id => h[:token_owner_id]) }
     "#{h[:number].to_i} credits has been added"
   end
 

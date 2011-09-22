@@ -7,7 +7,7 @@ class Token < ActiveRecord::Base
   belongs_to :token_owner, :class_name => "User"
   
   
-  scope :available, where(:used => false)
+  scope :available, where(:used => false|nil)
   scope :used, where(:used => true)
   
   validates_presence_of :cost

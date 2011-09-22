@@ -31,8 +31,8 @@ fr: &fr
           created_at: Créé le
           updated_at: Modifié le
   users:
-    nb_checkin: "Vous avez %{nb} badge ..."
-    major: "Vous êtes Commandant ! \\o/"
+    nb_checkin: "Vous avez %{nb} badge"
+    major: "<br/>Vous êtes Commandant ! \\o/"
          
 "fr-FR":
   <<: *fr
