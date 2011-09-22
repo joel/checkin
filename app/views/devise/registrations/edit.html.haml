@@ -14,7 +14,7 @@
     %div{:class => "clearfix span15 columns"}
       = render :partial => "devise/shared/links"
     %div{:class => "clearfix span15 columns"}
-      = "Unhappy? "
-      = link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete
+      = t('.unhappy?')
+      = link_to t('.cancel_my_account'), registration_path(resource_name), :confirm => "Are you sure?", :method => :delete
       %br
-      = link_to "Home", root_path
+      = link_to t('links.home'), root_path

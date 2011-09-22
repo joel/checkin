@@ -11,6 +11,7 @@ fr:
       not_found: "n'a pas été trouvé(e)"
       already_confirmed: "a déjà été confirmé(e)"
       not_locked: "n'était pas verrouillé(e)"
+      not_saved: "n'a pas pu être sauvé(e)"
 
   devise:
     failure:
@@ -72,6 +73,7 @@ fr:
       links:    
         didnt_receive_confirmation_instructions?: "Vous n'avez pas reçu de courriel de confirmation ?"
         didnt_receive_unlock_instructions?: "Vous n'avez pas reçu de courriel de déverrouillage de votre compte ?"
+        sign_in: "Se connecter"
         sign_up: 'Pas encore de compte ? Je crée mon compte !'
         forgot_password: "Mot de passe oublier ?"
         confirmation: "Vous n'avez pas reçu les instructions de confirmation ?"
@@ -109,14 +111,14 @@ fr:
       edit:
         title: Edition profil
         title_box: Important
-        p_box: Seul les personnes dont vous avez accepté l'invivation pourrons avoir acces a ces informations
+        p_box: Seul les personnes dont vous avez accepté l'invitation pourrons avoir acces a ces informations
         edit: "Modifier"
         # For "leave blank if you don't want to change it"
         password_instruction: "Laisser vide si vous ne voulez pas le changer"
         # For "we need your current password to confirm your changes"
         current_password_instruction: "Vous devez saisir votre mot de passe courant pour confirmer vos changement"                
         update: "Mettre à jour"
-        cancel_my_account: "Annuler mon compte"
+        cancel_my_account: "Supprimer mon compte !!!"
         unhappy?: "Pas content(e) ?"
         are_you_sure?: "Êtes-vous sûr ?"
         back: "Retour"

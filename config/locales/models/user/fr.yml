@@ -31,19 +31,9 @@ fr: &fr
           created_at: Créé le
           updated_at: Modifié le
   users:
-    index:
-      title: Les utilisateur
-    new:
-      title: Nouveau message
-    edit:
-      title: Edition message
     nb_checkin: "Vous avez %{nb} badge ..."
     major: "Vous êtes Commandant ! \\o/"
-  helpers:
-      submit:
-        message:
-          create: "Ajouter"
-            
+         
 "fr-FR":
   <<: *fr
 

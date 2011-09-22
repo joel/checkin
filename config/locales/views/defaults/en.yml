@@ -1,7 +1,10 @@
 en:
+  msg:
+    confirm: 'Are you sure?'
   links:
     show_all: 'Back to people list'
     add_credits: 'Add Credits'
+    home: "Home"
   buttons:
     follow: Follow
     checkin: Checkin

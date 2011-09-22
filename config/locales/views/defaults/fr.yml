@@ -1,7 +1,10 @@
 fr:
+  msg:
+    confirm: 'Vous êtes sérieux ?!'
   links:
     show_all: 'Retour à la liste'
     add_credits: 'Ajouter des Crédits'
+    home: Accueil
   buttons:
     follow: Suivre
     checkin: Badger

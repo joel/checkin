@@ -1,0 +1,14 @@
+fr:
+  tokens:
+    add_tokens:
+      credit_for: "Credits pour %{name}"
+      title: Important
+      speach: 'Vous devez définir un prix, cependant vous pouvez le laisser à zéro'
+      number: Nombre
+      token_type: Type
+      price: Prix
+      legend: Crédits
+  helpers:
+    submit:
+      token:
+        create: "Ajouter les crédits"

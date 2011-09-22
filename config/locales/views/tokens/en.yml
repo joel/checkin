@@ -1,0 +1,11 @@
+en:
+  tokens:
+    add_tokens:
+      credit_for: "Credits for %{name}"
+      title: Important
+      speach: "You must define a price for credit, but it's can be equals to zero"
+      legend: Credits
+  helpers:
+    submit:
+      token:
+        create: "Add credits!"

@@ -8,10 +8,9 @@
       %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pellentesque sapien in eros sollicitudin sed varius risus convallis. Mauris lobortis, nibh et laoreet commodo
     %div{:class => "span11 columns" }
       = form_for @user do |f|
-        - if @user.errors.any?
-          = render :partial => 'errors'           
+        = render 'shared/errors', :errors => @user.errors, :name => :user
         = render :partial => 'form', :locals => { :f => f }
         %div{:class => "actions"}
           %button{:class => "btn primary"}
             Update User
-      = link_to "Home", root_path
+      = link_to t('links.home'), root_path
