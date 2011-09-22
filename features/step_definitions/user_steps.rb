@@ -20,7 +20,7 @@ Given /^I am a new, authenticated user$/ do
   And %{I go to login}
   And %{I fill in "user_email" with "#{email}"}
   And %{I fill in "user_password" with "#{password}"}
-  And %{I press "Sign in"}
+  And %{I press "new_sessions_submit"}
 end
 
 Then /^I should see "([^"]*)$/ do |message|

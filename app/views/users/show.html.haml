@@ -36,6 +36,7 @@
       %table.zebra-striped
         %tbody
         = render :partial => 'invitation', :collection => @user.invitations
+  - if can? :update, @user
     = link_to t('.edit'), edit_user_path(@user)
   - if can? :manage, :all
     %br= link_to t('links.add_credits'), add_tokens_user_tokens_path(@user)

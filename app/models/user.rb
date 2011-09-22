@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship", :dependent => :destroy
   has_many :followers, :through => :reverse_relationships, :source => :follower
 
-  validates_presence_of :firstname, :lastname, :company, :phone
+  validates_presence_of :firstname, :lastname, :company, :phone, :email
   # validates_presence_of :gender
   # validates_inclusion_of :gender, :in => %w{ Mr Mlle Mme }, :message => "La civilité n'est pas reconnue"
 
@@ -39,8 +39,8 @@ class User < ActiveRecord::Base
   end
 
   def nb_of_checkin_label
-    msg = "You have #{self.nb_of_checkin} checkin"
-    msg << ", you are Major of this place" if major?
+    msg = I18n.t('users.nb_checkin', :nb => self.nb_of_checkin)
+    msg << ", " + I18n.t('users.major') if major?
     msg
   end
 

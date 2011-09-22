@@ -14,11 +14,12 @@ Feature: Manage Profils
     Then I should <action>
     
     Examples:
-      | login           | profile         | action                 |
-      | admin@gmail.com | bob@gmail.com   | see "Edit Profile"     |
-      | bob@gmail.com   | bob@gmail.com   | see "Edit Profile"     |
-      |                 | bob@gmail.com   | not see "Edit Profile" |
-      | bob@gmail.com   | admin@gmail.com | not see "Edit Profile" |
+      | login           | profile         | action                        |
+      | admin@gmail.com | bob@gmail.com   | see key "users.show.edit"     |
+      | bob@gmail.com   | bob@gmail.com   | see key "users.show.edit"     |
+      |                 | bob@gmail.com   | not see key "users.show.edit" |
+      | bob@gmail.com   | admin@gmail.com | not see key "users.show.edit" |
+
 
   Scenario Outline: Show or hide send notifications link
     Given the following user records
