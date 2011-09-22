@@ -1,0 +1,21 @@
+en:
+  layouts:
+    application:
+      releases_notes: 'releases notes'
+      send_notifications: 'Send notifications'
+  app:
+    name: "Checkin"
+    tagline: "Simple checkin system"
+  common:
+    "yes": "Yes"
+    "no": "No"
+    "or": "or"
+    optional: "optional"
+    when_blank: "when blank"
+    fill_in_to_change: "leave blank if you don't want to change it"
+    actions:
+      show: "View"
+      edit: "Edit"
+      cancel: "Cancel"
+      back: "Back"
+      destroy: 'Destroy'

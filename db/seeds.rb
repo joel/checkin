@@ -46,6 +46,26 @@ User.all.each do |user|
   user.save!
 end
 
+puts "Sends invitations !"
+[ ['Zaphod',['Ford','Arthur','Tricia','Robert','Marla','Jean-Baptiste Emanuel']],
+  ['Ford',['Zaphod','Arthur','Tricia','Robert','Marla','Jean-Baptiste Emanuel']]].each do |person_name, guests|
+  person = User.where(:firstname => person_name).first
+  guests.each do |guest_name|
+    guest = User.where(:firstname => guest_name).first
+    puts "#{person_name} invite #{guest_name}"
+    person.invitation!(guest)
+  end
+end
+
+puts "Accept invitations !"
+['Ford','Arthur'].each do |person_name|
+  person = User.where(:firstname => person_name).first
+  person.invitations.all.each do |invitation|
+    puts "#{person_name} accept invitation of #{invitation.follower.name}"
+    invitation.accept!
+  end
+end
+
 User.all.each do |user|
   puts "Add notification for #{user.name}"
   content = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."

@@ -1,6 +1,34 @@
 fr:
   users:
+    avatar:
+      upload: Envoyer ma photo
+    show:
+      edit: Editez votre profile
+      delete: 'Supprimer mon compte'
+      confirm: 'Êtes vous sûr ?! :-/'
     index:
       title: "Liste des personnes"
       buttons:
-        checked_people: "Voir les personnes présentent"
+        checked_people: "Voir uniquement les personnes présentent !"
+  simple_form:
+    labels:
+      user:
+        avatar: Ma photo
+        email: votre email
+        password_confirmation: confirmez
+        remember_me: Se souvenir de moi !
+    hints:
+      user:
+        email:
+    placeholders:    
+      user:
+        twitter: Compte twitter
+  helpers:
+    select:
+      user:
+        prompt: "Veuillez sélectionner"
+    submit:
+      user:
+        create: "Connectez moi !"
+        update: "Modifier"
+        submit: "Enregistrer"          

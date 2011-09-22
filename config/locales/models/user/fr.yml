@@ -1,0 +1,57 @@
+fr: &fr
+  activerecord:
+      models:
+        user: Utilisateur
+      attributes:
+        user:
+          remember_me: Se souvenir de moi
+          email: email
+          password: mot de passe
+          password_confirmation: confirmez
+          encrypted_password: mot de passe crypté
+          reset_password_token: jeton de remise à zero du mot de passe
+          reset_password_sent_at: jeton envoyé à
+          remember_created_at: se souvenir de moi crée à
+          sign_in_count: nombre d'authentification
+          current_sign_in_at: connexion à
+          last_sign_in_at: dernier connexion à
+          current_sign_in_ip: adresse ip de connexion courante
+          last_sign_in_ip: dernier adresse ip de connexion
+          authentication_token: jeton d'authentication
+          firstname: prénom
+          lastname: nom
+          gender: civilité
+          company: compagnie
+          phone: téléphone
+          twitter: compte twitter
+          bio: biographie
+          admin: admin
+          avatar: avatar
+          rpx_identifier: identification rpx
+          created_at: Créé le
+          updated_at: Modifié le
+  users:
+    index:
+      title: Les utilisateur
+    new:
+      title: Nouveau message
+    edit:
+      title: Edition message
+    nb_checkin: "Vous avez %{nb} badge ..."
+    major: "Vous êtes Commandant ! \\o/"
+  helpers:
+      submit:
+        message:
+          create: "Ajouter"
+            
+"fr-FR":
+  <<: *fr
+
+"fr-BE":
+  <<: *fr
+
+"fr-CA":
+  <<: *fr
+
+"fr-CH":
+  <<: *fr

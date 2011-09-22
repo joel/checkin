@@ -1,6 +1,32 @@
 en:
   users:
+    avatar:
+      upload: Upload my avatar!
+    show:
+      edit: Edit Profile
+      delete: 'Delete my account'
+      confirm: 'Are you sure?! :-('
     index:
       title: "Listing people"
       buttons:
         checked_people: "Show checkin people only"
+  simple_form:
+    labels:
+      user:
+        email: "Email"
+        avatar: My avatar
+    hints:
+      user:
+        email:
+    placeholders:    
+      user:
+        twitter: twitter account
+  helpers:
+    select:
+      user:
+    submit:
+      user:
+        create: "Create"
+        update: "Update"
+        submit: "Save"
+          

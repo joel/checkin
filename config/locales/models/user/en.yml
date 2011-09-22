@@ -1,0 +1,37 @@
+en: &en
+  messages:
+    index:
+      title: Public listing messages
+      stoot: Stoot
+      owner: Owner
+      content: Content
+      new: New Message
+    new:
+      title: New message
+    edit:
+      title: Editing message
+  helpers:
+      submit:
+        message:
+          create: "Add"
+  users:
+    nb_checkin: "You have %{nb} checkin"
+    major: "you are Major of this place"
+         
+"en-US":
+    <<: *en
+
+"en-GB":
+    <<: *en
+
+"en-AU":
+  <<: *en
+
+"en-CA":
+  <<: *en
+
+"en-IE":
+  <<: *en
+
+"en-IN":
+  <<: *en

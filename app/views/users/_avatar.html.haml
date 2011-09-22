@@ -1,10 +1,4 @@
 %div{:class => 'avatar' }
-  = form_for @user, :html => { :multipart => true } do |f|
-    - if @user.errors.any?
-      = render :partial => 'errors'
-    %div{:class => "clearfix"}
-      = f.label :avatar
-      %div{:class => "input"}
-        = f.file_field :avatar
-    %button{:class => "btn"}
-      Upload my avatar!
+  = simple_form_for @user, :html => { :multipart => true } do |f|
+    = f.input :avatar
+    = f.button :submit, :value => t('users.avatar.upload')

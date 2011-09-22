@@ -1,13 +1,11 @@
-- file = YAML.load_file("#{Rails.root}/config/locales/views/users/fr.yml")
 %h1= t '.title'
-%h2= file['fr']['users']['index']['title']
 %p
   - if controller.action_name == 'index'
     = form_tag(current_checkin_users_path, :method => :get) do
       %button{:class => "btn info",:id => "edit_account_submit"}
         = t '.buttons.checked_people'
   - else
-    = link_to 'Show me all', users_path
+    = link_to t('links.show_all'), users_path
 
 = paginate @users
 

@@ -1,11 +1,10 @@
 %section#forms
   %div.page-header
-    %h1
-      Sign in form
+    %h1= t '.title'
   %div.row
     %div{:class => "span4 columns"}
-      %h2 Lorem ipsum
-      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pellentesque sapien in eros sollicitudin sed varius risus convallis. Mauris lobortis, nibh et laoreet commodo
+      %h2= t('.title_box')
+      %p= t('.p_box')
     %div{:class => "span11 columns"}
       = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => "form-stacked") do |f|
         = f.input :email
@@ -16,8 +15,7 @@
             %ul{:class => "inputs-list"}
               %li
                 = f.check_box :remember_me
-                %span
-                  (Only on your computer)
-        = f.button :submit, :class => 'primary', :id => :new_sessions_submit, :value => 'Sign in'
+                %span= t '.remember_me'
+        = f.button :submit, :class => 'primary', :id => :new_sessions_submit
   %div{:class => "clearfix span15 columns"}
     = render :partial => "devise/shared/links"

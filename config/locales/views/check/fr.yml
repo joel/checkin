@@ -1,0 +1,4 @@
+fr:
+  check:
+    new:
+      use: "Utiliser %{type} crédit (%{remain})"

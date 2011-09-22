@@ -12,6 +12,20 @@ en:
         other: "%{count} errors prohibited this %{resource} from being saved:"
 
   devise:
+    shared:
+      links:
+        sign_up: 'Sign up'
+        forgot_password: "Forgot your password?"
+        confirmation: "Didn't receive confirmation instructions?"
+        instruction: "Didn't receive unlock instructions?"
+        sign_in_with: "Sign in with #{provider.to_s.titleize}"
+    menu:
+      registration_items:
+        sign_up: Or use regular Sign up
+        registration: 'Edit registration'
+      login_items:
+        login: 'Login with (Google, Facebook, twitter or another)'
+        logout: "Logout %{name}"
     failure:
       already_authenticated: 'You are already signed in.'
       unauthenticated: 'You need to sign in or sign up before continuing.'
@@ -21,9 +35,14 @@ en:
       invalid_token: 'Invalid authentication token.'
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'
-    sessions:
+    sessions:      
       signed_in: 'Signed in successfully.'
       signed_out: 'Signed out successfully.'
+      new:
+        title: Sign in form
+        title_box: Choose
+        p_box: 'You can log in with Twitter, Facebook ou Google...'
+        remember_me: (Only on your computer)
     passwords:
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
@@ -33,6 +52,8 @@ en:
       send_paranoid_instructions: 'If your e-mail exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
+      edit:
+        title: Editing account
       signed_up: 'Welcome! You have signed up successfully.'
       inactive_signed_up: 'You have signed up successfully. However, we could not sign you in because your account is %{reason}.'
       updated: 'You updated your account successfully.'

@@ -1,7 +1,7 @@
 - if user_signed_in?
   - if current_user.rpx_identifier.blank?
     %li
-      = link_to('Edit registration', edit_user_registration_path)
+      = link_to(t('.registration'), edit_user_registration_path)
 - else
   %li
-    = link_to('Or use regular Sign up', new_user_registration_path)
+    = link_to(t('.sign_up'), new_user_registration_path)

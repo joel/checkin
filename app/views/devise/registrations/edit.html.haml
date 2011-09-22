@@ -1,11 +1,10 @@
 %section#forms
   %div.page-header
-    %h1
-      Editing account
+    %h1= t('.title')
   %div{:class => "row" }
     %div{:class => "span4 columns" }
-      %h2 Lorem ipsum
-      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pellentesque sapien in eros sollicitudin sed varius risus convallis. Mauris lobortis, nibh et laoreet commodo
+      %h2= t('.title_box')
+      %p= t('.p_box')
     %div{:class => "span11 columns" }
       = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
         = devise_error_messages!

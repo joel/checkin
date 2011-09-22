@@ -10,18 +10,3 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Some errors were found, please take a look:"
-    # Labels and hints examples
-    labels:
-      user:
-        email: "Email"
-    hints:
-      user:
-        email: "Email"
-    placeholders:    
-      user:
-        email: "Email"
-    helpers:
-      submit:
-        user:
-          create: "Add %{model}"
-          update: "Save Changes"

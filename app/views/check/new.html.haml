@@ -1,14 +1,11 @@
 %div#checkin
-	= link_to 'Back to people list', users_path
-	- if @user.tokens.available.count > 0
-		%ul
-			- TokenType.all.each do |token_type|
-				= form_tag "/users/#{@user.id}/check", :method => :post do
-					= hidden_field_tag :token_type_id, token_type.id
-					%li
-						= select_tag "motivation_id", options_from_collection_for_select(Motivation.all, "id", "title")
-						- if @user.tokens_avalaible?(token_type.id)
-							%button
-								= content_tag :span, "Use #{token_type.title} credit (#{@user.remain_tokens(token_type.id)})", :class => 'submit'
-						- else
-							= content_tag :span, "Use #{token_type.title} credit (#{@user.remain_tokens(token_type.id)})", :class => 'empty'
+  = link_to t('links.show_all'), users_path
+  - if @user.tokens.available.count > 0
+    %ul
+      - TokenType.all.each do |token_type|
+        = form_tag "/users/#{@user.id}/check", :method => :post do
+          = hidden_field_tag :token_type_id, token_type.id
+          %li
+            = select_tag "motivation_id", options_from_collection_for_select(Motivation.all, "id", "title")
+            %button{:class => "btn primary #{' disabled' unless @user.tokens_avalaible?(token_type.id)}"}
+              = t('.use',:type=>token_type.title,:remain=>@user.remain_tokens(token_type.id))

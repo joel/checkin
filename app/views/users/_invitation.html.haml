@@ -1,5 +1,4 @@
 = div_for invitation do
   = form_for(invitation, :url =>accept_invitation_user_path(invitation), :html => { :method => :post })  do |f|
     = invitation.follower.name
-    %button{:class => "btn primary"}
-      Accept
+    %button{:class => "btn primary"}= t('.accept')

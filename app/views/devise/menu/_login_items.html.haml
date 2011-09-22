@@ -1,6 +1,6 @@
 - if user_signed_in?
   %li
-    = link_to("Logout #{current_user.email}", destroy_user_session_path, :method => :delete)
+    = link_to(t('.logout',:name=>current_user.email), destroy_user_session_path, :method => :delete)
 - else
   %li
-    = link_to_rpx('Login with (Google, Facebook, twitter or another)', user_session_url)
+    = link_to_rpx(t('.login'), user_session_url)

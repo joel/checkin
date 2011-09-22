@@ -11,13 +11,12 @@
     - if user.not_me?(current_user)
       - if current_user.show_button_folow?(user)
         = form_for(user, :url => request_an_invitation_user_path(user), :html => { :method => :post })  do |f|
-          = f.submit 'Follow', :class => 'btn success', :id => "request_an_invitation_for_#{user.id}"
+          %button{:class=>"btn success", :id => "request_an_invitation_for_#{user.id}"}= t('buttons.follow')
   %div{:class => "user_bottom column"}
     - if can? :update, user
       = form_for(user, :url => new_user_check_path(user), :html => { :method => :get })  do |f|
-        %button{:class => "checkin_button btn primary",:id => "checkin_for_#{user.id}"}
-          Checkin
+        %button{:class => "btn primary",:id => "checkin_for_#{user.id}"}= t('buttons.checkin')
     - if can? :manage, :all
-      = link_to 'Add Credits', add_tokens_user_tokens_path(user)
+      = link_to t('links.add_credits'), add_tokens_user_tokens_path(user)
     - if can? :update, user
-      = link_to 'Edit', edit_user_path(user)
+      = link_to t('common.actions.edit'), edit_user_path(user)
