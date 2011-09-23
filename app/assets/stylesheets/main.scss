@@ -38,8 +38,22 @@
 		border: solid 1px $person-current-border-color;
 	}
 }
+#checkin {
+	border:solid gray 5px;
+	padding:20px;
+	ul { list-style-type:none; padding:0; margin:0; }
+}
 #person { 
-/*	border:solid black 1px;*/
+	border:solid gray 5px;
+	padding:20px;
+	.row { margin:10px 0; }
+	.avatar {
+		label { margin:0; padding:0; } 
+		input { margin:0; } 
+	}
+}
+/*#person { 
+	border:solid black 1px;
 	margin-left:0;
 	#img { 
 		margin:5px;
@@ -49,4 +63,4 @@
 		float:left;
 	}
 	.avatar { width: 400px; }
-}
+}*/

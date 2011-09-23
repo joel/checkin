@@ -1,5 +1,4 @@
 %div#checkin
-  = link_to t('links.show_all'), users_path
   %ul
     - TokenType.all.each do |token_type|
       = form_tag "/users/#{@user.id}/check", :method => :post do
@@ -8,3 +7,4 @@
           = select_tag "motivation_id", options_from_collection_for_select(Motivation.all, "id", "title")
           %button{:class => "btn primary #{' disabled' unless @user.tokens_avalaible?(token_type.id)}"}
             = t('.use',:type=>token_type.title,:remain=>@user.remain_tokens(token_type.id))
+  = link_to t('links.show_all'), users_path
