@@ -305,7 +305,7 @@ DEPENDENCIES
   cucumber
   cucumber-rails
   database_cleaner
-  devise (~> 1.4.6)
+  devise (~> 1.4.5)
   devise_rpx_connectable
   dynamic_form
   factory_girl_rails

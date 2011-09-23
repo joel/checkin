@@ -19,7 +19,7 @@ gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 # rails plugin install git://github.com/rails/country_select.git
 gem "client_side_validations"
 gem "twitter-bootstrap-rails", :git => "http://github.com/seyhunak/twitter-bootstrap-rails.git"
-gem "devise", "~> 1.4.6"
+gem "devise", "~> 1.4.5"
 gem "rpx_now"
 gem "devise_rpx_connectable"
 gem "cancan"
