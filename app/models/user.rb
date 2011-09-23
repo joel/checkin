@@ -29,6 +29,8 @@ class User < ActiveRecord::Base
   after_create :set_authentication_token
 
   before_create :normalize_name
+  
+  before_destroy :clean_token
 
   scope :members, where(:admin => false)
 
@@ -277,6 +279,12 @@ class User < ActiveRecord::Base
 
   private 
 
+  def clean_token
+    Token.where(:checkin_owner_id => self.id).all.each  do |token|
+      token.update_attribute(:checkin_owner_id,nil)
+    end
+  end
+  
   def set_authentication_token
     self.reset_authentication_token!
   end    

@@ -4,9 +4,9 @@
     %title 
       = title
     = stylesheet_link_tag "application"
-    = csrf_meta_tags
+    = javascript_include_tag "application"
     / = javascript_include_rpx(user_session_url)
-    = csrf_meta_tag
+    = csrf_meta_tags
     %body
       %div{:class => "container", :id => "main-container"}
         / = "#main-container"

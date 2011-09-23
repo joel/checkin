@@ -27,7 +27,7 @@ admins.each do |firstname|
   User.first(:conditions=>{:firstname=>firstname}).update_attribute(:admin,true)
 end
 
-tokens = ['Tricia','Ford']
+tokens = ['Tricia','Ford','Arthur']
 tokens.each do |firstname|
   puts "Give some credit to #{firstname}"
   
@@ -38,6 +38,13 @@ tokens.each do |firstname|
   puts "Add five Half Day pass"
   h.merge!( :token_type_id => TokenType.find_by_title('half day').id, :used => false )
   5.times { User.find_by_firstname(firstname).tokens.create(h) }
+end
+
+[['Zaphod','Tricia'],['Ford','Ford'],['Zaphod','Arthur']].each do |owner_name, person_name|
+  person, owner, token_type_id = User.where(:firstname => person_name).first, User.where(:firstname => owner_name).first, TokenType.find_by_title('full day').id
+  motivation_id = Motivation.first.id
+  puts "#{owner_name} make checkin for #{person_name}"
+  person.checkin(token_type_id, motivation_id, owner.id)
 end
 
 User.all.each do |user|
@@ -65,6 +72,8 @@ puts "Accept invitations !"
     invitation.accept!
   end
 end
+
+
 
 User.all.each do |user|
   puts "Add notification for #{user.name}"
