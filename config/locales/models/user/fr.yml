@@ -33,6 +33,17 @@ fr: &fr
   users:
     nb_checkin: "Vous avez %{nb} badge"
     major: "<br/>Vous êtes Commandant ! \\o/"
+    checkin:
+      already: "Vous avez déjà émargé !"
+      no_credit: "Il n'existe pas de crédit de ce type ! :-/"
+    add_tokens:
+      cost_missing: "Le coût doit être définit"
+      credit_added: "%{number} crédits ont été ajoutés"
+    checkin_label:
+      checkin: "(Je suis là pour %{token_type} pour %{motivation})"
+      no_checkin: "Vous n'êtes pas émargé"
+    checkin_owners_label:
+      msg: "Ce crédit a été vendu par OWNER_TOKEN et cet émargement réalisé par OWNER_CHECKIN"
          
 "fr-FR":
   <<: *fr

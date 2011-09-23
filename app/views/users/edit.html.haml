@@ -1,16 +1,18 @@
 %section#forms
   %div.page-header
-    %h1
-      Editing account
+    %h1= t('.title')
   %div{:class => "row" }
     %div{:class => "span4 columns" }
-      %h2 Lorem ipsum
-      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pellentesque sapien in eros sollicitudin sed varius risus convallis. Mauris lobortis, nibh et laoreet commodo
+      %h2= t('.title_box')
+      %p= t('.p_box')
     %div{:class => "span11 columns" }
-      = form_for @user do |f|
+      = simple_form_for @user do |f|
         = render 'shared/errors', :errors => @user.errors, :name => :user
         = render :partial => 'form', :locals => { :f => f }
         %div{:class => "actions"}
-          %button{:class => "btn primary"}
-            Update User
+          %button{:class => "btn primary"}= t('helpers.submit.user.update')
       = link_to t('links.home'), root_path
+      = " | "
+      = link_to @user.name, @user
+      - if current_user.rpx_identifier.blank?
+        = " | #{link_to(t('.registration'), edit_user_registration_path)}".html_safe

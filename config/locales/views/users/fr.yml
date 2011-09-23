@@ -1,5 +1,10 @@
 fr:
   users:
+    edit:
+      title: Edition de compte
+      title_box: "Note :"
+      p_box: "Les informations renseignées ne seront visible uniquement par les personnes que vous aurez acceptées ! Afin de faciliter les échanges avec celle-ci n'hésitez pas à renseigner votre fiche"
+      registration: 'Changer votre mot de passe'
     avatar:
       upload: Envoyer ma photo
     show:

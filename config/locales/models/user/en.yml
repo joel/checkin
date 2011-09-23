@@ -2,6 +2,17 @@ en: &en
   users:
     nb_checkin: "You have %{nb} checkin"
     major: "you are Major of this place"
+    checkin:
+      already: "Your are already checkin"
+      no_credit: "You have no credit in this type..."
+    add_tokens:
+      cost_missing: "Cost must be set"
+      credit_added: "%{number} credits has been added"
+    checkin_label:
+      checkin: "(I'm here to %{token_type} for %{motivation})"
+      no_checkin: "Current not checkin..."
+    checkin_owners_label:
+      msg: "This credit was given by OWNER_TOKEN and This check-in was done by OWNER_CHECKIN"
          
 "en-US":
     <<: *en

@@ -1,5 +1,10 @@
 en:
   users:
+    edit:
+      title: Editing account
+      title_box: "Note :"
+      p_box: "The information provided will be visible only by authorized people. To facilitate exchange, please fill your profil"
+      registration: 'Edit password'
     avatar:
       upload: Upload my avatar!
     show:

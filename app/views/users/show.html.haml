@@ -7,10 +7,15 @@
     = @user.firstname
     = @user.lastname
     %br 
-    = @user.nb_of_checkin_label
+    = @user.nb_of_checkin_label.html_safe
     %br
     - if can? :read, @user
-      = @user.email
+      %p
+        %b Email:
+        = @user.email
+      %p
+        %b Twitter:
+        = @user.twitter
     - if @user.checkin?
       %br 
       = @user.checkin_label
@@ -40,6 +45,6 @@
     = link_to t('.edit'), edit_user_path(@user)
   - if can? :manage, :all
     %br= link_to t('links.add_credits'), add_tokens_user_tokens_path(@user)
-  = link_to t('links.show_all'), users_path
+  %br= link_to t('links.show_all'), users_path
   %br= link_to t('.delete'), user_path(@user), :confirm => t('.confirm'), :method => :delete
   

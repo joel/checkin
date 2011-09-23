@@ -1,1 +1,6 @@
 fr:
+  models:
+    token:
+      full_day: "Votre émargement de la journée a été validé"
+      morning_half_day: "Votre émargement de la matinée a été validé"
+      afternoon_half_day: "Votre émargement de l'après midi a été validé"

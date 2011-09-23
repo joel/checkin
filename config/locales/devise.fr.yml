@@ -36,10 +36,6 @@ fr:
     confirmations:
       send_instructions: "Vous allez recevoir un courriel contenant des instructions pour activer votre compte."
       confirmed: "Votre compte a été activé. Vous êtes maintenant connecté."
-    registrations:
-      signed_up: "Votre inscription est enregistrée. Si demandé, un courriel de confirmation vous a été envoyé."
-      updated: "Votre mise à jour a été prise en compte."
-      destroyed: "Votre compte a été supprimé. Nous espérons vous revoir bientôt."
     unlocks:
       send_instructions: "Vous allez recevoir un courriel avec des instructions pour déverrouiller votre compte."
       unlocked: "Votre compte est déverrouillé. Vous êtes maintenant connecté."
@@ -108,6 +104,11 @@ fr:
       new:
         send_me_reset_password_instructions: "Envoyez-moi un courriel pour changer mon mot de passe"
     registrations:
+      signed_up: "Votre inscription est enregistrée. Si demandé, un courriel de confirmation vous a été envoyé."
+      updated: "Votre mise à jour a été prise en compte."
+      destroyed: "Votre compte a été supprimé. Nous espérons vous revoir bientôt."
+      user:
+        updated: Compte mis à jour !
       edit:
         title: Edition profil
         title_box: Important

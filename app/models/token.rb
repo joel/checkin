@@ -11,19 +11,19 @@ class Token < ActiveRecord::Base
   scope :used, where(:used => true)
   
   validates_presence_of :cost
-  
+
   def checkin(motivation_id, checkin_owner_id = nil)
     msg, options = "", {}
     if self.token_type.title == 'full day' or self.token_type.title == 'free'
       options.merge!(:start_at => self.start_time_of_day, :stop_at => self.stop_time_of_day)
-      msg = "Your day's credit has well been taken"
+      msg = I18n.t('models.token.full_day')
     else
       if Time.now < self.time_break
         options.merge!(:start_at => self.start_time_of_day, :stop_at => self.time_break)
-        msg = "Your morning credit has well been taken"
+        msg = I18n.t('models.token.morning_half_day')
       else
         options.merge!(:start_at => self.time_break, :stop_at => self.stop_time_of_day)
-        msg = "Your afternoon credit has well been taken"
+        msg = I18n.t('models.token.afternoon_half_day')
       end
     end
     options.merge!(:used => true, :motivation_id => motivation_id, :checkin_owner_id => checkin_owner_id)

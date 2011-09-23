@@ -53,9 +53,9 @@ class User < ActiveRecord::Base
   end
 
   def checkin(token_type_id, motivation_id, checkin_owner_id = nil)
-    raise "Your are already checkin" if checkin?
+    raise I18n.t('users.checkin.already') if checkin?
     token = self.tokens.available.first(:conditions => { :token_type_id => token_type_id })
-    raise "You have no credit in this type..." unless token
+    raise I18n.t('users.checkin.no_credit') unless token
     msg = token.checkin(motivation_id, checkin_owner_id)
     NotifierMailer.safe_sending { NotifierMailer.checkin_notification(self.id, token.token_type.title, token.motivation.title) }
     self.followers.all.each do |follower|
@@ -109,9 +109,9 @@ class User < ActiveRecord::Base
   end
 
   def add_tokens(h)
-    raise "Cost must be set" if h[:price].blank?
+    raise I18n.t('users.add_tokens.cost_missing') if h[:price].blank?
     h[:number].to_i.times { self.tokens.create(:used => false, :cost => h[:price].to_f/h[:number].to_f, :token_type_id => h[:token_type][:token_type_id], :token_owner_id => h[:token_owner_id]) }
-    "#{h[:number].to_i} credits has been added"
+    I18n.t('users.add_tokens.credit_added', :number => h[:number].to_i)
   end
 
   def checkin?
@@ -121,16 +121,16 @@ class User < ActiveRecord::Base
   def checkin_label
     if self.checkin?
       current_token = self.tokens.used.first(:conditions=>['? between start_at and stop_at',Time.now.utc])
-      "(I'm here to #{current_token.token_type.title} for #{current_token.motivation.title})"
+      I18n.t('users.checkin_label.checkin', :token_type => current_token.token_type.title, :motivation => current_token.motivation.title)
     else
-      "Current not checkin..."
+      I18n.t('users.checkin_label.no_checkin')
     end
   end
 
   def checkin_owners_label
     if self.checkin?
       current_token = self.tokens.used.first(:conditions=>['? between start_at and stop_at',Time.now.utc])
-      msg = "This credit was given by OWNER_TOKEN and This check-in was done by OWNER_CHECKIN"
+      msg = I18n.t('users.checkin_owners_label.msg')
       current_token.token_owner ? msg.gsub!('OWNER_TOKEN',current_token.token_owner.name) : msg.gsub!('OWNER_TOKEN',"Nobody")
       if current_token.checkin_owner
         if current_token.checkin_owner == self
@@ -143,7 +143,7 @@ class User < ActiveRecord::Base
       end
       msg
     else
-      "Current not checkin..."
+      I18n.t('users.checkin_label.no_checkin')
     end
   end
 
