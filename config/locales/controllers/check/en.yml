@@ -1,0 +1,6 @@
+en:
+  controllers:
+    check:
+      actions:
+        new:
+          error: "Ooooh no ^^ You have no enough credits... please, buy some credits !"

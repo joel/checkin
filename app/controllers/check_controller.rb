@@ -6,9 +6,9 @@ class CheckController < ApplicationController
   
   def new
     @user = User.find(params[:user_id])
-    respond_with
-    flash[:error] = "Ooooh no ^^ You have no enough credits... please, buy some credits !" unless @user.tokens.available.count > 0
     authorize! :manage, @user
+    flash[:error] = t('controllers.check.actions.new.error') unless @user.tokens.available.count > 0
+    respond_with(@user)
   end
 
   def create

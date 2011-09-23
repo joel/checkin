@@ -1,0 +1,6 @@
+fr:
+  controllers:
+    check:
+      actions:
+        new:
+          error: "Ooooh non ^^ Vous n'avez pas assez de crédit ! :-/"
