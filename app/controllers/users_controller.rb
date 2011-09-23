@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   
   # TODO Temporary method
   def import
-    data = JSON.parse(open("http://application.localhost.com:3010/people/export.json").read)
+    data = JSON.parse(open("http://jtsr.fr/people/export.json").read)
     User.import(data)
     respond_with do |format|
       format.json { render :json => data }
