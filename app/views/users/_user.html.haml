@@ -13,9 +13,10 @@
         = form_for(user, :url => request_an_invitation_user_path(user), :html => { :method => :post })  do |f|
           %button{:class=>"btn success", :id => "request_an_invitation_for_#{user.id}"}= t('buttons.follow')
   %div{:class => "user_bottom column"}
-    - if can? :update, user
-      = form_for(user, :url => new_user_check_path(user), :html => { :method => :get })  do |f|
-        %button{:class => "btn primary",:id => "checkin_for_#{user.id}"}= t('buttons.checkin')
+    - unless user.checkin?
+      - if can? :update, user
+        = form_for(user, :url => new_user_check_path(user), :html => { :method => :get })  do |f|
+          %button{:class => "btn primary",:id => "checkin_for_#{user.id}"}= t('buttons.checkin')
     - if can? :manage, :all
       = "#{link_to t('links.add_credits'), add_tokens_user_tokens_path(user)} | ".html_safe
     - if can? :update, user
