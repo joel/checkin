@@ -46,7 +46,6 @@ group :assets do
 end
 
 group :test do
-  gem 'bundle'
   gem "rspec"
   gem "cucumber"
   gem 'launchy'
