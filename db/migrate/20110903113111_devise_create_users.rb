@@ -29,7 +29,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     add_index :users, :authentication_token, :unique => true
     add_index :users, :firstname, :unique => false
     add_index :users, :lastname, :unique => false
-    add_index :users, [:firstname, :lastname], :unique => true
+    # add_index :users, [:firstname, :lastname], :unique => true
     add_index :users, :rpx_identifier, :unique => true
   end
 

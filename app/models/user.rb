@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   # TODO To restore
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter, :avatar
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter, :avatar, :bio, :admin
 
   # # TODO To Remove
   # attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter, :avatar,

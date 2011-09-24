@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :token_type do
-    title "MyString"
+    sequence(:title) { |n| "Token Type #{n}"}
   end
 end

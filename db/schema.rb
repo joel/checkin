@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(:version => 20110903133939) do
     t.datetime "updated_at"
   end
 
+  add_index "motivations", ["title"], :name => "index_motivations_on_title", :unique => true
+
   create_table "notifications", :force => true do |t|
     t.integer  "user_id"
     t.datetime "sent_at"
@@ -56,19 +58,27 @@ ActiveRecord::Schema.define(:version => 20110903133939) do
     t.datetime "updated_at"
   end
 
+  add_index "token_types", ["title"], :name => "index_token_types_on_title", :unique => true
+
   create_table "tokens", :force => true do |t|
     t.integer  "token_type_id"
     t.integer  "user_id"
-    t.decimal  "cost"
-    t.datetime "start_at"
-    t.datetime "stop_at"
-    t.boolean  "used"
     t.integer  "motivation_id"
     t.integer  "checkin_owner_id"
     t.integer  "token_owner_id"
+    t.decimal  "cost",             :precision => 10, :scale => 2, :default => 0.0
+    t.datetime "start_at"
+    t.datetime "stop_at"
+    t.boolean  "used",                                            :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "tokens", ["checkin_owner_id"], :name => "index_tokens_on_checkin_owner_id"
+  add_index "tokens", ["motivation_id"], :name => "index_tokens_on_motivation_id"
+  add_index "tokens", ["token_owner_id"], :name => "index_tokens_on_token_owner_id"
+  add_index "tokens", ["token_type_id"], :name => "index_tokens_on_token_type_id"
+  add_index "tokens", ["user_id"], :name => "index_tokens_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "",    :null => false
@@ -84,7 +94,7 @@ ActiveRecord::Schema.define(:version => 20110903133939) do
     t.string   "authentication_token"
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "gender"
+    t.string   "gender",                                :default => "Mr"
     t.string   "company"
     t.string   "phone"
     t.string   "twitter"
@@ -98,6 +108,9 @@ ActiveRecord::Schema.define(:version => 20110903133939) do
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["firstname"], :name => "index_users_on_firstname"
+  add_index "users", ["lastname"], :name => "index_users_on_lastname"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["rpx_identifier"], :name => "index_users_on_rpx_identifier", :unique => true
 
 end

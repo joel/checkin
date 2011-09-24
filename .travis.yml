@@ -9,3 +9,6 @@ notifications:
     - joel.azemar@mgmail.com
     on_success: change
     on_failure: always
+before_script:
+  - "bundle exec rake db:drop db:create db:migrate db:test:prepare"
+script: "bundle exec rspec spec/*"

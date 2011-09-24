@@ -1,8 +1,8 @@
-['full day','half day', 'free'].each { |title| TokenType.create(:title=>title) }
+['full day','half day', 'free'].each { |title| TokenType.create(:title=>title) unless TokenType.where(:title=>title).exists? }
 
 ['co-working','meeting', 'guest', 'other'].each do |title|
   puts "Add motivation #{title}" 
-  Motivation.create(:title=>title)
+  Motivation.create(:title=>title) unless Motivation.where(:title=>title).exists?
 end
 
 people = [{:gender=>'Mr',:firstname=>'Zaphod',:lastname=>'Beeblebrox',:company=>'Galaxy',:phone=>'0102030405',:email=>'zaphod@checkin.com'},

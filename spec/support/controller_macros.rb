@@ -38,8 +38,9 @@ module ControllerMacros
   def login_as_person_with_credits
     @user = Factory(:user)
     ['full day','half day', 'free'].each do |title|
+      # token_type = FactoryGirl.build_stubbed(:token_type, :title => title)
       token_type = Factory(:token_type, :title => title)
-      5.times { Factory(:token, :token_type => token_type, :user => @user, :start_at => nil, :stop_at => nil) }
+      5.times { Factory(:token, :token_type_id => token_type.id, :user => @user, :start_at => nil, :stop_at => nil) }
     end
     sign_in :user, @user
   end

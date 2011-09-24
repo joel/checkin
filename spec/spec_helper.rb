@@ -7,7 +7,8 @@ Spork.prefork do
     require 'simplecov'
     SimpleCov.start 'rails'
   end
-  
+  # require 'cover_me' # Ruby 1.9
+    
   ENV["RAILS_ENV"] ||= 'test'
   require 'rails/application'
   Spork.trap_method(Rails::Application, :reload_routes!)
@@ -16,42 +17,27 @@ Spork.prefork do
   require 'rspec/rails'
   require 'factory_girl'
   require 'spork/ext/ruby-debug'
-  # require 'cover_me' # Ruby 1.9
-  
+  require 'database_cleaner'
+
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
   Dir[Rails.root.join("lib/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
     config.mock_with :mocha
     config.mock_with :rspec
-    # config.include Rails.application.routes.url_helpers
-    # config.include UrlHelper
-    config.use_transactional_fixtures = true
 
     config.include Devise::TestHelpers, :type => :controller
+    config.include Devise::TestHelpers, :type => :view
+    config.include Devise::TestHelpers, :type => :helper
     config.include ControllerMacros, :type => :controller
-    
-    # config.before(:suite) do
-    #   DatabaseCleaner.strategy = :truncation
-    # end
+    config.include ControllerMacros, :type => :view
+    config.include ControllerMacros, :type => :helper
 
-    # config.before(:each) do
-    #   DatabaseCleaner.start
-    # end
-
-    # config.after(:each) do
-    #   DatabaseCleaner.clean
-    # end
-
+    config.use_transactional_fixtures = false
   end
 
 end
 
 Spork.each_run do
-  # Factory.factories.clear
-  # Dir[Rails.root.join("spec/factories/**/*.rb")].each{ |f| load f }
-  # Stootie::Application.reload_routes! # Spork.trap_method(Rails::Application, :reload_routes!)
-  DatabaseCleaner.strategy = :truncation
-  DatabaseCleaner.clean
-  ActiveSupport::Dependencies.clear
+
 end

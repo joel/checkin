@@ -99,8 +99,9 @@ describe User do
     before(:each) do
       @user = Factory(:user)
       @full_day, @half_day = Factory(:token_type,:title=>'full day'), Factory(:token_type,:title=>'half day')
-      5.times { Factory(:token,:token_type=>@full_day,:user=>@user,:start_at=>nil,:stop_at=>nil) }
-      5.times { Factory(:token,:token_type=>@half_day,:user=>@user,:start_at=>nil,:stop_at=>nil) }
+      @motivation = Factory(:motivation)
+      5.times { Factory(:token,:token_type=>@full_day,:motivation=>@motivation,:user=>@user,:start_at=>nil,:stop_at=>nil) }
+      5.times { Factory(:token,:token_type=>@half_day,:motivation=>@motivation,:user=>@user,:start_at=>nil,:stop_at=>nil) }
       @user.reload
     end
 
@@ -124,7 +125,7 @@ describe User do
         token = @user.tokens.available.first(:conditions=>{:token_type_id=>@half_day.id})
         @user.checkin(token.token_type,token.motivation)
         @user.reload
-        @user.checkin_label.should eql("(I'm here to #{@half_day.title} for #{token.motivation.title})")
+        @user.checkin_label.should eql("(I'm here to #{@half_day.title} for #{@motivation.title})")
       end
     end
 

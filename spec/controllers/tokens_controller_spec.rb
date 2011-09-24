@@ -19,7 +19,9 @@ describe TokensController do
   
   describe "POST create_tokens" do
     before do
-      FactoryGirl.create_list(:token_type, 2)
+      ['full day','half day', 'free'].each do |title|
+        Factory(:token_type, :title => title)
+      end
     end
     it "..." do
       user = Factory(:user, :admin => false)

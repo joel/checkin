@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :motivation do
-    title "MyString"
+    sequence(:title) { |n| "My Motivation #{n}"}
   end
 end
