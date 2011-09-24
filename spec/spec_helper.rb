@@ -34,6 +34,15 @@ Spork.prefork do
     config.include ControllerMacros, :type => :helper
 
     config.use_transactional_fixtures = false
+    
+    config.before(:all) do
+      DeferredGarbageCollection.start
+    end
+
+    config.after(:all) do
+      DeferredGarbageCollection.reconsider
+    end
+    
   end
 
 end
