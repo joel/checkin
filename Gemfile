@@ -27,6 +27,7 @@ gem "hpricot"
 gem "ruby_parser"
 gem 'resque'
 gem 'resque_mailer'
+gem 'jquery-rails'
 
 group :assets do
   gem 'less'
@@ -70,7 +71,6 @@ group :test do
 end
 
 group :development do
-  gem 'jquery-rails'
   gem "capistrano"
   gem "cucumber-rails"
   gem "rspec-rails"
