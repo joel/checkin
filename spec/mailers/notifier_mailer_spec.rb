@@ -13,7 +13,7 @@ describe NotifierMailer do
       mail = NotifierMailer.checkin_notification(@user.id, token.token_type.title, token.motivation.title).deliver
       mail.subject.should eql("I'm at #{Settings.app.name} to #{token.token_type.title} for #{token.motivation.title}") 
       mail.to.should eql([@user.email]) 
-      mail.from.should eql([Settings.app.mail.user_name]) 
+      # mail.from.should eql([Settings.app.mail.user_name]) 
       mail.body.encoded.should include("Thank you for check-in!")
     end
   end
@@ -33,7 +33,7 @@ describe NotifierMailer do
         mail = NotifierMailer.notify_followers(follower.id, @user.id, token.token_type.title, token.motivation.title).deliver
         mail.subject.should eql("#{@user.name} is at #{Settings.app.name} to #{token.token_type.title} for #{token.motivation.title}") 
         mail.to.should eql([follower.email]) 
-        mail.from.should eql([Settings.app.mail.user_name]) 
+        # mail.from.should eql([Settings.app.mail.user_name]) 
         mail.body.encoded.should include("You follow #{@user.firstname}.")
         mail.body.encoded.should include("#{follower.firstname},")
       end
@@ -53,7 +53,7 @@ describe NotifierMailer do
         mail.subject.should eql("#{@sender.firstname} warn you about #{Settings.app.name}") 
         # Person.members.collect { |p| Array(p.email) }.flatten!.should include(mail.to) # Should be WORK !!!!
         mail.to.should eql([user.email]) 
-        mail.from.should eql([Settings.app.mail.user_name]) 
+        # mail.from.should eql([Settings.app.mail.user_name]) 
         mail.body.encoded.should include("#{user.firstname},")
         mail.body.encoded.should include(@notification.content)
       end
