@@ -1,4 +1,6 @@
-rvm: 1.9.2
+rvm:
+  - 1.9.2
+  - 1.9.3
 branches:
   only:
     - master
@@ -12,3 +14,4 @@ notifications:
 before_script:
   - "bundle exec rake db:drop db:create db:migrate db:test:prepare"
 script: "bundle exec rspec spec/*"
+env: JRUBY_OPTS='--1.9'
