@@ -4,8 +4,6 @@ branches:
   only:
     - master
 notifications:
-  irc:
-    - "irc.freenode.org#toulouse.rb"
   email:
     - joel.azemar@mgmail.com
   on_success: change

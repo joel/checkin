@@ -6,6 +6,7 @@ devise:
     api_key: "..."
 app:
   host: "..."
+  name: "..."
   mail:
     address: "..."
     port: 587
