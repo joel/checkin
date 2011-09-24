@@ -1,16 +1,10 @@
-rvm:
-  - 1.9.2
-  - 1.9.3
-branches:
-  only:
-    - master
-notifications:
-  irc:
-    - "irc.freenode.org#toulouse.rb"
-  email:
-    - joel.azemar@mgmail.com
-    on_success: change
-    on_failure: always
+bundler_args: --without development
 before_script:
   - "bundle exec rake db:drop db:create db:migrate db:test:prepare"
 script: "bundle exec rspec spec/*"
+rvm:
+  - 1.9.2
+  - 1.9.3
+notifications:
+  recipients:
+    - joel.azemar@gmail.com
