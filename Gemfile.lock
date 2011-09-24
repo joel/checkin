@@ -54,6 +54,8 @@ GEM
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
+    bundle (0.0.1)
+      bundler
     cancan (1.6.5)
     capistrano (2.8.0)
       highline
@@ -302,6 +304,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_api
+  bundle
   cancan
   capistrano
   capybara
