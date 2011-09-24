@@ -14,4 +14,3 @@ notifications:
 before_script:
   - "bundle exec rake db:drop db:create db:migrate db:test:prepare"
 script: "bundle exec rspec spec/*"
-env: JRUBY_OPTS='--1.9'
