@@ -8,14 +8,14 @@ class UsersController < ApplicationController
   before_filter :safe_user, :only => [:edit,:update,:destroy]
   before_filter :secure_invitation, :only => [:accept_invitation,:denied_invitation]
   
-  # TODO Temporary method
-  def import
-    data = JSON.parse(open("http://jtsr.fr/people/export.json").read)
-    User.import(data)
-    respond_with do |format|
-      format.json { render :json => data }
-    end
-  end
+  # # TODO Temporary method
+  # def import
+  #   data = JSON.parse(open("http://jtsr.fr/people/export.json").read)
+  #   User.import(data)
+  #   respond_with do |format|
+  #     format.json { render :json => data }
+  #   end
+  # end
   
   # GET /users
   # GET /users.xml

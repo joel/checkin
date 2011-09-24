@@ -2,7 +2,6 @@
   / %p.checkin= user.nb_of_checkin_label.html_safe
   %div{:class => "span2 columns", :id => "img"}
     = avatar(user)
-    = user.avatar_url(:thumb)
   %p
     = link_to truncate(user.name,:length=>19), user
     %b
