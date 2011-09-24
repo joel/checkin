@@ -4,6 +4,7 @@
       %div.span3
         %div#img
           = avatar(@user)
+          = @user.avatar_url(:thumb)
       %div.span8
         - if can? :manage, @user
           = render :partial => 'avatar'
