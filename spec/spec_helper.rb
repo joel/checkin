@@ -16,6 +16,7 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'factory_girl'
+  # https://github.com/irohiroki/guard-spork-ruby-debug-sample
   require 'spork/ext/ruby-debug'
   require 'database_cleaner'
 
