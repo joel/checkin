@@ -3,31 +3,31 @@ fr:
     edit:
       title: Edition de compte
       title_box: "Note :"
-      p_box: "Les informations renseignées ne seront visible uniquement par les personnes que vous aurez acceptées ! Afin de faciliter les échanges avec celle-ci n'hésitez pas à renseigner votre fiche"
+      p_box: "Les informations renseignées seront visibles uniquement par les personnes que vous aurez acceptées ! Afin de faciliter les échanges avec celles-ci n'hésitez pas à renseigner votre fiche"
       registration: 'Changer votre mot de passe'
     avatar:
       upload: Envoyer ma photo
     show:
-      edit: Editez votre profile
+      edit: Editer votre profil
       delete: 'Supprimer mon compte'
-      confirm: 'Êtes vous sûr ?! :-/'
+      confirm: 'Êtes-vous sûr ?! :-/'
     index:
       title: "Liste des personnes"
       buttons:
-        checked_people: "Voir uniquement les personnes présentent !"
+        checked_people: "Voir uniquement les personnes présentes !"
   simple_form:
     labels:
       user:
         avatar: Ma photo
         email: votre email
-        password_confirmation: confirmez
+        password_confirmation: confirmer
         remember_me: Se souvenir de moi !
     hints:
       user:
         email:
     placeholders:    
       user:
-        twitter: Compte twitter
+        twitter: Compte Twitter
   helpers:
     select:
       user:

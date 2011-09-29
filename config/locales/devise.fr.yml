@@ -26,9 +26,9 @@ fr:
       signed_in: "Connecté."
       signed_out: "Déconnecté."
       new:
-        title: Identifez vous
+        title: Identifiez vous
         title_box: Au choix
-        p_box: 'Vous pouvez aussi vous identifiez via Twitter, Facebook ou Google...'
+        p_box: 'Vous pouvez aussi vous identifier via Twitter, Facebook ou Google...'
         remember_me: (Seulement sur cet ordinateur)
     passwords:
       send_instructions: "Vous allez recevoir un courriel contenant des instructions pour changer votre mot de passe."
@@ -71,7 +71,7 @@ fr:
         didnt_receive_unlock_instructions?: "Vous n'avez pas reçu de courriel de déverrouillage de votre compte ?"
         sign_in: "Se connecter"
         sign_up: 'Pas encore de compte ? Je crée mon compte !'
-        forgot_password: "Mot de passe oublier ?"
+        forgot_password: "Mot de passe oublié ?"
         confirmation: "Vous n'avez pas reçu les instructions de confirmation ?"
         instruction: "Vous n'avez pas reçu les instructions de déverrouillage ?"
         sign_in_with: "Connecté avec #{provider.to_s.titleize}"
@@ -112,12 +112,12 @@ fr:
       edit:
         title: Edition profil
         title_box: Important
-        p_box: Seul les personnes dont vous avez accepté l'invitation pourrons avoir acces a ces informations
+        p_box: Seules les personnes dont vous avez accepté l'invitation pourront avoir accès à ces informations
         edit: "Modifier"
         # For "leave blank if you don't want to change it"
         password_instruction: "Laisser vide si vous ne voulez pas le changer"
         # For "we need your current password to confirm your changes"
-        current_password_instruction: "Vous devez saisir votre mot de passe courant pour confirmer vos changement"                
+        current_password_instruction: "Vous devez saisir votre mot de passe courant pour confirmer vos changements"                
         update: "Mettre à jour"
         cancel_my_account: "Supprimer mon compte !!!"
         unhappy?: "Pas content(e) ?"
