@@ -8,7 +8,9 @@
     %div{:class => "span11 columns" }
       = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
         = devise_error_messages!
-        = render :partial => 'form', :locals => { :f => f }
+        = f.input :current_password
+        = f.input :password
+        = f.input :password_confirmation
         %div{:class => "actions"}
           = f.button :submit, :class => 'primary'
     %div{:class => "clearfix span15 columns"}
