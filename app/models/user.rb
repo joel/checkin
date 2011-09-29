@@ -36,6 +36,20 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  # http://webtempest.com/rails-3-easy-user-sign-upin-devise-with-rpx-janrain-via-rpx_connectable/
+  def on_before_rpx_success(rpx_data)
+    # logger.info rpx_data.inspect + "-------------------------------"
+    name = rpx_data["name"]
+    unless name.blank?
+      self.firstname = name["givenName"]
+      self.lastname = name["familyName"]
+      # self.save
+    end
+    self.email = rpx_data['verifiedEmail'] unless rpx_data['verifiedEmail'].blank?
+    self.email = rpx_data['email'] unless rpx_data['email'].blank?
+    self.email = rpx_data['gender'] unless rpx_data['gender'].blank?
+  end
+    
   def nb_of_checkin
     self.tokens.used.count
   end
