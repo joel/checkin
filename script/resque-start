@@ -1,0 +1,2 @@
+#!/bin/sh
+RAILS_ENV=development PIDFILE=tmp/pids/resque.pid VVERBOSE=1 QUEUE=* bundle exec rake environment resque:work
