@@ -11,7 +11,7 @@ fr: &fr
           encrypted_password: mot de passe crypté
           reset_password_token: jeton de remise à zero du mot de passe
           reset_password_sent_at: jeton envoyé à
-          remember_created_at: se souvenir de moi crée à
+          remember_created_at: se souvenir de moi créé le
           sign_in_count: nombre d'authentification
           current_sign_in_at: connexion à
           last_sign_in_at: dernier connexion à
@@ -21,7 +21,7 @@ fr: &fr
           firstname: prénom
           lastname: nom
           gender: civilité
-          company: compagnie
+          company: entreprise
           phone: téléphone
           twitter: compte twitter
           bio: biographie
@@ -37,7 +37,7 @@ fr: &fr
       already: "Vous avez déjà émargé !"
       no_credit: "Il n'existe pas de crédit de ce type ! :-/"
     add_tokens:
-      cost_missing: "Le coût doit être définit"
+      cost_missing: "Le coût doit être défini"
       credit_added: "%{number} crédits ont été ajoutés"
     checkin_label:
       checkin: "(Je suis là pour %{token_type} pour %{motivation})"
