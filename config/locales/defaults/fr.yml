@@ -5,14 +5,14 @@ fr:
       send_notifications: Envoyer une notification aux adhérents
   app:
     name: "Checkin"
-    tagline: "Simple systéme d'émargement"
+    tagline: "Simple système d'émargement"
   common:
     "yes": "Oui"
     "no": "Non"
     "or": "ou"
-    optional: "optionel"
+    optional: "optionnel"
     when_blank: "Quand vide"
-    fill_in_to_change: "laisser vide si vous ne voulez rien changer"
+    fill_in_to_change: "laissez vide si vous ne voulez rien changer"
     actions:
       show: "Voir"
       edit: "Editer"
