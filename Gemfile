@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # gem 'rails', '3.1.0'
-gem 'rails', '3.1.1.rc1'
+gem 'rails', '3.1.1.rc2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
 
 # Bundle edge Rails instead:
@@ -36,7 +36,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "3.1.3"
+  gem 'sass-rails', "3.1.4"
   gem 'coffee-rails', "~> 3.1.0.rc"
   gem 'uglifier'
   gem 'less', '2.0.7'
@@ -57,7 +57,7 @@ group :test do
   # gem "cover_me"
   gem 'simplecov'
   gem "spork", "~> 0.9.0.rc9"
-  gem "guard", '0.8.1'
+  gem "guard", '0.8.4'
   gem "guard-rspec"
   gem 'guard-cucumber'
   gem "guard-spork"
@@ -68,7 +68,7 @@ end
 
 group :development do
   gem "capistrano", '2.9.0'
-  gem "cucumber-rails", '1.1.0'
+  gem "cucumber-rails", '1.1.1'
   gem "rspec-rails"
   gem "haml-rails"
 end

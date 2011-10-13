@@ -22,6 +22,7 @@ CheckinReloaded::Application.routes.draw do
       post 'request_an_invitation'
       post 'accept_invitation'
       delete 'denied_invitation'
+      get 'checkin_label'
     end
     # match 'people/:invitation_id/accept' => 'people#accept_invitation', :as => :accept
     resources :tokens do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110903133939) do
+ActiveRecord::Schema.define(:version => 20110929123022) do
 
   create_table "invitations", :force => true do |t|
     t.integer  "follower_id"
@@ -104,6 +104,8 @@ ActiveRecord::Schema.define(:version => 20110903133939) do
     t.string   "rpx_identifier"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "checkin_label_msg"
+    t.boolean  "proccess_done",                         :default => false
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

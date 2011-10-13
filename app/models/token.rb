@@ -28,6 +28,7 @@ class Token < ActiveRecord::Base
     end
     options.merge!(:used => true, :motivation_id => motivation_id, :checkin_owner_id => checkin_owner_id)
     self.update_attributes(options)
+    self.user.update_attribute(:process_done,false) # Add refresh for next time
     msg
   end
   

@@ -9,12 +9,12 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    actionmailer (3.1.1.rc1)
-      actionpack (= 3.1.1.rc1)
+    actionmailer (3.1.1.rc2)
+      actionpack (= 3.1.1.rc2)
       mail (~> 2.3.0)
-    actionpack (3.1.1.rc1)
-      activemodel (= 3.1.1.rc1)
-      activesupport (= 3.1.1.rc1)
+    actionpack (3.1.1.rc2)
+      activemodel (= 3.1.1.rc2)
+      activesupport (= 3.1.1.rc2)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       i18n (~> 0.6)
@@ -23,19 +23,19 @@ GEM
       rack-mount (~> 0.8.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.0.0)
-    activemodel (3.1.1.rc1)
-      activesupport (= 3.1.1.rc1)
+    activemodel (3.1.1.rc2)
+      activesupport (= 3.1.1.rc2)
       builder (~> 3.0.0)
       i18n (~> 0.6)
-    activerecord (3.1.1.rc1)
-      activemodel (= 3.1.1.rc1)
-      activesupport (= 3.1.1.rc1)
+    activerecord (3.1.1.rc2)
+      activemodel (= 3.1.1.rc2)
+      activesupport (= 3.1.1.rc2)
       arel (~> 2.2.1)
       tzinfo (~> 0.3.29)
-    activeresource (3.1.1.rc1)
-      activemodel (= 3.1.1.rc1)
-      activesupport (= 3.1.1.rc1)
-    activesupport (3.1.1.rc1)
+    activeresource (3.1.1.rc2)
+      activemodel (= 3.1.1.rc2)
+      activesupport (= 3.1.1.rc2)
+    activesupport (3.1.1.rc2)
       multi_json (~> 1.0)
     acts_as_api (0.3.9)
       activemodel (>= 3.0.0)
@@ -79,7 +79,7 @@ GEM
       gherkin (~> 2.5.0)
       json (>= 1.4.6)
       term-ansicolor (>= 1.0.6)
-    cucumber-rails (1.1.0)
+    cucumber-rails (1.1.1)
       capybara (>= 1.1.1)
       cucumber (>= 1.1.0)
       nokogiri (>= 1.5.0)
@@ -107,7 +107,7 @@ GEM
     gherkin (2.5.1)
       json (>= 1.4.6)
     growl (1.0.3)
-    guard (0.8.1)
+    guard (0.8.4)
       thor (~> 0.14.6)
     guard-bundler (0.1.3)
       bundler (>= 1.0.0)
@@ -166,7 +166,7 @@ GEM
     orm_adapter (0.0.5)
     pg (0.11.0)
     polyglot (0.3.2)
-    rack (1.3.3)
+    rack (1.3.4)
     rack-cache (1.0.3)
       rack (>= 0.4)
     rack-mount (0.8.3)
@@ -175,19 +175,19 @@ GEM
       rack
     rack-test (0.6.1)
       rack (>= 1.0)
-    rails (3.1.1.rc1)
-      actionmailer (= 3.1.1.rc1)
-      actionpack (= 3.1.1.rc1)
-      activerecord (= 3.1.1.rc1)
-      activeresource (= 3.1.1.rc1)
-      activesupport (= 3.1.1.rc1)
+    rails (3.1.1.rc2)
+      actionmailer (= 3.1.1.rc2)
+      actionpack (= 3.1.1.rc2)
+      activerecord (= 3.1.1.rc2)
+      activeresource (= 3.1.1.rc2)
+      activesupport (= 3.1.1.rc2)
       bundler (~> 1.0)
-      railties (= 3.1.1.rc1)
+      railties (= 3.1.1.rc2)
     rails_config (0.2.4)
       activesupport (>= 3.0)
-    railties (3.1.1.rc1)
-      actionpack (= 3.1.1.rc1)
-      activesupport (= 3.1.1.rc1)
+    railties (3.1.1.rc2)
+      actionpack (= 3.1.1.rc2)
+      activesupport (= 3.1.1.rc2)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -235,8 +235,8 @@ GEM
     ruby_parser (2.3.1)
       sexp_processor (~> 3.0)
     rubyzip (0.9.4)
-    sass (3.1.7)
-    sass-rails (3.1.3)
+    sass (3.1.8)
+    sass-rails (3.1.4)
       actionpack (~> 3.1.0)
       railties (~> 3.1.0)
       sass (>= 3.1.4)
@@ -256,7 +256,7 @@ GEM
       rack (~> 1.1)
       tilt (< 2.0, >= 1.2.2)
     spork (0.9.0.rc9)
-    sprockets (2.0.0)
+    sprockets (2.0.1)
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (!= 1.3.0, ~> 1.1)
@@ -278,7 +278,7 @@ GEM
     twitter-bootstrap-rails (0.0.5)
       railties (~> 3.0)
       thor (~> 0.14)
-    tzinfo (0.3.29)
+    tzinfo (0.3.30)
     uglifier (1.0.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
@@ -305,14 +305,14 @@ DEPENDENCIES
   client_side_validations
   coffee-rails (~> 3.1.0.rc)
   cucumber (= 1.1.0)
-  cucumber-rails (= 1.1.0)
+  cucumber-rails (= 1.1.1)
   database_cleaner
   devise (= 1.4.7)
   devise_rpx_connectable
   dynamic_form
   factory_girl_rails
   growl
-  guard (= 0.8.1)
+  guard (= 0.8.4)
   guard-bundler
   guard-cucumber
   guard-rspec
@@ -327,7 +327,7 @@ DEPENDENCIES
   mini_magick
   mocha
   pg
-  rails (= 3.1.1.rc1)
+  rails (= 3.1.1.rc2)
   rails_config
   rb-fsevent (= 0.9.0.pre1)
   resque
@@ -338,7 +338,7 @@ DEPENDENCIES
   ruby-debug19
   ruby-prof
   ruby_parser (= 2.3.1)
-  sass-rails (= 3.1.3)
+  sass-rails (= 3.1.4)
   simple_form!
   simplecov
   spork (~> 0.9.0.rc9)

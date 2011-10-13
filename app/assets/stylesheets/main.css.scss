@@ -14,13 +14,16 @@
 	/*border:solid black 1px;*/
 	margin-left:0;
 	.user { 
-		p.checkin { height: 30px; }
+		p.checkin { 
+			height: 35px; width:100%;
+		}
+		p.highlight { background-color:#FF0; }
 		padding:2px;
 		margin:2px;
 		float:left;
 		border: solid 1px $person-border-color;
 /*		min-height: 170px;*/
-		height: 200px;
+		height: 230px;
 		#img { 
 			margin:5px 2px 5px 0;
 			border: solid 1px gray;

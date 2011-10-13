@@ -1,5 +1,7 @@
 # encoding: utf-8
 class User < ActiveRecord::Base
+  include CheckinLabel
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,7 +9,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   # TODO To restore
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter, :avatar, :bio, :admin
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter, :avatar, :bio, :admin,
+    :checkin_label_msg, :proccess_done
 
   # # TODO To Remove
   # attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter, :avatar,
@@ -54,10 +57,10 @@ class User < ActiveRecord::Base
     self.tokens.used.count
   end
 
-  def nb_of_checkin_label
-    msg = I18n.t('users.nb_checkin', :nb => self.nb_of_checkin)
-    msg << ", " + I18n.t('users.major') if major?
-    msg
+  def nb_checkin_label
+    # Add enqueue only if necessary
+    self.nb_of_checkin_label(self.id) unless self.proccess_done # Refresh in queue
+    self.checkin_label_msg
   end
 
   def major?
