@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   # TODO To restore
   attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter, :avatar, :bio, :admin,
-    :checkin_label_msg, :proccess_done
+    :checkin_label_msg, :process_done
 
   # # TODO To Remove
   # attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter, :avatar,
@@ -59,8 +59,8 @@ class User < ActiveRecord::Base
 
   def nb_checkin_label
     # Add enqueue only if necessary
-    self.nb_of_checkin_label(self.id) unless self.proccess_done # Refresh in queue
-    self.checkin_label_msg
+    self.nb_of_checkin_label(self.id) unless self.process_done # Refresh in queue
+    self.checkin_label_msg.try(:html_safe)
   end
 
   def major?

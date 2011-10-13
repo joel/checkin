@@ -11,5 +11,6 @@ FactoryGirl.define do
     f.company "The World Company"
     f.phone "0678543492"
     f.admin false
+    f.process_done false
   end
 end

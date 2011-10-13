@@ -12,7 +12,7 @@
         = "#{@user.firstname} #{@user.lastname}"
     %div.row
       %div.span11
-        = @user.nb_of_checkin_label.html_safe
+        = @user.nb_checkin_label
     - if @user.checkin?
       %div.row
         %div.span11

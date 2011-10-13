@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20110929123022) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "checkin_label_msg"
-    t.boolean  "proccess_done",                         :default => false
+    t.boolean  "process_done",                          :default => false
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

@@ -34,9 +34,9 @@ class UsersController < ApplicationController
   end
   
   def checkin_label
-    @user = User.select('id,proccess_done,checkin_label_msg').where(:id => params[:id]).first
+    @user = User.select('id,process_done,checkin_label_msg').where(:id => params[:id]).first
     result = { :treated => 0, :user_id => @user.id, :treated => 1, :checkin_label => @user.checkin_label_msg }
-    result.merge!(:treated => 1) if @user.proccess_done # No have information for highlight ! 
+    result.merge!(:treated => 1) if @user.process_done # No have information for highlight ! 
     respond_with(@users) do |format|
       format.json { render :json => result }
     end
