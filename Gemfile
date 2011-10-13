@@ -20,8 +20,6 @@ gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem "client_side_validations"
 gem "twitter-bootstrap-rails", '0.0.5'
 gem "devise", "1.4.8"
-gem "rpx_now"
-gem "devise_rpx_connectable"
 gem "cancan", '1.6.6'
 gem "hpricot"
 gem "ruby_parser", '2.3.1'
