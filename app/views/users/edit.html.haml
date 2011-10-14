@@ -14,5 +14,4 @@
       = link_to t('links.home'), root_path
       = " | "
       = link_to @user.name, @user
-      - if current_user.rpx_identifier.blank?
-        = " | #{link_to(t('.registration'), edit_user_registration_path)}".html_safe
+      = " | #{link_to(t('.registration'), edit_user_registration_path)}".html_safe

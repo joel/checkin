@@ -5,16 +5,16 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :trackable, :validatable, :rpx_connectable, :token_authenticatable
+  :recoverable, :rememberable, :trackable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
   # TODO To restore
   attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter, :avatar, :bio, :admin,
-    :checkin_label_msg, :process_done
+    :checkin_label_msg, :process_done, :username
 
   # # TODO To Remove
   # attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter, :avatar,
-  # :encrypted_password, :reset_password_token, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :created_at, :updated_at, :rpx_identifier, :authentication_token, :admin
+  # :encrypted_password, :reset_password_token, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :created_at, :updated_at, :authentication_token, :admin
 
   paginates_per 36
 
@@ -24,8 +24,9 @@ class User < ActiveRecord::Base
   has_many :following, :through => :relationships, :source => :followed
   has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship", :dependent => :destroy
   has_many :followers, :through => :reverse_relationships, :source => :follower
-
-  validates_presence_of :firstname, :lastname, :company, :phone, :email
+  has_many :authentications
+ 
+  validates_presence_of :firstname, :lastname, :company, :phone, :email, :username
   # validates_presence_of :gender
   # validates_inclusion_of :gender, :in => %w{ Mr Mlle Mme }, :message => "La civilité n'est pas reconnue"
 
@@ -39,6 +40,23 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
     
+  def password_required?  
+    (authentications.empty? || !password.blank?)  
+  end
+  
+  def self.user_already_exist?(omniauth)
+    (user = User.find_by_email(omniauth['user_info']['email']) rescue nil)
+    return user if user
+    (user = User.find_by_username(omniauth['user_info']['nickname']) rescue nil)
+    return user
+  end
+  
+  def apply_omniauth(omniauth)
+    self.email = omniauth['user_info']['email'] if email.blank?
+    self.username = omniauth['user_info']['nickname'] if username.blank?
+    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+  end
+  
   def nb_of_checkin
     self.tokens.used.count
   end
@@ -172,120 +190,6 @@ class User < ActiveRecord::Base
     end
     return show
   end
-
-  # # TODO Temporary method
-  # def self.import(data)
-  #   begin
-  #     data.each do |p|
-  #       logger.info "! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% - #{p['email']} - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-  #       logger.info p['email']
-  #       already = User.where(:email=>p['email'])
-  #       User.destroy(already.first.id) if already.exists?
-  #       user = User.new(:email => p['email'],
-  #         :password => 'foobarzone',
-  #         :password_confirmation => 'foobarzone',
-  #         # :encrypted_password => p['encrypted_password'],
-  #         :reset_password_token => p['reset_password_token'],
-  #         :remember_created_at => p['remember_created_at'],
-  #         :sign_in_count => p['sign_in_count'],
-  #         :current_sign_in_at => p['current_sign_in_at'],
-  #         :last_sign_in_at => p['last_sign_in_at'],
-  #         :current_sign_in_ip => p['current_sign_in_ip'],
-  #         :last_sign_in_ip => p['last_sign_in_ip'],
-  #         :created_at => p['created_at'],
-  #         :updated_at => p['updated_at'],
-  #         :rpx_identifier => p['rpx_identifier'],
-  #         :authentication_token => p['authentication_token'],
-  #         :firstname => p['firstname'],
-  #         :lastname => p['lastname'],
-  #         :gender => p['gender'],
-  #         :company => p['company'],
-  #         :phone => p['phone'],
-  #         :admin => p['admin'])
-  #       user.save!
-  #       user.update_attribute(:encrypted_password, p['encrypted_password']) unless p['encrypted_password'].blank?
-  #       file_root = "/var/www/checkin/shared"
-  #       if !p['avatar']['url'].nil? and File.exist?(file_root + p['avatar']['url'])
-  #         user.avatar = File.new(file_root + p['avatar']['url'])  
-  #         logger.info "!! RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR - #{p['email']} - RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
-  #         user.save!
-  #         logger.info "!! RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR - #{p['email']} - RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
-  #       end
-  #     end
-  #     # Tokens
-  #     data.each do |p|
-  #       logger.info "!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% - #{p['email']} - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-  #       user = User.where(:email=>p['email']).first
-  #       logger.info p['tokens']
-  #       p['tokens'].each do |token|
-  #         logger.info token
-  #         ['checkin_owner_id','token_owner_id'].each do |method|
-  #           if User.where(:email=>token[method]).exists?
-  #             token.merge!(method.to_sym => User.where(:email=>token[method]).first.id)
-  #           else
-  #             token.merge!(method.to_sym => nil)
-  #           end
-  #         end
-  #         user.tokens.create(token)
-  #       end
-  #     end
-  #     # Invitations
-  #     data.each do |p|
-  #       logger.info "!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% - #{p['email']} - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-  #       user = User.where(:email=>p['email']).first
-  #       logger.info p['invitations']
-  #       p['invitations'].each do |invitation|
-  #         logger.info invitation
-  #         ['follower_id','followed_id'].each do |method|
-  #           if User.where(:email=>invitation[method]).exists?
-  #             invitation.merge!(method.to_sym => User.where(:email=>invitation[method]).first.id)
-  #           else
-  #             invitation.merge!(method.to_sym => nil)
-  #           end
-  #         end
-  #         user.invitations.create(invitation)
-  #       end
-  #     end
-  #     # Following
-  #     data.each do |p|
-  #       logger.info "!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% - #{p['email']} - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-  #       user = User.where(:email=>p['email']).first
-  #       logger.info p['following']
-  #       p['following'].each do |relationship|
-  #         logger.info relationship
-  #         ['follower_id','followed_id'].each do |method|
-  #           if User.where(:email=>relationship[method]).exists?
-  #             relationship.merge!(method.to_sym => User.where(:email=>relationship[method]).first.id)
-  #           else
-  #             relationship.merge!(method.to_sym => nil)
-  #           end
-  #         end
-  #         user.following.create(relationship)
-  #       end
-  #     end
-  #     # Followers
-  #     data.each do |p|
-  #       logger.info "!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% - #{p['email']} - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-  #       user = User.where(:email=>p['email']).first
-  #       logger.info p['followers']
-  #       p['followers'].each do |relationship|
-  #         logger.info relationship
-  #         ['follower_id','followed_id'].each do |method|
-  #           if User.where(:email=>relationship[method]).exists?
-  #             relationship.merge!(method.to_sym => User.where(:email=>relationship[method]).first.id)
-  #           else
-  #             relationship.merge!(method.to_sym => nil)
-  #           end
-  #         end
-  #         user.followers.create(relationship)
-  #       end
-  #     end
-  #   rescue Exception => e
-  #     logger.info "************************************************************************"
-  #     logger.info e.message
-  #     logger.info "************************************************************************"
-  #   end
-  # end
 
   private 
 

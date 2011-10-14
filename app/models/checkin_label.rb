@@ -27,7 +27,6 @@ module CheckinLabel
     base.class_eval do
 
       def nb_of_checkin_label(user_id)
-        Resque.enqueue(AsyncCheckinLabel, user_id)
         begin
           Resque.enqueue(AsyncCheckinLabel, user_id)
         rescue Errno::ECONNREFUSED => e

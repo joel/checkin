@@ -20,6 +20,7 @@ en:
       user:
         email: "Email"
         avatar: My avatar
+        username: username
     hints:
       user:
         email:

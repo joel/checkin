@@ -3,4 +3,4 @@
     = link_to(t('.logout',:name=>current_user.email), destroy_user_session_path, :method => :delete)
 - else
   %li
-    = link_to(t('.login'), user_session_url)
+    = link_to(t('.login'), authentications_path)

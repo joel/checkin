@@ -19,7 +19,8 @@ fr:
     labels:
       user:
         avatar: Ma photo
-        email: votre email
+        email: email
+        username: "identifiant" 
         password_confirmation: confirmer
         remember_me: Se souvenir de moi !
     hints:
@@ -28,6 +29,7 @@ fr:
     placeholders:    
       user:
         twitter: Compte Twitter
+        username: "Votre nom d'utilisateur"
   helpers:
     select:
       user:

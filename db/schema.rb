@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110929123022) do
+ActiveRecord::Schema.define(:version => 20111013155303) do
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "invitations", :force => true do |t|
     t.integer  "follower_id"
@@ -101,11 +109,11 @@ ActiveRecord::Schema.define(:version => 20110929123022) do
     t.text     "bio"
     t.boolean  "admin",                                 :default => false
     t.string   "avatar"
-    t.string   "rpx_identifier"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "checkin_label_msg"
     t.boolean  "process_done",                          :default => false
+    t.string   "username"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
@@ -113,6 +121,5 @@ ActiveRecord::Schema.define(:version => 20110929123022) do
   add_index "users", ["firstname"], :name => "index_users_on_firstname"
   add_index "users", ["lastname"], :name => "index_users_on_lastname"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-  add_index "users", ["rpx_identifier"], :name => "index_users_on_rpx_identifier", :unique => true
 
 end
