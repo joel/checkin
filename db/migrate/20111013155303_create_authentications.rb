@@ -11,7 +11,7 @@ class CreateAuthentications < ActiveRecord::Migration
       t.remove :rpx_identifier
       t.string :username
     end
-    remove_index :users, :rpx_identifier
+    # remove_index :users, :rpx_identifier
   end
 
   def self.down
@@ -19,7 +19,7 @@ class CreateAuthentications < ActiveRecord::Migration
       t.remove :username
       t.string :rpx_identifier
     end
-    add_index :users, :rpx_identifier, :unique => true
+    # add_index :users, :rpx_identifier, :unique => true
     drop_table :authentications
   end
   

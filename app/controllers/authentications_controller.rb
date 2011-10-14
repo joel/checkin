@@ -1,11 +1,13 @@
 class AuthenticationsController < ApplicationController
 
+  protect_from_forgery :except => [:create, :failure]
+
   def index
     @authentications = current_user.authentications if current_user
   end
   
   def create
-    # render :text => request.env["omniauth.auth"].info.to_hash.inspect
+    # render :text => request.env["omniauth.auth"]
     omniauth = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if authentication
@@ -16,7 +18,7 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Authentication successful."
       redirect_to authentications_url
     else
-      (user = User.user_already_exist?(omniauth) rescue User.new)
+      user = User.user_already_exist?(omniauth)
       unless user.new_record?
         user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
         flash[:notice] = "Authentication successful."

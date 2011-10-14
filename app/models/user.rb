@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :token_authenticatable
 
+  # devise :validatable unless omniauthable?
+
   # Setup accessible (or protected) attributes for your model
   # TODO To restore
   attr_accessible :email, :password, :password_confirmation, :remember_me, :gender, :firstname, :lastname, :company, :phone, :twitter, :avatar, :bio, :admin,
@@ -27,7 +29,23 @@ class User < ActiveRecord::Base
   has_many :authentications
  
   validates_presence_of :firstname, :lastname, :company, :phone, :email, :username
+  validates_length_of       :email, :within => 6..100 #r@a.wk
+  validates_uniqueness_of   :email, :case_sensitive => false
+  validates_format_of       :email, :with => /^\S+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,4}|[0-9]{1,4})(\]?)$/ix
+  validates_uniqueness_of   :username, :case_sensitive => false
+  # validates_format_of       :username, :with => /^\w+$/i, :message => "can only contain letters and numbers."
+  validates_format_of       :username, :with => /^[-A-Za-z0-9@_.]*$/, :message => "can only contain letters and numbers."
+  
   # validates_presence_of :gender
+  # validates_inclusion_of :gender, :in => %w{ Mr Mlle Mme }, :message => "La civilité n'est pas reconnue"
+  # validates_length_of       :firstname,     :maximum => 100
+  # validates_length_of       :lastname,     :maximum => 100
+  # validates_presence_of     :mobile
+  # validates_presence_of     :email
+  validates_length_of       :email, :within => 6..100 #r@a.wk
+  validates_uniqueness_of   :email, :case_sensitive => false
+  validates_format_of       :email, :with => /^\S+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,4}|[0-9]{1,4})(\]?)$/ix
+
   # validates_inclusion_of :gender, :in => %w{ Mr Mlle Mme }, :message => "La civilité n'est pas reconnue"
 
   after_create :set_authentication_token
@@ -40,6 +58,10 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
     
+  # def self.omniauthable?
+  #   session[:omniauth].nil?
+  # end
+  
   def password_required?  
     (authentications.empty? || !password.blank?)  
   end
@@ -48,13 +70,27 @@ class User < ActiveRecord::Base
     (user = User.find_by_email(omniauth['user_info']['email']) rescue nil)
     return user if user
     (user = User.find_by_username(omniauth['user_info']['nickname']) rescue nil)
+    user ||= User.new
     return user
   end
   
   def apply_omniauth(omniauth)
     self.email = omniauth['user_info']['email'] if email.blank?
-    self.username = omniauth['user_info']['nickname'] if username.blank?
+    # self.username = omniauth['user_info']['nickname'] if username.blank?
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+    case omniauth['provider']
+    when 'google'
+      self.username = omniauth['user_info']['name'] if self.username.blank?
+    when 'github'
+      self.username = omniauth['user_info']['nickname'] if self.username.blank?
+    when 'facebook'
+      self.username = omniauth['user_info']['nickname'] if self.username.blank?
+      self.firstname = omniauth['user_info']['first_name'] if self.firstname.blank?
+      self.lastname = omniauth['user_info']['last_name'] if self.lastname.blank?
+    when 'twitter'
+      self.username = omniauth['user_info']['nickname'] if self.username.blank?
+      self.avatar = omniauth['user_info']['image'] if self.avatar.blank?
+    end
   end
   
   def nb_of_checkin
