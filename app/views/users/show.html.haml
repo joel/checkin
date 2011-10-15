@@ -62,6 +62,8 @@
     - if can? :update, @user
       = link_to t('.edit'), edit_user_path(@user)
       = " | "
+      = link_to t('.authentications'), authentications_path
+      = " | "
     - if can? :manage, :all
       = link_to t('links.add_credits'), add_tokens_user_tokens_path(@user)
       = " | "

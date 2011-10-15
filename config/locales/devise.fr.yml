@@ -26,6 +26,7 @@ fr:
       signed_in: "Connecté."
       signed_out: "Déconnecté."
       new:
+        login: Connectez vous par vos réseaux sociaux
         title: Identifiez vous
         title_box: Au choix
         p_box: 'Vous pouvez aussi vous identifier via Twitter, Facebook ou Google...'
@@ -58,7 +59,7 @@ fr:
         sign_up: Ou utilisez le formulaire classique
         registration: 'Editez votre compte'
       login_items:
-        login: 'Identifiez vous avec  (Facebook, Twitter, Google, etc...)'
+        login: 'Me connecter'
         logout: "Déconnectez vous %{name}"
     common:
       forgot_your_password?: "Mot de passe oublié ?"

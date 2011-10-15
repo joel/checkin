@@ -11,7 +11,7 @@
         = render :partial => 'form', :locals => { :f => f }
         %div{:class => "actions"}
           %button{:class => "btn primary"}= t('helpers.submit.user.update')
-      = link_to t('links.home'), root_path
+      = link_to t('links.home'), users_path
       = " | "
       = link_to @user.name, @user
       = " | #{link_to(t('.registration'), edit_user_registration_path)}".html_safe

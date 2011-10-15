@@ -19,3 +19,4 @@
         = f.button :submit, :class => 'primary', :id => :new_sessions_submit
   %div{:class => "clearfix span15 columns"}
     = render :partial => "devise/shared/links"
+    = link_to(t('.login'), authentications_path)

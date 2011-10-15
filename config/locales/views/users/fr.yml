@@ -1,5 +1,7 @@
 fr:
   users:
+    create:
+      title: Création du compte
     edit:
       title: Edition de compte
       title_box: "Note :"
@@ -8,6 +10,7 @@ fr:
     avatar:
       upload: Envoyer ma photo
     show:
+      authentications: Gérer mes connexions
       edit: Editer votre profil
       delete: 'Supprimer mon compte'
       confirm: 'Êtes-vous sûr ?! :-/'

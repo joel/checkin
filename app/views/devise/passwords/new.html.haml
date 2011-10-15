@@ -1,7 +1,6 @@
 #cartridge
-  %h2 Sign up!
+  %h2 Reset Password!
   = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }, :validate => true) do |f|
     = f.input :email
-    = f.input :reset_password
-    = f.button :submit, :class => 'primary', :id => :reset_password, :value => 'Reset Password!'
+    = f.button :submit, :class => 'primary', :id => :reset_password, :value => 'Send me reset password instructions'
   = render :partial => "devise/shared/links"

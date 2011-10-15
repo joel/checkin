@@ -1,5 +1,7 @@
 en:
   users:
+    create:
+      title: Create account
     edit:
       title: Editing account
       title_box: "Note :"
@@ -8,6 +10,7 @@ en:
     avatar:
       upload: Upload my avatar!
     show:
+      authentications: Manage authentifications
       edit: Edit Profile
       delete: 'Delete my account'
       confirm: 'Are you sure?! :-('
