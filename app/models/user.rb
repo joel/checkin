@@ -57,10 +57,6 @@ class User < ActiveRecord::Base
   scope :members, where(:admin => false)
 
   mount_uploader :avatar, AvatarUploader
-    
-  # def self.omniauthable?
-  #   session[:omniauth].nil?
-  # end
   
   def password_required?  
     (authentications.empty? || !password.blank?)  

@@ -12,7 +12,6 @@ fr:
       already_confirmed: "a déjà été confirmé(e)"
       not_locked: "n'était pas verrouillé(e)"
       not_saved: "n'a pas pu être sauvé(e)"
-
   devise:
     failure:
       unauthenticated: "Vous devez vous connecter ou vous inscrire pour continuer."
@@ -22,6 +21,7 @@ fr:
       invalid_token: "Jeton d'authentification incorrect."
       timeout: "Votre session est expirée, veuillez vous reconnecter pour continuer."
       inactive: "Votre compte n'est pas encore activé."
+      already_authenticated: 'Vous êtes déjà authentifié...'
     sessions:
       signed_in: "Connecté."
       signed_out: "Déconnecté."
