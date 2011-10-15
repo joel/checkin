@@ -6,8 +6,8 @@ Feature: Manage checkin scenario
   Background:
     Given This following person records
       | name    | email             | password |
-      | Ford    | ford@gmail.com    | secret   |
-      | Arthur  | arthur@gmail.com  | secret   |
+      | Ford    | ford1@gmail.com    | secret   |
+      | Arthur  | arthur1@gmail.com  | secret   |
       | Marla   | marla@gmail.com   | secret   |
       | Stifler | stifler@gmail.com | secret   |
     Given the following user records
@@ -16,8 +16,8 @@ Feature: Manage checkin scenario
       | zaphod@gmail.com       | Zaphod                | Beeblebrox   | secret   | true  |
       | jbe@zorg.org           | Jean-Baptiste Emanuel | ZORG         | secret   | true  |
       | raoul@duke.com         | Raoul                 | Duke         | secret   | true  |
-      | oscar@las_vegas.com    | Oscar                 | Zeta Acosta  | secret   | true  |
-      | billy@glenn_norris.com | Billy                 | Glenn Norris | secret   | true  |
+      | oscar@lasvegas.com    | Oscar                 | Zeta Acosta  | secret   | true  |
+      | billy@glennnorris.com | Billy                 | Glenn Norris | secret   | true  |
 
     Given This following motivations records
       | title      |
@@ -33,8 +33,8 @@ Feature: Manage checkin scenario
     
     Examples:
       | email          | token_type | motivation | token_owner | checkin_owner | day |
-      | ford@gmail.com | full day   | co working | john doe    | john doe      | nil |
-      | ford@gmail.com | half day   | meeting    | john doe    | john doe      | nil |
+      | ford1@gmail.com | full day   | co working | john doe    | john doe      | nil |
+      | ford1@gmail.com | half day   | meeting    | john doe    | john doe      | nil |
 
       
   Scenario Outline: The owner must be appear for admin
@@ -49,9 +49,9 @@ Feature: Manage checkin scenario
       | email                  | token_owner      | token_owner_name  | checkin_owner    | checkin_owner_name | token_type | motivation | action  | day |
       | zaphod@gmail.com       | zaphod@gmail.com | Zaphod BEEBLEBROX | zaphod@gmail.com | HimSelf            | full day   | co working | see     | nil |
       | jbe@zorg.org           | zaphod@gmail.com | Zaphod BEEBLEBROX | zaphod@gmail.com | Zaphod BEEBLEBROX  | full day   | co working | see     | nil |
-      | oscar@las_vegas.com    | john doe         | Nobody            | zaphod@gmail.com | Zaphod BEEBLEBROX  | full day   | co working | see     | nil |
+      | oscar@lasvegas.com    | john doe         | Nobody            | zaphod@gmail.com | Zaphod BEEBLEBROX  | full day   | co working | see     | nil |
       | raoul@duke.com         | zaphod@gmail.com | Zaphod BEEBLEBROX | john doe         | Nobody             | full day   | co working | see     | nil |
-      | billy@glenn_norris.com | zaphod@gmail.com | Zaphod BEEBLEBROX | john doe         | Nobody             | full day   | co working | see     | nil |
+      | billy@glennnorris.com | zaphod@gmail.com | Zaphod BEEBLEBROX | john doe         | Nobody             | full day   | co working | see     | nil |
       | robert@gmail.com       | zaphod@gmail.com | Zaphod BEEBLEBROX | john doe         | Nobody             | full day   | co working | not see | nil |
 
       

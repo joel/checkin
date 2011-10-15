@@ -60,7 +60,7 @@ group :test do
   gem "spork", "~> 0.9.0.rc9"
   gem "guard", '0.8.4'
   gem "guard-rspec", '0.5.0'
-  gem 'guard-cucumber'
+  gem 'guard-cucumber', '0.7.3'
   gem "guard-spork", '0.3.1'
   gem "guard-bundler"
   gem "rb-fsevent", '0.9.0.pre1'
