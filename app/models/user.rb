@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   validates_presence_of :firstname, :lastname, :company, :phone, :email, :username
   validates_length_of       :email, :within => 6..100 #r@a.wk
   validates_uniqueness_of   :email, :case_sensitive => false
-  validates_format_of       :email, :with => /^\S+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,4}|[0-9]{1,4})(\]?)$/ix
+  validates_format_of       :email, :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i # /^\S+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,4}|[0-9]{1,4})(\]?)$/ix  # /^\S+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,6}$/
   validates_uniqueness_of   :username, :case_sensitive => false
   # validates_format_of       :username, :with => /^\w+$/i, :message => "can only contain letters and numbers."
   validates_format_of       :username, :with => /^[-A-Za-z0-9@_.]*$/, :message => "can only contain letters and numbers."

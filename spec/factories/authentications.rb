@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :authentication do
-      user_id 1
-      provider "MyString"
-      uid "MyString"
-    end
+    association :user
+    provider { Factory.next(:provider) }
+    uid { Factory.next(:uid) }
+  end
 end
