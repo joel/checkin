@@ -28,7 +28,10 @@ class Token < ActiveRecord::Base
     end
     options.merge!(:used => true, :motivation_id => motivation_id, :checkin_owner_id => checkin_owner_id)
     self.update_attributes(options)
-    self.user.update_attribute(:process_done,false) # Add refresh for next time
+    # Add refresh for next time # Disabled for the moment...
+    self.user.update_attribute(:process_done, false) 
+    # Add enqueue only if necessary
+    User.nb_of_checkin_label(self.user.id.to_s) rescue nil # Refresh in queue
     msg
   end
   

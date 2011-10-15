@@ -105,7 +105,7 @@ fr:
       new:
         send_me_reset_password_instructions: "Envoyez-moi un courriel pour changer mon mot de passe"
     registrations:
-      signed_up: "Votre inscription est enregistrée. Si demandé, un courriel de confirmation vous a été envoyé."
+      signed_up: "Votre inscription est enregistrée."
       updated: "Votre mise à jour a été prise en compte."
       destroyed: "Votre compte a été supprimé. Nous espérons vous revoir bientôt."
       user:

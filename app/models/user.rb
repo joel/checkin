@@ -94,8 +94,6 @@ class User < ActiveRecord::Base
   end
 
   def nb_checkin_label
-    # Add enqueue only if necessary
-    self.nb_of_checkin_label(self.id) unless self.process_done # Refresh in queue
     self.checkin_label_msg.try(:html_safe)
   end
 

@@ -8,17 +8,6 @@ class UsersController < ApplicationController
   before_filter :safe_user, :only => [:edit,:update,:destroy]
   before_filter :secure_invitation, :only => [:accept_invitation,:denied_invitation]
   
-  # # TODO Temporary method
-  # def import
-  #   data = JSON.parse(open("http://jtsr.fr/people/export.json").read)
-  #   User.import(data)
-  #   respond_with do |format|
-  #     format.json { render :json => data }
-  #   end
-  # end
-  
-  # GET /users
-  # GET /users.xml
   def index
     @users = User.order('created_at desc').page params[:page]
     respond_with(@users)
@@ -33,14 +22,14 @@ class UsersController < ApplicationController
     end
   end
   
-  def checkin_label
-    @user = User.select('id,process_done,checkin_label_msg').where(:id => params[:id]).first
-    result = { :treated => 0, :user_id => @user.id, :treated => 1, :checkin_label => @user.checkin_label_msg }
-    result.merge!(:treated => 1) if @user.process_done # No have information for highlight ! 
-    respond_with(@users) do |format|
-      format.json { render :json => result }
-    end
-  end
+  # def checkin_label
+  #   @user = User.select('id,process_done,checkin_label_msg').where(:id => params[:id]).first
+  #   result = { :treated => 0, :user_id => @user.id, :treated => 1, :checkin_label => @user.checkin_label_msg }
+  #   result.merge!(:treated => 1) if @user.process_done # No have information for highlight ! 
+  #   respond_with(@users) do |format|
+  #     format.json { render :json => result }
+  #   end
+  # end
   
   def denied_invitation
     @invitation.denied!
@@ -64,42 +53,16 @@ class UsersController < ApplicationController
     end
   end
   
-  # GET /users/1
-  # GET /users/1.xml
   def show
     @user = User.find(params[:id])
     respond_with(@user)
   end
   
-  # # GET /users/new
-  # # GET /users/new.xml
-  # def new
-  #   @user = (current_user) ? User.new(:user_id=>current_user.id) : User.new
-  #   respond_with(@user)
-  # end
-
-  # GET /users/1/edit
   def edit
     authorize! :edit, @user
     respond_with(@user)
   end
   
-  # # POST /users
-  # # POST /users.xml
-  # def create
-  #   @user = User.new(params[:user])
-  # 
-  #   respond_with(@user) do |format|
-  #     if @user.save
-  #       format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-  #     else
-  #       format.html { render :action => "new" }
-  #     end
-  #   end
-  # end
-
-  # PUT /users/1
-  # PUT /users/1.xml
   def update
     authorize! :update, @user
     respond_with(@user) do |format|
@@ -111,8 +74,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.xml
   def destroy
     authorize! :destroy, @user
     @user.destroy
