@@ -40,7 +40,8 @@ group :assets do
   gem 'sass-rails', "3.1.4"
   gem 'coffee-rails', "~> 3.1.0.rc"
   gem 'uglifier'
-  gem 'less', '~> 2.0.7'
+  # gem 'less', '~> 2.0.7'
+  gem 'less-rails-bootstrap', '~>1.3.3'
 end
 
 group :test do
