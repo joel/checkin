@@ -400,7 +400,6 @@ DEPENDENCIES
   jquery-rails (~> 1.0.16)
   kaminari
   launchy
-  less-rails
   mini_magick
   mocha
   omniauth
