@@ -1,5 +1,6 @@
 = div_for user, :class => "#{user_class(user)} span4 columns" do
-  / %p.checkin= user.nb_of_checkin_label.html_safe
+  %p{ :class => 'checkin', :id => user.id }
+    = user.nb_checkin_label
   %div{:class => "span2 columns", :id => "img"}
     = avatar(user)
   %p

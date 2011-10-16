@@ -1,6 +1,9 @@
 - if user_signed_in?
-  %li
-    = link_to(t('.logout',:name=>current_user.email), destroy_user_session_path, :method => :delete)
+  %li= link_to t('links.home'), users_path
+  %li= link_to(t('.logout',:name=>current_user.email), destroy_user_session_path, :method => :delete)
 - else
-  %li
-    = link_to_rpx(t('.login'), user_session_url)
+  - unless controller_name == 'authentications' and controller.action_name == 'index'
+    - if controller_name != 'authentications'
+      %li= link_to(t('.login'), authentications_path)
+    - else
+      %li= link_to t('links.home'), users_path

@@ -1,9 +1,6 @@
 devise:
   mailer:
     sender: "..."
-  rpx: 
-    application_name: "..."
-    api_key: "..."
 app:
   host: "..."
   name: "..."

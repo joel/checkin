@@ -1,0 +1,43 @@
+%h1=t('authentications.title')
+- if @authentications
+  - unless @authentications.empty?
+    %p
+      %strong=t('authentications.service.actif')
+    .authentications
+      - for authentication in @authentications
+        .authentication
+          = image_tag "#{authentication.provider}_32.png", :size => "32x32"
+          .provider= authentication.provider_name
+          .uid= authentication.uid
+          = link_to "X", authentication, :method => :delete, :class => "remove"
+      .clear
+  %p
+    %strong=t('authentications.service.extra')
+- else
+  %p
+    %strong=t('authentications.service.list')
+%a.auth_provider{:href => "/auth/twitter"}
+  = image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter"
+  Twitter
+%a.auth_provider{:href => "/auth/facebook"}
+  = image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook"
+  Facebook
+/ %a.auth_provider{:href => "/auth/google_apps"}
+/   = image_tag "google_64.png", :size => "64x64", :alt => "GoogleApps"
+/   Google Apps
+%a.auth_provider{:href => "/auth/openid"}
+  = image_tag "openid_64.png", :size => "64x64", :alt => "MyOpenID"
+  MyOpenID
+%a.auth_provider{:href => "/auth/github"}
+  = image_tag "github_64.png", :size => "64x64", :alt => "Github"
+  Github
+%a.auth_provider{:href => "/auth/google"}
+  = image_tag "google_64.png", :size => "64x64", :alt => "Google"
+  Google
+.clear
+- unless user_signed_in?
+  %p
+    %strong=t('authentications.service.dontuse')
+    = link_to t('devise.common.sign_up'), new_user_registration_path
+    or
+    \#{link_to t('devise.common.sign_in'), new_user_session_path} with a password.

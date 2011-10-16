@@ -25,7 +25,7 @@ en:
         sign_up: Or use regular Sign up
         registration: 'Edit registration'
       login_items:
-        login: 'Login with (Google, Facebook, twitter or another)'
+        login: 'Login'
         logout: "Logout %{name}"
     failure:
       already_authenticated: 'You are already signed in.'
@@ -40,6 +40,7 @@ en:
       signed_in: 'Signed in successfully.'
       signed_out: 'Signed out successfully.'
       new:
+        login: Social authentications methods
         title: Sign in form
         title_box: Choose
         p_box: 'You can log in with Twitter, Facebook ou Google...'

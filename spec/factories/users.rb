@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :user do |f|
     f.sequence(:email) { |n| "foo#{n}@bar.com" }
+    f.sequence(:username) { |n| "foo#{n}" }
     f.password 'foobarzone'
     f.password_confirmation 'foobarzone'
     f.firstname "Korben"
@@ -11,5 +12,6 @@ FactoryGirl.define do
     f.company "The World Company"
     f.phone "0678543492"
     f.admin false
+    f.process_done false
   end
 end

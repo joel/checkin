@@ -35,6 +35,12 @@ module ControllerMacros
     sign_in :user, @user
   end
   
+  def login_as_person_with_authentications
+    @user = Factory(:user, :admin => false)
+    FactoryGirl.create_list(:authentication, 5, :user => @user)
+    sign_in :user, @user
+  end
+  
   def login_as_person_with_credits
     @user = Factory(:user)
     ['full day','half day', 'free'].each do |title|
