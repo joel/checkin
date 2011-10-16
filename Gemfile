@@ -41,7 +41,8 @@ group :assets do
   gem 'coffee-rails', "~> 3.1.0.rc"
   gem 'uglifier'
   # gem 'less', '~> 2.0.7'
-  gem 'less-rails-bootstrap', '~>1.3.3'
+  # gem 'less-rails-bootstrap', '~>1.3.3'
+  gem 'less-rails-bootstrap', :git => 'git://github.com/walski/less-rails-bootstrap.git' # Temporary just for this PR https://github.com/metaskills/less-rails-bootstrap/pull/7
 end
 
 group :test do
