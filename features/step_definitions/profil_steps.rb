@@ -1,6 +1,12 @@
 Given /^the following user records?$/ do |table|
   table.hashes.each do |hash|
-    user = Factory(:user,:gender=>'Mr',:email=>hash[:email],:password=>hash[:password],:password_confirmation=>hash[:password],:admin=>hash[:admin],:firstname=>hash[:firstname],:lastname=>hash[:lastname])
+    # puts ":email=>#{hash[:email]}"
+    user = User.find_by_email(hash[:email])
+    unless user
+      user = Factory.build(:user,:gender=>'Mr',:email=>hash[:email],:password=>hash[:password],:password_confirmation=>hash[:password],:admin=>hash[:admin],:firstname=>hash[:firstname],:lastname=>hash[:lastname])
+      puts ":email=>#{hash[:email]}" unless user.valid?
+      user.save
+    end
   end
 end
 

@@ -12,7 +12,6 @@ fr:
       already_confirmed: "a déjà été confirmé(e)"
       not_locked: "n'était pas verrouillé(e)"
       not_saved: "n'a pas pu être sauvé(e)"
-
   devise:
     failure:
       unauthenticated: "Vous devez vous connecter ou vous inscrire pour continuer."
@@ -22,10 +21,12 @@ fr:
       invalid_token: "Jeton d'authentification incorrect."
       timeout: "Votre session est expirée, veuillez vous reconnecter pour continuer."
       inactive: "Votre compte n'est pas encore activé."
+      already_authenticated: 'Vous êtes déjà authentifié...'
     sessions:
       signed_in: "Connecté."
       signed_out: "Déconnecté."
       new:
+        login: Connectez vous par vos réseaux sociaux
         title: Identifiez vous
         title_box: Au choix
         p_box: 'Vous pouvez aussi vous identifier via Twitter, Facebook ou Google...'
@@ -58,7 +59,7 @@ fr:
         sign_up: Ou utilisez le formulaire classique
         registration: 'Editez votre compte'
       login_items:
-        login: 'Identifiez vous avec  (Facebook, Twitter, Google, etc...)'
+        login: 'Se connecter'
         logout: "Déconnectez vous %{name}"
     common:
       forgot_your_password?: "Mot de passe oublié ?"
@@ -104,7 +105,7 @@ fr:
       new:
         send_me_reset_password_instructions: "Envoyez-moi un courriel pour changer mon mot de passe"
     registrations:
-      signed_up: "Votre inscription est enregistrée. Si demandé, un courriel de confirmation vous a été envoyé."
+      signed_up: "Votre inscription est enregistrée."
       updated: "Votre mise à jour a été prise en compte."
       destroyed: "Votre compte a été supprimé. Nous espérons vous revoir bientôt."
       user:

@@ -1,13 +1,18 @@
 CheckinReloaded::Application.routes.draw do
 
-  root :to => "users#index"
+  match '/auth/:provider/callback' => 'authentications#create'
+
+  match '/auth/failure' => "authentications#failure"
+  
+  resources :authentications
+
+  root :to => "authentications#index"
     
   resources :notifications
 
   resources :tokens
 
-  # devise_for :users, :controllers => { :sessions => "sessions" }
-  devise_for :users do
+  devise_for :users, :controllers => { :registrations => 'registrations' } do
     get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
   end
   
@@ -22,6 +27,7 @@ CheckinReloaded::Application.routes.draw do
       post 'request_an_invitation'
       post 'accept_invitation'
       delete 'denied_invitation'
+      get 'checkin_label'
     end
     # match 'people/:invitation_id/accept' => 'people#accept_invitation', :as => :accept
     resources :tokens do

@@ -202,10 +202,7 @@ Devise.setup do |config|
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
-
-  config.rpx_application_name = Settings.devise.rpx.application_name
-  RPXNow.api_key = Settings.devise.rpx.api_key
-  
+  		
   # config.warden do |manager|
   #   manager.failure_app   = AnotherApp
   #   manager.intercept_401 = false

@@ -4,27 +4,31 @@
     %title 
       = title
     = stylesheet_link_tag "application"
+    = stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
+    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"
+    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"
     = javascript_include_tag "application"
-    = javascript_include_rpx(user_session_url)
+    / [if lt IE 9]
+      = javascript_include_tag "//html5shim.googlecode.com/svn/trunk/html5.js"
     = csrf_meta_tags
-    %body
-      %div{:class => "container", :id => "main-container"}
-        / = "#main-container"
-        %div{:class => "columns", :id => "header"}
-          / = "#header"
-          = link_to t('.releases_notes'), "/releasesnotes_fr.html" 
-          %ul.hmenu
-            = render 'devise/menu/login_items'
-            = render 'devise/menu/registration_items'
-            - if can? :manage, :all
-              %li
-                = link_to t('.send_notifications'), notifications_path
-        %div{:class => "columns", :id => "flash"}
-          / = "#flash"
-          = render :partial => 'shared/flashes'
-        %div{:class => "columns content", :id => "main-content"}
-          / = "#main-content"
-          = yield
-        %div{:class => "columns", :id => "footer"}
-          / = "#footer"
-          = yield :footer
+    %script
+      / $(document).ready(function() { $("h1").effect("highlight", {}, 3000); });
+  %body
+    %div{:class => "container", :id => "main-container"}
+      / = "#main-container"
+      %div{:class => "columns", :id => "header"}
+        / = "#header"
+        %ul.hmenu
+          = render 'devise/menu/login_items'
+          - if can? :manage, :all
+            %li
+              = link_to t('.send_notifications'), notifications_path
+      %div{:class => "columns", :id => "flash"}
+        / = "#flash"
+        = render :partial => 'shared/flashes'
+      %div{:class => "columns content", :id => "main-content"}
+        / = "#main-content"
+        = yield
+      %div{:class => "columns", :id => "footer"}
+        / = "#footer"
+        = yield :footer
