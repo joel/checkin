@@ -19,7 +19,8 @@ gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 # rails plugin install git://github.com/rails/country_select.git
 gem "client_side_validations"
 # gem "twitter-bootstrap-rails", '~> 1.3.0'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+# gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git", :branch => "static"
 gem "devise", "1.4.8"
 gem 'omniauth'
 # gem 'oa-openid'
@@ -42,8 +43,8 @@ group :assets do
   gem 'coffee-rails', "~> 3.1.0.rc"
   gem 'uglifier'
   # gem 'less', '~> 2.0.7'
-  # gem 'less-rails'
-  # gem 'less-rails-bootstrap', '~>1.3.3'
+  gem 'less-rails'
+  gem 'less-rails-bootstrap', '~>1.3.3'
   # gem 'less-rails-bootstrap', :git => 'git://github.com/walski/less-rails-bootstrap.git' # Temporary just for this PR https://github.com/metaskills/less-rails-bootstrap/pull/7
 end
 
