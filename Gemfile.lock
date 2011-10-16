@@ -402,6 +402,7 @@ DEPENDENCIES
   jquery-rails (~> 1.0.16)
   kaminari
   launchy
+  less (~> 2.0.7)
   less-rails-bootstrap!
   mini_magick
   mocha
