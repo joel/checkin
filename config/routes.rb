@@ -1,5 +1,7 @@
 CheckinReloaded::Application.routes.draw do
 
+  mount Resque::Server, :at => "/resque"
+
   match '/auth/:provider/callback' => 'authentications#create'
 
   match '/auth/failure' => "authentications#failure"

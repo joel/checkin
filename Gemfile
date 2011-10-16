@@ -28,7 +28,8 @@ gem "authbuttons-rails"
 gem "cancan", '~> 1.6.7'
 gem "hpricot"
 gem "ruby_parser", '~> 2.3.1'
-gem 'resque'
+gem 'sinatra', '1.2.6'
+gem 'resque', :require => "resque/server"
 gem 'resque_mailer'
 gem 'jquery-rails', '~> 1.0.16'
 gem 'sqlite3'
