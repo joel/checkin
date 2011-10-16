@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
       self.lastname = omniauth['user_info']['last_name'] if self.lastname.blank?
     when 'twitter'
       self.username = omniauth['user_info']['nickname'] if self.username.blank?
-      self.avatar = omniauth['user_info']['image'] if self.avatar.blank?
+      self.remote_avatar_url = omniauth['user_info']['image'] if self.avatar.blank?
     end
   end
   

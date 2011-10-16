@@ -1,0 +1,8 @@
+en:
+  authentications:
+    title: "Sign In Options"
+    service:
+      actif: 'You have signed in with these services:'
+      extra: 'Add another service to sign in with:'
+      list: 'Sign in through one of these services:'
+      dontuse: "Don't use these services?"

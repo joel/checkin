@@ -59,7 +59,7 @@ fr:
         sign_up: Ou utilisez le formulaire classique
         registration: 'Editez votre compte'
       login_items:
-        login: 'Me connecter'
+        login: 'Se connecter'
         logout: "Déconnectez vous %{name}"
     common:
       forgot_your_password?: "Mot de passe oublié ?"

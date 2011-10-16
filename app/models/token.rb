@@ -31,7 +31,7 @@ class Token < ActiveRecord::Base
     # Add refresh for next time # Disabled for the moment...
     self.user.update_attribute(:process_done, false) 
     # Add enqueue only if necessary
-    User.nb_of_checkin_label(self.user.id.to_s) rescue nil # Refresh in queue
+    User.nb_of_checkin_label(self.user.id.to_s) # rescue nil # Refresh in queue
     msg
   end
   

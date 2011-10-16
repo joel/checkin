@@ -1,42 +1,41 @@
 module CheckinLabel
   # extend ActiveSupport::Concern
 
-  # module ClassMethods
-  #   
-  #   def nb_of_checkin_label(user_id)
-  #     Resque.enqueue(AsyncCheckinLabel, user_id)
-  #     begin
-  #       Resque.enqueue(AsyncCheckinLabel, user_id)
-  #     rescue Errno::ECONNREFUSED => e
-  #       logger.error e.message
-  #       AsyncCheckinLabel.perform(user_id)
-  #     end
-  #   end
-  #   
-  # end
+  module ClassMethods
+    
+    def nb_of_checkin_label(user_id)
+      begin
+        Resque.enqueue(AsyncCheckinLabel, user_id)
+      rescue Errno::ECONNREFUSED => e
+        logger.error e.message
+        AsyncCheckinLabel.perform(user_id)
+      end
+    end
+    
+  end
   
   # module InstanceMethods
   # end    
   
-  # def self.included(base)
-  #   # base.send :include, InstanceMethods
-  #   base.send :extend, ClassMethods
-  # end
-  
   def self.included(base)
-    base.class_eval do
-
-      def nb_of_checkin_label(user_id)
-        begin
-          Resque.enqueue(AsyncCheckinLabel, user_id)
-        rescue Errno::ECONNREFUSED => e
-          logger.error e.message
-          AsyncCheckinLabel.perform(user_id)
-        end
-      end
-            
-    end
+    # base.send :include, InstanceMethods
+    base.send :extend, ClassMethods
   end
+  
+  # def self.included(base)
+  #   base.class_eval do
+  # 
+  #     def nb_of_checkin_label(user_id)
+  #       begin
+  #         Resque.enqueue(AsyncCheckinLabel, user_id)
+  #       rescue Errno::ECONNREFUSED => e
+  #         logger.error e.message
+  #         AsyncCheckinLabel.perform(user_id)
+  #       end
+  #     end
+  #           
+  #   end
+  # end
   
   class LoggedJob
     

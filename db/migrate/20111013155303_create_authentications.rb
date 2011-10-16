@@ -11,6 +11,11 @@ class CreateAuthentications < ActiveRecord::Migration
       t.remove :rpx_identifier
       t.string :username
     end
+    User.select('id,username').all.each do |user|
+      sql = "UPDATE users SET username = 'johndoe#{user.id}' WHERE id = #{user.id}"
+      puts sql
+      ActiveRecord::Base.connection.execute(sql)
+    end
     # remove_index :users, :rpx_identifier
   end
 

@@ -1,0 +1,8 @@
+fr:
+  authentications:
+    title: "Connectez vous"
+    service:
+      actif: 'Vous pouvez vous connectez avec un de ces services:'
+      extra: "N'hésitez pas à ajouter des services pour vous connectez"
+      list: 'Connectez vous avec un de ces services:'
+      dontuse: "Vous n'utilisez aucun de ces services ?"
