@@ -12,7 +12,21 @@ app:
     password: "..."
     authentication: "plain"
     enable_starttls_auto: true
+  omniauth:
+    host: "..."
+    twitter:
+      key: "..."
+      secret: "..."
+    google:
+      key: "..."
+      secret: "..."
+    facebook:
+      key: "..."
+      secret: "..."
+    github:
+      key: "..."
+      secret: "..."
 redis:
-  host: 'localhost'
-  port: 6379
-  namespace: 'checkin'
+  host: "..."
+  port: "..."
+  namespace: "..."
