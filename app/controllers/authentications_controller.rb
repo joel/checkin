@@ -9,20 +9,20 @@ class AuthenticationsController < ApplicationController
   def create
     # render :text => request.env["omniauth.auth"]
     omniauth = request.env["omniauth.auth"]
-    authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+    authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'].to_s)
     if authentication
       flash[:notice] = "Signed in successfully."
       # sign_in_and_redirect(:user, authentication.user)
       sign_in(:user, authentication.user)
       redirect_to user_path(authentication.user)
     elsif current_user
-      current_user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
+      current_user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'].to_s)
       flash[:notice] = "Authentication successful."
       redirect_to authentications_url
     else
       user = User.user_already_exist?(omniauth)
       unless user.new_record?
-        user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
+        user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'].to_s)
         flash[:notice] = "Authentication successful."
         sign_in(:user, user)
         redirect_to authentications_url

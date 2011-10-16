@@ -1,2 +1,4 @@
 app:
   host: "http://jtsr.fr"
+  omniauth:
+    host: "http://jtsr.fr"
