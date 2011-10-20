@@ -19,8 +19,8 @@ gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 # rails plugin install git://github.com/rails/country_select.git
 gem "client_side_validations"
 # gem "twitter-bootstrap-rails", '~> 1.3.0'
-# gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git", :branch => "static"
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+# gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git", :branch => "static"
 gem "devise", "1.4.8"
 gem 'omniauth'
 # gem 'oa-openid'
@@ -33,7 +33,7 @@ gem 'resque', :require => "resque/server"
 gem 'resque_mailer'
 gem 'jquery-rails', '~> 1.0.16'
 gem 'sqlite3'
-  
+
 group :development, :test do
 end
 
