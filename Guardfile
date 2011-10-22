@@ -5,7 +5,7 @@ guard 'bundler' do
   watch('Gemfile')
 end
 
-guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, 
+guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' },
   :rspec_env => { 'RAILS_ENV' => 'test' },
   :wait => 40, # Seconds to wait for the server to starts, default: 20
   :cucumber => false,
@@ -19,19 +19,20 @@ guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' },
   watch(%r{^config/environments/.+\.rb$})
   watch(%r{^config/initializers/.+\.rb$})
   watch('spec/spec_helper.rb')
-  watch(%r{^lib/(.+)\.rb$})
   # watch('config/settings.yml')
   # watch(%r{^config/settings/(.+)\.yml$})
   watch(%r{^config/locales/(.+)\.yml$})
   # watch(%r{^spec/factories/(.+)\.rb$})
+  watch(%r{^lib/.+\.rb$})
+  watch(%r{^spec/support/.+\.rb$})
 end
 
 guard 'rspec', :version => 2,
   :cli => "--color --format nested --fail-fast --drb -f progress --debug",         # pass arbitrary RSpec CLI arguments, default: "-f progress"
   :bundler => true,           # don't use "bundle exec" to run the RSpec command, default: true
-  :rvm => '1.8.7-p352',       # directly run your specs on multiple Rubies, default: nil
+  :rvm => '1.9.2-p290',       # directly run your specs on multiple Rubies, default: nil
   :notification => true,      # don't display Growl (or Libnotify) notification after the specs are done running, default: true
-  :all_after_pass => true,    # don't run all specs after changed specs pass, default: true
+  :all_after_pass => false,    # don't run all specs after changed specs pass, default: true
   :all_on_start => true,      # don't run all the specs at startup, default: true
   :keep_failed => false do
   # watch('config/settings.yml')
