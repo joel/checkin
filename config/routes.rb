@@ -1,15 +1,15 @@
 CheckinReloaded::Application.routes.draw do
 
+  root :to => "users#current_checkin"
+
   mount Resque::Server, :at => "/resque"
 
   match '/auth/:provider/callback' => 'authentications#create'
 
   match '/auth/failure' => "authentications#failure"
-  
+
   resources :authentications
 
-  root :to => "authentications#index"
-    
   resources :notifications
 
   resources :tokens
@@ -17,7 +17,7 @@ CheckinReloaded::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => 'registrations' } do
     get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
   end
-  
+
   resources :users do
     collection do
       get 'current_checkin'

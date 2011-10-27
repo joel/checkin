@@ -1,9 +1,9 @@
 class CheckController < ApplicationController
-  
+
   before_filter :authenticate_user!
-  
+
   respond_to :html
-  
+
   def new
     @user = User.find(params[:user_id])
     authorize! :manage, @user
@@ -20,7 +20,9 @@ class CheckController < ApplicationController
     rescue Exception => e
       flash[:notice] = e.message
     end
-    respond_with @user 
+    respond_with(@user) do |format|
+      format.html { redirect_to current_checkin_users_path }
+    end
   end
 
 end
