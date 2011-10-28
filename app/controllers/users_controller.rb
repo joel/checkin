@@ -1,18 +1,23 @@
 class UsersController < ApplicationController
   # load_and_authorize_resource
-  
+
   respond_to :html
   respond_to :xml, :json, :only => [:index, :current_checkin, :import]
-  
+
   before_filter :authenticate_user!, :excpet => [:import]
   before_filter :safe_user, :only => [:edit,:update,:destroy]
   before_filter :secure_invitation, :only => [:accept_invitation,:denied_invitation]
-  
+
   def index
-    @users = User.order('created_at desc').page params[:page]
+    _users = User.where("id <> ?",current_user.id).order('created_at asc').all
+    _users << current_user
+    # _users << User.find_by_id(current_user.id)
+    # puts "current_user : #{current_user.email}"
+    _users.reverse!
+    @users = Kaminari.paginate_array(_users).page(params[:page])
     respond_with(@users)
   end
-  
+
   def current_checkin
     @users = Kaminari.paginate_array(User.all(:order=>'firstname').select { |p| p.checkin? }).page(params[:page])
     respond_with(@users) do |format|
@@ -21,28 +26,28 @@ class UsersController < ApplicationController
       format.xml { render :action => :index }
     end
   end
-  
+
   # def checkin_label
   #   @user = User.select('id,process_done,checkin_label_msg').where(:id => params[:id]).first
   #   result = { :treated => 0, :user_id => @user.id, :treated => 1, :checkin_label => @user.checkin_label_msg }
-  #   result.merge!(:treated => 1) if @user.process_done # No have information for highlight ! 
+  #   result.merge!(:treated => 1) if @user.process_done # No have information for highlight !
   #   respond_with(@users) do |format|
   #     format.json { render :json => result }
   #   end
   # end
-  
+
   def denied_invitation
     @invitation.denied!
     flash[:notice] = "Ok bye bye #{@invitation.follower.name} !"
     respond_with(@user)
   end
-  
+
   def accept_invitation
     @invitation.accept!
     flash[:success] = "You follow #{@invitation.follower.name} now !"
     respond_with(@user)
   end
-    
+
   def request_an_invitation
     @followed = User.find(params[:id])
     @follower = current_user
@@ -52,17 +57,17 @@ class UsersController < ApplicationController
       format.html { redirect_to users_path }
     end
   end
-  
+
   def show
     @user = User.find(params[:id])
     respond_with(@user)
   end
-  
+
   def edit
     authorize! :edit, @user
     respond_with(@user)
   end
-  
+
   def update
     authorize! :update, @user
     respond_with(@user) do |format|
@@ -81,8 +86,8 @@ class UsersController < ApplicationController
       format.html { redirect_to(users_url) }
     end
   end
-  
-  private 
+
+  private
 
   def safe_user
     @user = (current_user.is_admin?) ? User.find(params[:id]) : current_user
@@ -98,5 +103,5 @@ class UsersController < ApplicationController
       end
     end
   end
-  
+
 end

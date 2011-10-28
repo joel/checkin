@@ -1,7 +1,10 @@
-/*body { font-family: 'Rancho', cursive; }*/
+/*$typo: 'Leckerli One';*/
+/*$typo: 'Nosifer Caps';*/
+$typo: 'Gochi Hand';
+/*body { font-family: $typo, cursive; }*/
 .container {
-	font-family: 'Rancho', cursive;
-	font-size: 22px;
+	font-family: $typo, cursive;
+	font-size: 20px;
 	/*border:solid black 1px;*/
 	.row { margin-left:0; /*border:solid black 1px;*/ }
 	.column { /*border:solid black 1px;*/ }
@@ -16,29 +19,29 @@ ul.hmenu {
 	list-style-type:none; padding:10px 0px; margin:0;
 	li { }
 }
-div.clearfix { label { font-family: 'Rancho', cursive; font-size: 22px; } }
-div.input { input.string { font-family: 'Rancho', cursive; font-size: 20px; } }
-button.btn { font-size: 24px; }
-input.btn { font-size: 24px; }
-p.info { font-size: 20px; }
-/*input.file { font-family: 'Rancho', cursive; font-size: 24px; }*/
+div.clearfix { label { font-family: $typo, cursive; font-size: 20px; } }
+div.input { input.string { font-family: $typo, cursive; font-size: 18px; } }
+button.btn { font-size: 22px; }
+input.btn { font-size: 22px; }
+p.info { font-size: 18px; }
+/*input.file { font-family: $typo, cursive; font-size: 24px; }*/
 #person {
 /*	border:solid gray 5px;*/
 	padding:20px;
 	.row { margin:10px 0; }
 	.avatar {
-		label { margin:0; padding:0; font-family: 'Rancho', cursive; }
-		input { margin:0; font-family: 'Rancho', cursive; }
+		label { margin:0; padding:0; font-family: $typo, cursive; }
+		input { margin:0; font-family: $typo, cursive; }
 	}
 	#img:hover {
 		@include transform( rotate(-5deg) scale(1.5) );
 	}
 }
 #people {
-	font-size: 20px;
+	font-size: 18px;
 	margin-left:0;
 	.user {
-/*		span.name { font-family: 'Rancho', cursive; }*/
+/*		span.name { font-family: $typo, cursive; }*/
 		p.checkin {
 			height: 35px; width:100%;
 		}
