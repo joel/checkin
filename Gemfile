@@ -33,6 +33,7 @@ gem 'resque', :require => "resque/server"
 gem 'resque_mailer'
 gem 'jquery-rails', '~> 1.0.16'
 gem 'sqlite3'
+gem 'bourbon' # CSS3 Mixins
 
 group :development, :test do
 end
