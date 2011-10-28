@@ -8,22 +8,18 @@ gem 'rails', '3.1.1'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem "acts_as_api", '~> 0.3.9'
-gem "dynamic_form"
 gem "kaminari"
 gem "rails_config"
 gem "mini_magick"
 gem "carrierwave"
 gem "haml"
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
+gem "dynamic_form"
 # gem "simple_form"
 # rails plugin install git://github.com/rails/country_select.git
 gem "client_side_validations"
-# gem "twitter-bootstrap-rails", '~> 1.3.0'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-# gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git", :branch => "static"
 gem "devise", "1.4.8"
 gem 'omniauth'
-# gem 'oa-openid'
 gem "authbuttons-rails"
 gem "cancan", '~> 1.6.7'
 gem "hpricot"
@@ -33,7 +29,10 @@ gem 'resque', :require => "resque/server"
 gem 'resque_mailer'
 gem 'jquery-rails', '~> 1.0.16'
 gem 'sqlite3'
+
+# CSS
 gem 'bourbon' # CSS3 Mixins
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :development, :test do
 end

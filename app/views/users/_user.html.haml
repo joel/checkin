@@ -4,9 +4,9 @@
   %div{:class => "span2 columns", :id => "img"}
     = avatar(user)
   %p
-    = link_to truncate(user.name,:length=>19), user
-    %b
-      = user.company
+    %span.name= link_to truncate(user.name,:length=>19), user
+    %br
+    %b= user.company
     - if user.checkin?
       %br (I'm here)
     - if user.not_me?(current_user)

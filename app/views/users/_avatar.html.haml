@@ -1,5 +1,5 @@
 %div{:class => 'avatar' }
   = simple_form_for @user, :html => { :multipart => true } do |f|
     = render 'shared/errors', :errors => @user.errors, :name => :user
-    = f.input :avatar
-    = f.button :submit, :value => t('users.avatar.upload')
+    = f.input :avatar, :class => 'btn'
+    = f.button :submit, :value => t('users.avatar.upload'), :class => 'btn'

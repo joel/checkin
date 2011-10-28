@@ -4,7 +4,7 @@
   %div{:class => "row" }
     %div{:class => "span4 columns" }
       %h2= t('.title_box')
-      %p= t('.p_box')
+      %p.info= t('.p_box')
     %div{:class => "span11 columns" }
       = simple_form_for @user do |f|
         = render 'shared/errors', :errors => @user.errors, :name => :user
