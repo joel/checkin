@@ -34,18 +34,27 @@ Spork.prefork do
     config.mock_with :rspec
 
     # config.include(Devise::TestHelpers)
+    # config.include Devise::TestHelpers, :type => :acceptance
     config.include Devise::TestHelpers, :type => :controller
     config.include Devise::TestHelpers, :type => :view
     config.include Devise::TestHelpers, :type => :helper
-    config.include(ControllerMacros)
-    # config.include ControllerMacros, :type => :controller
-    # config.include ControllerMacros, :type => :view
-    # config.include ControllerMacros, :type => :helper
-
+    # config.include(ControllerMacros)
+    # config.include ControllerMacros, :type => :acceptance
+    config.include ControllerMacros, :type => :controller
+    config.include ControllerMacros, :type => :view
+    config.include ControllerMacros, :type => :helper
+    
     config.use_transactional_fixtures = false
     config.treat_symbols_as_metadata_keys_with_true_values = true
     config.filter_run :focus => true
     config.run_all_when_everything_filtered = true
+
+    config.include Capybara::DSL, :type => :acceptance
+    config.include ActionController::RecordIdentifier, :type => :acceptance
+
+    config.include AcceptanceHelpers, :type => :acceptance
+    
+    # config.include HelperMethods, :type => :acceptance
 
     config.before(:all) do
       # reset_email
@@ -53,6 +62,7 @@ Spork.prefork do
     end
 
     config.after(:all) do
+      Capybara.reset_sessions!
       DeferredGarbageCollection.reconsider
     end
 

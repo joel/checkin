@@ -21,12 +21,14 @@
         %div.row
           %div.span11
             = @user.checkin_owners_label
-    - else
-      - if can? :update, @user
-        %div.row
-          %div.span11
-            = form_for(@user, :url => new_user_check_path(@user), :html => { :method => :get })  do |f|
-              %button{:class => "btn primary"}= t('buttons.checkin')
+    - if can? :update, @user
+      %div.row
+        %div.span11
+          = form_for(@user, :url => new_user_check_path(@user), :html => { :method => :get })  do |f|
+            - if !@user.checkin?
+              %button{:class => "btn primary", :id => 'user_show_checkin_button' }= t('buttons.checkin')
+            - elsif can? :manage, :all
+              %button{:class => "btn primary", :id => 'user_show_checkin_button' }= t('buttons.checkin_again')
     - if can? :read, @user
       %div.row
         %div.span2

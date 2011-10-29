@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :user do |f|
+
     f.sequence(:email) { |n| "foo#{n}@bar.com" }
     f.sequence(:username) { |n| "foo#{n}" }
     f.password 'foobarzone'
@@ -13,5 +14,13 @@ FactoryGirl.define do
     f.phone "0678543492"
     f.admin false
     f.process_done false
+
+    factory :admin, :class => User do
+      firstname "Zaphod"
+      lastname "BEEBLEBROX"
+      admin true
+    end
+
   end
+
 end

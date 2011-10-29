@@ -1,6 +1,8 @@
 en: &en
   users:
-    nb_checkin: "You have %{nb} checkin"
+    nb_checkin: 
+      one: "You have 1 checkin"
+      other: "You have %{count} checkins"
     major: "you are Major of this place"
     checkin:
       already: "Your are already checkin"

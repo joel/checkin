@@ -1,7 +1,7 @@
 # encoding: utf-8
 class User < ActiveRecord::Base
   include CheckinLabel
-  
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship", :dependent => :destroy
   has_many :followers, :through => :reverse_relationships, :source => :follower
   has_many :authentications
- 
+
   validates_presence_of :firstname, :lastname, :company, :phone, :email, :username
   validates_length_of       :email, :within => 6..100 #r@a.wk
   # validates_uniqueness_of   :email, :case_sensitive => false
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :username, :case_sensitive => false
   # validates_format_of       :username, :with => /^\w+$/i, :message => "can only contain letters and numbers."
   validates_format_of       :username, :with => /^[-A-Za-z0-9@_.]*$/, :message => "can only contain letters and numbers."
-  
+
   # validates_presence_of :gender
   # validates_inclusion_of :gender, :in => %w{ Mr Mlle Mme }, :message => "La civilité n'est pas reconnue"
   # validates_length_of       :firstname,     :maximum => 100
@@ -52,17 +52,17 @@ class User < ActiveRecord::Base
   after_create :set_authentication_token
 
   before_create :normalize_name
-  
+
   before_destroy :clean_token
 
   scope :members, where(:admin => false)
 
   mount_uploader :avatar, AvatarUploader
-  
-  def password_required?  
-    (authentications.empty? || !password.blank?)  
+
+  def password_required?
+    (authentications.empty? || !password.blank?)
   end
-  
+
   def self.user_already_exist?(omniauth)
     (user = User.find_by_email(omniauth['user_info']['email']) rescue nil)
     return user if user
@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
     user ||= User.new
     return user
   end
-  
+
   def apply_omniauth(omniauth)
     self.email = omniauth['user_info']['email'] if email.blank?
     # self.username = omniauth['user_info']['nickname'] if username.blank?
@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
       self.remote_avatar_url = omniauth['user_info']['image'] if self.avatar.blank?
     end
   end
-  
+
   def nb_of_checkin
     self.tokens.used.count
   end
@@ -107,7 +107,9 @@ class User < ActiveRecord::Base
   end
 
   def checkin(token_type_id, motivation_id, checkin_owner_id = nil)
-    raise I18n.t('users.checkin.already') if checkin?
+    # Autorize Admin can perform many checkin for a member (For people occasionally passing, students and others cases)
+    admin = (User.where(:id => checkin_owner_id.to_i).first.admin? rescue false)
+    raise I18n.t('users.checkin.already') if checkin? and !admin
     token = self.tokens.available.first(:conditions => { :token_type_id => token_type_id })
     raise I18n.t('users.checkin.no_credit') unless token
     msg = token.checkin(motivation_id, checkin_owner_id)
@@ -216,23 +218,23 @@ class User < ActiveRecord::Base
       show = false
     end
     # It's already follow by this person
-    if self.following?(other) or other.following?(self) 
+    if self.following?(other) or other.following?(self)
       show = false
     end
     return show
   end
 
-  private 
+  private
 
   def clean_token
     Token.where(:checkin_owner_id => self.id).all.each  do |token|
       token.update_attribute(:checkin_owner_id,nil)
     end
   end
-  
+
   def set_authentication_token
     self.reset_authentication_token!
-  end    
+  end
 
   def normalize_name
     # self.firstname = self.firstname.titlecase

@@ -2,3 +2,7 @@ app:
   host: "http://jtsr.fr"
   omniauth:
     host: "http://jtsr.fr"
+    foursquare:
+      key: YPHQBH1TKA01ULVPCXSJA1HG2T1HQEJKEIFJFFEFXXZKC0XF
+      secret: 2BHPBQ3422VTMA3R00BN40WG4XIE1FQLQN4LDPLWW04ZO1XG
+    

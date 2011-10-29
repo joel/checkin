@@ -54,7 +54,7 @@ group :test do
   gem "cucumber", '~> 1.1.0'
   gem 'launchy'
   gem "capybara"
-  gem "webrat"
+  # gem "webrat"
   gem "database_cleaner"
   gem "factory_girl_rails"
   gem "mocha"

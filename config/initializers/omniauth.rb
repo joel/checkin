@@ -5,6 +5,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :google_apps, OpenID::Store::Filesystem.new('/tmp') 
   provider :google, Settings.app.omniauth.google.key, Settings.app.omniauth.google.secret
   provider :github, Settings.app.omniauth.github.key, Settings.app.omniauth.github.secret
+  provider :foursquare, Settings.app.omniauth.foursquare.key, Settings.app.omniauth.foursquare.secret
   # require 'openid/store/filesystem'  
   # provider :openid, OpenID::Store::Filesystem.new('./tmp'), :name => 'openid'
   # provider :openid, OpenID::Store::Filesystem.new('./tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id'

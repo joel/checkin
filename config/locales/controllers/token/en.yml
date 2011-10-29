@@ -1,8 +1,1 @@
 en:
-  controllers:
-    token:
-      actions:
-        checkin:
-          full_day: "Your day's credit has well been taken"
-          morning_half_day: "Your morning credit has well been taken"
-          afternoon_half_day: "Your afternoon credit has well been taken"

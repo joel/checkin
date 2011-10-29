@@ -34,6 +34,9 @@
 %a.auth_provider{:href => "/auth/google"}
   = image_tag "google_64.png", :size => "64x64", :alt => "Google"
   Google
+%a.auth_provider{:href => "/auth/foursquare"}
+  = image_tag "foursquare_64.png", :size => "64x64", :alt => "Foursquare"
+  Foursquare
 .clear
 - unless user_signed_in?
   %p

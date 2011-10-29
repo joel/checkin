@@ -30,7 +30,10 @@ fr: &fr
           created_at: Créé le
           updated_at: Modifié le
   users:
-    nb_checkin: "Vous avez %{nb} badge"
+    nb_checkin:
+      one: "Vous avez 1 badge"
+      zero: "Vous avez 0 badge"
+      other: "Vous avez %{count} badges"
     major: "<br/>Vous êtes Commandant ! \\o/"
     checkin:
       already: "Vous avez déjà émargé !"

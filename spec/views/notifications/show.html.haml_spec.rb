@@ -8,9 +8,9 @@ describe "notifications/show.html.haml" do
 
   it "renders attributes in <p>" do
     render
-    rendered.should contain(1.to_s)
-    rendered.should contain("MyText".to_s)
-    rendered.should contain("MyText".to_s)
+    rendered.should have_content(1.to_s)
+    rendered.should have_content("MyText".to_s)
+    rendered.should have_content("MyText".to_s)
   end
   
 end

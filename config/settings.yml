@@ -26,6 +26,9 @@ app:
     github:
       key: "..."
       secret: "..."
+    foursquare:
+      key: "..."
+      secret: "..."
 redis:
   host: "..."
   port: "..."
