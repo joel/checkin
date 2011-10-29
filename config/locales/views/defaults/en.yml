@@ -2,7 +2,7 @@ en:
   msg:
     confirm: 'Are you sure?'
   links:
-    show_all: 'Back to people list'
+    show_all: 'People list'
     add_credits: 'Add Credits'
     home: "Home"
   buttons:

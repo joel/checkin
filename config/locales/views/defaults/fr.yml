@@ -2,7 +2,7 @@ fr:
   msg:
     confirm: 'Vous êtes sérieux ?!'
   links:
-    show_all: 'Retour à la liste'
+    show_all: 'Liste des personnes'
     add_credits: 'Ajouter des Crédits'
     home: Accueil
   buttons:
