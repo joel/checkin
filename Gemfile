@@ -45,7 +45,7 @@ end
 group :assets do
   gem 'sass-rails', "3.1.4"
   gem 'coffee-rails', "~> 3.1.0.rc"
-  gem 'uglifier'
+  # gem 'uglifier'
   # gem 'less', '~> 2.0.7'
   gem 'less-rails'
   gem 'less-rails-bootstrap', '~>1.3.3'

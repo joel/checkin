@@ -355,9 +355,6 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.30)
-    uglifier (1.0.3)
-      execjs (>= 0.3.0)
-      multi_json (>= 1.0.2)
     uuid (2.3.4)
       macaddr (~> 1.0)
     vegas (0.1.8)
@@ -423,4 +420,3 @@ DEPENDENCIES
   thin
   timecop
   twitter-bootstrap-rails!
-  uglifier
