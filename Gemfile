@@ -1,3 +1,6 @@
+require 'rbconfig'
+HOST_OS = RbConfig::CONFIG['host_os']
+
 source 'http://rubygems.org'
 
 # gem 'rails', '3.1.0'
@@ -69,8 +72,12 @@ group :test do
   gem 'guard-cucumber', '~> 0.7.3'
   gem "guard-spork", '~> 0.3.1'
   gem "guard-bundler"
-  gem "rb-fsevent", '~> 0.9.0.pre1'
-  gem "growl"
+end
+
+case HOST_OS
+  when /darwin/i
+    gem "rb-fsevent", '~> 0.9.0.pre1', :group => :development
+    gem 'growl', :group => :development
 end
 
 group :development do
