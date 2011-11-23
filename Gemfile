@@ -38,6 +38,7 @@ gem 'bourbon' # CSS3 Mixins
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :development, :test do
+  gem 'startbrick'
 end
 
 # Gems used only for assets and not required

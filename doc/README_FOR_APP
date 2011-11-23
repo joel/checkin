@@ -24,4 +24,7 @@ bundle exec rails g cucumber:feature user firstname:string lastname:string gende
 
 bundle exec rails g client_side_validations:install
 
+Add Credit
+# INSERT INTO tokens (token_type_id, user_id, token_owner_id, cost, used) VALUES (2, 128, 119, 0.0, 'f'); # Sample
+
 
