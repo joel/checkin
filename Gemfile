@@ -4,7 +4,7 @@ HOST_OS = RbConfig::CONFIG['host_os']
 source 'http://rubygems.org'
 
 # gem 'rails', '3.1.0'
-gem 'rails', '3.1.1'
+gem 'rails', '3.1.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
 
 # Bundle edge Rails instead:
@@ -21,13 +21,13 @@ gem "dynamic_form"
 # gem "simple_form"
 # rails plugin install git://github.com/rails/country_select.git
 gem "client_side_validations"
-gem "devise", "1.4.8"
+gem "devise", "~> 1.4.8"
 gem 'omniauth'
 gem "authbuttons-rails"
 gem "cancan", '~> 1.6.7'
 gem "hpricot"
 gem "ruby_parser", '~> 2.3.1'
-gem 'sinatra', '1.2.6'
+gem 'sinatra', '~> 1.2.6'
 gem 'resque', :require => "resque/server"
 gem 'resque_mailer'
 gem 'jquery-rails', '~> 1.0.16'
@@ -44,12 +44,12 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "3.1.4"
-  gem 'coffee-rails', "~> 3.1.0.rc"
+  gem 'sass-rails', "~> 3.1.4"
+  gem 'coffee-rails' # , "~> 3.1.0.rc"
   # gem 'uglifier'
   # gem 'less', '~> 2.0.7'
-  gem 'less-rails'
-  gem 'less-rails-bootstrap', '~>1.3.3'
+  # gem 'less-rails', '~> 2.1.0'
+  gem 'less-rails-bootstrap' # , '~>1.3.3'
   # gem 'less-rails-bootstrap', :git => 'git://github.com/walski/less-rails-bootstrap.git' # Temporary just for this PR https://github.com/metaskills/less-rails-bootstrap/pull/7
 end
 
