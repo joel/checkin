@@ -75,17 +75,16 @@ group :test do
   gem "guard-bundler"
 end
 
-case HOST_OS
-  when /darwin/i
-    gem "rb-fsevent", '~> 0.9.0.pre1', :group => :development
-    gem 'growl', :group => :development
-end
-
 group :development do
   gem "capistrano", '~> 2.9.0'
   gem "cucumber-rails", '~> 1.1.1'
   gem "rspec-rails", '~> 2.7.0.rc1'
   gem "haml-rails"
+  case HOST_OS
+    when /darwin/i
+      gem "rb-fsevent", '~> 0.9.0.pre1', :group => :development
+      gem 'growl', :group => :development
+  end
 end
 
 group :production do
