@@ -13,4 +13,4 @@ public/uploads
 webrat.log
 config/deploy.rb
 script/pg-*
-public/assets
+public/assetsGemfile.lock
