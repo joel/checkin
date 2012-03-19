@@ -1,5 +1,5 @@
-set :location, "ec2-107-21-172-87.compute-1.amazonaws.com"
-# set :location, "107.21.172.87"
+# set :location, "ec2-107-21-172-87.compute-1.amazonaws.com"
+set :location, "107.21.172.87"
 
 desc "Set the servers for production environment"
 task :production do
