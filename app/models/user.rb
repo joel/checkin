@@ -64,29 +64,29 @@ class User < ActiveRecord::Base
   end
 
   def self.user_already_exist?(omniauth)
-    (user = User.find_by_email(omniauth['user_info']['email']) rescue nil)
+    (user = User.find_by_email(omniauth['info']['email']) rescue nil)
     return user if user
-    (user = User.find_by_username(omniauth['user_info']['nickname']) rescue nil)
+    (user = User.find_by_username(omniauth['info']['nickname']) rescue nil)
     user ||= User.new
     return user
   end
 
   def apply_omniauth(omniauth)
-    self.email = omniauth['user_info']['email'] if email.blank?
-    # self.username = omniauth['user_info']['nickname'] if username.blank?
+    self.email = omniauth['info']['email'] if email.blank?
+    # self.username = omniauth['info']['nickname'] if username.blank?
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'].to_s)
     case omniauth['provider']
     when 'google'
-      self.username = omniauth['user_info']['name'] if self.username.blank?
+      self.username = omniauth['info']['name'] if self.username.blank?
     when 'github'
-      self.username = omniauth['user_info']['nickname'] if self.username.blank?
+      self.username = omniauth['info']['nickname'] if self.username.blank?
     when 'facebook'
-      self.username = omniauth['user_info']['nickname'] if self.username.blank?
-      self.firstname = omniauth['user_info']['first_name'] if self.firstname.blank?
-      self.lastname = omniauth['user_info']['last_name'] if self.lastname.blank?
+      self.username = omniauth['info']['nickname'] if self.username.blank?
+      self.firstname = omniauth['info']['first_name'] if self.firstname.blank?
+      self.lastname = omniauth['info']['last_name'] if self.lastname.blank?
     when 'twitter'
-      self.username = omniauth['user_info']['nickname'] if self.username.blank?
-      self.remote_avatar_url = omniauth['user_info']['image'] if self.avatar.blank?
+      self.username = omniauth['info']['nickname'] if self.username.blank?
+      self.remote_avatar_url = omniauth['info']['image'] if self.avatar.blank?
     end
   end
 
