@@ -23,7 +23,7 @@ Spork.prefork do
   require 'rspec/rails'
   require 'factory_girl'
   # https://github.com/irohiroki/guard-spork-ruby-debug-sample
-  require 'spork/ext/ruby-debug'
+  # require 'spork/ext/ruby-debug'
   require 'database_cleaner'
 
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}

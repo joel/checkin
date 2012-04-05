@@ -19,7 +19,13 @@ gem "dynamic_form"
 # rails plugin install git://github.com/rails/country_select.git
 gem "client_side_validations"
 gem "devise", "1.4.8"
-gem 'omniauth'
+gem 'omniauth', '>= 1.0.3'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-github'
+gem 'omniauth-foursquare'
+gem 'omniauth-openid'
 gem "authbuttons-rails"
 gem "cancan", '~> 1.6.7'
 gem "hpricot"
@@ -71,11 +77,11 @@ group :test do
   gem "guard-bundler"
   gem "rb-fsevent", '~> 0.9.0.pre1'
   gem "growl"
+  gem "cucumber-rails", '~> 1.1.1'
 end
 
 group :development do
   gem "capistrano", '~> 2.9.0'
-  gem "cucumber-rails", '~> 1.1.1'
   gem "rspec-rails", '~> 2.7.0.rc1'
   gem "haml-rails"
 end
