@@ -6,6 +6,9 @@ require "rvm/capistrano"
 
 # Default sets
 set :application, "checkin_#{ENV['name']}_#{rails_env}" # checkin_tau_production
+set :thin_service_name, "thin_checkin_#{ENV['name']}_prod-0" # thin_checkin_tau_prod-0
+set :resque_service_name, "resque_checkin_#{ENV['name']}_prod" # resque_checkin_tau_prod
+
 set :user, "capistrano"
 
 # RVM
