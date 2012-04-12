@@ -18,9 +18,9 @@ module ApplicationHelper
     if user.avatar?
       image_tag user.avatar_url(:thumb)
     elsif user.gender == 'Mr'
-      image_tag 'man_avatar.jpeg'
+      image_tag 'man_default_avatar.png'
     else
-      image_tag 'woman_avatar.jpeg'
+      image_tag 'woman_default_avatar.png'
     end
   end
 
