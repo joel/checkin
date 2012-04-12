@@ -15,3 +15,4 @@ config/deploy.rb
 script/pg-*
 public/assets
 config/settings/checkin.tau.so.conf.yml
+config/settings/checkin.lacantine-toulouse.org.yml
