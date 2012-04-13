@@ -1,8 +1,20 @@
+set :files, %w(
+  config/database.yml
+  config/settings.yml
+)
+  
 set :normal_symlinks, %w(
   config/database.yml
   config/settings.yml
-  config/settings/production.yml
   public/uploads
+)
+
+set :directories, %w(
+  config
+  bundle
+  doc
+  public/uploads
+  assets
 )
 
 namespace :symlinks do
@@ -24,7 +36,13 @@ namespace :symlinks do
 
   desc "Create shared folder to be linked"
   task :setup do
-    sudo "mkdir -p #{shared_path}/config #{shared_path}/bundle #{shared_path}/doc #{shared_path}/uploads"
+    commands = directories.map do |dir|
+      "#{shared_path}/#{dir}"
+    end
+    sudo "mkdir -p #{commands.join(' ')}"
+    files.each do |file_name|
+      sudo "touch #{shared_path}/#{file_name}"
+    end
     sudo "chown -R capistrano:users #{deploy_to}"
   end
 end
