@@ -25,11 +25,17 @@ production:
   timeout: 5000
 
 development:
-  adapter: postgresql
-  encoding: utf8
-  reconnect: false
-  database: checkin_development
+  adapter: sqlite3
+  database: db/development.sqlite3
   pool: 5
-  username: checkin
-  password: QSDVRc3Rdsc323csQQ12
-  host: localhost
+  timeout: 5000
+
+# development:
+#   adapter: postgresql
+#   encoding: utf8
+#   reconnect: false
+#   database: checkin_development
+#   pool: 5
+#   username: checkin
+#   password: QSDVRc3Rdsc323csQQ12
+#   host: localhost

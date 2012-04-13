@@ -32,11 +32,15 @@ fr:
         p_box: 'Vous pouvez aussi vous identifier via Twitter, Facebook ou Google...'
         remember_me: (Seulement sur cet ordinateur)
     passwords:
-      send_instructions: "Vous allez recevoir un courriel contenant des instructions pour changer votre mot de passe."
-      updated: "Votre mot de passe a été changé. Vous êtes maintenant connecté."
+      user:
+        send_instructions: "Vous allez recevoir un courriel contenant des instructions pour changer votre mot de passe."
+        updated: "Votre mot de passe a été changé. Vous êtes maintenant connecté."
     confirmations:
       send_instructions: "Vous allez recevoir un courriel contenant des instructions pour activer votre compte."
       confirmed: "Votre compte a été activé. Vous êtes maintenant connecté."
+      user:
+        send_instructions: "Vous allez recevoir un courriel contenant des instructions pour activer votre compte."
+        confirmed: "Votre compte a été activé. Vous êtes maintenant connecté."
     unlocks:
       send_instructions: "Vous allez recevoir un courriel avec des instructions pour déverrouiller votre compte."
       unlocked: "Votre compte est déverrouillé. Vous êtes maintenant connecté."
