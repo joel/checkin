@@ -1,7 +1,7 @@
 # require 'openid/store/filesystem' 
 Rails.application.config.middleware.use OmniAuth::Builder do  
   provider :twitter, Settings.app.omniauth.twitter.key, Settings.app.omniauth.twitter.secret
-  provider :facebook, Settings.app.omniauth.facebook.key, Settings.app.omniauth.facebook.secret # , { :scope => "permission scope" } 
+  # provider :facebook, Settings.app.omniauth.facebook.key, Settings.app.omniauth.facebook.secret # , { :scope => "permission scope" } 
   # provider :google_apps, OpenID::Store::Filesystem.new('/tmp') 
   # provider :google, Settings.app.omniauth.google.key, Settings.app.omniauth.google.secret
   # provider :github, Settings.app.omniauth.github.key, Settings.app.omniauth.github.secret
