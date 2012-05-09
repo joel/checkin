@@ -7,7 +7,6 @@ gem 'rails', '3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem "acts_as_api", '~> 0.3.9'
 gem "kaminari"
 gem "rails_config"
 gem "mini_magick"
@@ -35,6 +34,7 @@ gem 'resque', '>= 1.20.0', :require => "resque/server"
 gem 'resque_mailer'
 gem 'jquery-rails', '~> 1.0.16'
 gem 'sqlite3'
+gem 'dalli'
 
 # CSS
 gem 'bourbon' # CSS3 Mixins

@@ -51,5 +51,7 @@ module CheckinReloaded
       g.fixture_replacement :factory_girl, :dir => "spec/factories"		
     end
     
+    config.cache_store = :dalli_store, "#{::Settings.memcached.localhost}:#{::Settings.memcached.port}", 
+      { :namespace => Settings.memcached.namespace, :expires_in => 1.day, :compress => true }
   end
 end

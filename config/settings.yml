@@ -33,3 +33,7 @@ redis:
   host: "..."
   port: "..."
   namespace: "..."
+memcached:
+  namespace: '...'
+  host: '...'
+  port: '...'

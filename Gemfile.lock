@@ -47,10 +47,6 @@ GEM
       activesupport (= 3.1.1)
     activesupport (3.1.1)
       multi_json (~> 1.0)
-    acts_as_api (0.3.10)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      rack (>= 1.1.0)
     addressable (2.2.6)
     archive-tar-minitar (0.5.2)
     arel (2.2.1)
@@ -97,6 +93,7 @@ GEM
       cucumber (>= 1.1.0)
       nokogiri (>= 1.5.0)
     daemons (1.1.4)
+    dalli (2.0.4)
     database_cleaner (0.6.7)
     devise (1.4.8)
       bcrypt-ruby (~> 3.0)
@@ -346,7 +343,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_api (~> 0.3.9)
   authbuttons-rails
   bourbon
   cancan (~> 1.6.7)
@@ -357,6 +353,7 @@ DEPENDENCIES
   coffee-rails (~> 3.1.0.rc)
   cucumber (~> 1.1.0)
   cucumber-rails (~> 1.1.1)
+  dalli
   database_cleaner
   devise (= 1.4.8)
   dynamic_form
