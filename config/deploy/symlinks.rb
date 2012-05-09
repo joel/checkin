@@ -29,7 +29,7 @@ namespace :symlinks do
     commands << "ln -nfs #{shared_path}/bundle #{latest_release}/vendor/bundle"
     commands << "ln -nfs #{shared_path}/doc #{latest_release}/doc"
 
-    commands << "cp -f Gemfile.lock #{latest_release}/public"
+    commands << "cp -f #{latest_release}/Gemfile.lock #{latest_release}/public"
 
     run "#{commands.join(' && ')}"
   end

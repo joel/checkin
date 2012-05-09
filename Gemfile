@@ -81,7 +81,6 @@ group :test do
 end
 
 group :development do
-  gem "capistrano", '~> 2.9.0'
   gem "rspec-rails", '~> 2.7.0.rc1'
   gem "haml-rails"
 end
